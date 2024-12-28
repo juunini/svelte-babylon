@@ -64,6 +64,10 @@
 		"./mesh/Ground.svelte": {
 			"types": "./dist/mesh/Ground.svelte.d.ts",
 			"svelte": "./dist/mesh/Ground.svelte"
+		},
+		"./mesh/Text.svelte": {
+			"types": "./dist/mesh/Text.svelte.d.ts",
+			"svelte": "./dist/mesh/Text.svelte"
 		}
 	},
 	"peerDependencies": {

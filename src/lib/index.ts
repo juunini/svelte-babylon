@@ -6,5 +6,6 @@ import TargetCamera from '$lib/camera/TargetCamera.svelte';
 import HemisphericLight from '$lib/light/HemisphericLight.svelte';
 import Sphere from '$lib/mesh/Sphere.svelte';
 import Ground from '$lib/mesh/Ground.svelte';
+import Text from '$lib/mesh/Text.svelte';
 
-export { Canvas, Scene, Engine, FreeCamera, TargetCamera, HemisphericLight, Sphere, Ground };
+export { Canvas, Scene, Engine, FreeCamera, TargetCamera, HemisphericLight, Sphere, Ground, Text };
