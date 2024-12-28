@@ -88,6 +88,10 @@
 		"./mesh/Plane.svelte": {
 			"types": "./dist/mesh/Plane.svelte.d.ts",
 			"svelte": "./dist/mesh/Plane.svelte"
+		},
+		"./mesh/TiledPlane.svelte": {
+			"types": "./dist/mesh/TiledPlane.svelte.d.ts",
+			"svelte": "./dist/mesh/TiledPlane.svelte"
 		}
 	},
 	"peerDependencies": {
