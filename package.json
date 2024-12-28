@@ -36,6 +36,10 @@
 		"./Canvas.svelte": {
 			"types": "./dist/Canvas.svelte.d.ts",
 			"svelte": "./dist/Canvas.svelte"
+		},
+		"./Scene.svelte": {
+			"types": "./dist/Scene.svelte.d.ts",
+			"svelte": "./dist/Scene.svelte"
 		}
 	},
 	"peerDependencies": {
