@@ -76,6 +76,10 @@
 		"./mesh/TiledBox.svelte": {
 			"types": "./dist/mesh/TiledBox.svelte.d.ts",
 			"svelte": "./dist/mesh/TiledBox.svelte"
+		},
+		"./mesh/Cylinder.svelte": {
+			"types": "./dist/mesh/Cylinder.svelte.d.ts",
+			"svelte": "./dist/mesh/Cylinder.svelte"
 		}
 	},
 	"peerDependencies": {
