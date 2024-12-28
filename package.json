@@ -84,6 +84,10 @@
 		"./mesh/Capsule.svelte": {
 			"types": "./dist/mesh/Capsule.svelte.d.ts",
 			"svelte": "./dist/mesh/Capsule.svelte"
+		},
+		"./mesh/Plane.svelte": {
+			"types": "./dist/mesh/Plane.svelte.d.ts",
+			"svelte": "./dist/mesh/Plane.svelte"
 		}
 	},
 	"peerDependencies": {
