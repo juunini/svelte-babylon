@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { HemisphericLight } from '@babylonjs/core/Lights/hemisphericLight';
-	import { Vector3 } from '@babylonjs/core/Maths/math.vector';
-	import type { Scene } from '@babylonjs/core/scene';
 	import { onDestroy, type Snippet } from 'svelte';
 	import { v7 } from 'uuid';
+	import type { Scene } from '@babylonjs/core/scene';
+	import { HemisphericLight } from '@babylonjs/core/Lights/hemisphericLight';
+	import { Vector3 } from '@babylonjs/core/Maths/math.vector';
 
 	interface Props {
 		light?: HemisphericLight;

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { getContext, onDestroy, setContext, type Snippet } from 'svelte';
-	import { Engine } from '@babylonjs/core/Engines/engine';
 	import '@babylonjs/core/Materials/standardMaterial';
 	import type { EngineOptions, Nullable } from '@babylonjs/core';
+	import { Engine } from '@babylonjs/core/Engines/engine';
 
 	interface Props {
 		canvasOrContext?: Nullable<
@@ -18,22 +18,13 @@
 	let {
 		children,
 		engine = $bindable(),
-		canvasOrContext,
+		canvasOrContext = getContext('canvas'),
 		antialias,
 		options,
 		adaptToDeviceRatio
 	}: Props = $props();
 
-	if (canvasOrContext === undefined) {
-		canvasOrContext =
-			getContext<
-				Nullable<
-					WebGL2RenderingContext | WebGLRenderingContext | HTMLCanvasElement | OffscreenCanvas
-				>
-			>('canvas');
-	}
-
-	engine = new Engine(canvasOrContext, antialias, options, adaptToDeviceRatio);
+	engine = new Engine(canvasOrContext!, antialias, options, adaptToDeviceRatio);
 	setContext('engine', engine);
 
 	onDestroy(() => {

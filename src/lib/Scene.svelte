@@ -10,11 +10,12 @@
 		children?: Snippet;
 	}
 
-	let { engine, scene = $bindable(), options, children }: Props = $props();
-
-	if (engine === undefined) {
-		engine = getContext<AbstractEngine>('engine');
-	}
+	let {
+		engine = getContext<AbstractEngine>('engine'),
+		scene = $bindable(),
+		options,
+		children
+	}: Props = $props();
 
 	scene = new Scene(engine, options);
 	setContext('scene', scene);

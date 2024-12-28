@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onDestroy, setContext, type Snippet } from 'svelte';
+	import { onDestroy, type Snippet } from 'svelte';
 	import { v7 } from 'uuid';
 	import type { Scene } from '@babylonjs/core/scene';
 	import { FreeCamera } from '@babylonjs/core/Cameras/freeCamera';
@@ -16,20 +16,12 @@
 
 	let {
 		children,
-		name = $bindable(),
-		position,
+		name = $bindable(`FreeCamera${v7()}`),
+		position = new Vector3(0, 0, 0),
 		scene,
 		setActiveOnSceneIfNoneActive,
 		camera = $bindable()
 	}: Props = $props();
-
-	if (name === undefined) {
-		name = `FreeCamera${v7()}`;
-	}
-
-	if (position === undefined) {
-		position = new Vector3(0, 0, 0);
-	}
 
 	camera = new FreeCamera(name, position, scene, setActiveOnSceneIfNoneActive);
 
