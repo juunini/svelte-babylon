@@ -44,6 +44,14 @@
 		"./engine/Engine.svelte": {
 			"types": "./dist/engine/Engine.svelte.d.ts",
 			"svelte": "./dist/engine/Engine.svelte"
+		},
+		"./camera/FreeCamera.svelte": {
+			"types": "./dist/camera/FreeCamera.svelte.d.ts",
+			"svelte": "./dist/camera/FreeCamera.svelte"
+		},
+		"./camera/TargetCamera.svelte": {
+			"types": "./dist/camera/TargetCamera.svelte.d.ts",
+			"svelte": "./dist/camera/TargetCamera.svelte"
 		}
 	},
 	"peerDependencies": {
