@@ -5,17 +5,19 @@
 	import type { Scene } from '@babylonjs/core/scene';
 	import { CreateGround } from '@babylonjs/core/Meshes/Builders/groundBuilder';
 
+	export interface GroundOptions {
+		width?: number;
+		height?: number;
+		subdivisions?: number;
+		subdivisionsX?: number;
+		subdivisionsY?: number;
+		updatable?: boolean;
+	}
+
 	interface Props {
 		ground?: GroundMesh;
 		name?: string;
-		options?: {
-			width?: number;
-			height?: number;
-			subdivisions?: number;
-			subdivisionsX?: number;
-			subdivisionsY?: number;
-			updatable?: boolean;
-		};
+		options?: GroundOptions;
 		scene?: Scene;
 		children?: Snippet;
 	}

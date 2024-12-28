@@ -7,22 +7,24 @@
 	import type { Nullable } from '@babylonjs/core/types';
 	import { CreateSphere } from '@babylonjs/core/Meshes/Builders/sphereBuilder';
 
+	export interface SphereOptions {
+		arc?: number;
+		backUVs?: Vector4;
+		diameter?: number;
+		diameterX?: number;
+		diameterY?: number;
+		diameterZ?: number;
+		frontUVs?: Vector4;
+		segments?: number;
+		sideOrientation?: number;
+		slice?: number;
+		updatable?: boolean;
+	}
+
 	interface Props {
 		sphere?: Mesh;
 		name?: string;
-		options?: {
-			arc?: number;
-			backUVs?: Vector4;
-			diameter?: number;
-			diameterX?: number;
-			diameterY?: number;
-			diameterZ?: number;
-			frontUVs?: Vector4;
-			segments?: number;
-			sideOrientation?: number;
-			slice?: number;
-			updatable?: boolean;
-		};
+		options?: SphereOptions;
 		scene?: Nullable<Scene>;
 		children?: Snippet;
 	}
