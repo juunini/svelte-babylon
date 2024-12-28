@@ -56,6 +56,14 @@
 		"./light/HemisphericLight.svelte": {
 			"types": "./dist/light/HemisphericLight.svelte.d.ts",
 			"svelte": "./dist/light/HemisphericLight.svelte"
+		},
+		"./mesh/Sphere.svelte": {
+			"types": "./dist/mesh/Sphere.svelte.d.ts",
+			"svelte": "./dist/mesh/Sphere.svelte"
+		},
+		"./mesh/Ground.svelte": {
+			"types": "./dist/mesh/Ground.svelte.d.ts",
+			"svelte": "./dist/mesh/Ground.svelte"
 		}
 	},
 	"peerDependencies": {
