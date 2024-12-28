@@ -68,6 +68,10 @@
 		"./mesh/Text.svelte": {
 			"types": "./dist/mesh/Text.svelte.d.ts",
 			"svelte": "./dist/mesh/Text.svelte"
+		},
+		"./mesh/Box.svelte": {
+			"types": "./dist/mesh/Box.svelte.d.ts",
+			"svelte": "./dist/mesh/Box.svelte"
 		}
 	},
 	"peerDependencies": {
