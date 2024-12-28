@@ -52,6 +52,10 @@
 		"./camera/TargetCamera.svelte": {
 			"types": "./dist/camera/TargetCamera.svelte.d.ts",
 			"svelte": "./dist/camera/TargetCamera.svelte"
+		},
+		"./light/HemisphericLight.svelte": {
+			"types": "./dist/light/HemisphericLight.svelte.d.ts",
+			"svelte": "./dist/light/HemisphericLight.svelte"
 		}
 	},
 	"peerDependencies": {
