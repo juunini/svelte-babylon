@@ -10,6 +10,7 @@ import Text from '$lib/mesh/Text.svelte';
 import Box from '$lib/mesh/Box.svelte';
 import TiledBox from '$lib/mesh/TiledBox.svelte';
 import Cylinder from '$lib/mesh/Cylinder.svelte';
+import Capsule from '$lib/mesh/Capsule.svelte';
 
 export {
 	Canvas,
@@ -23,5 +24,6 @@ export {
 	Text,
 	Box,
 	TiledBox,
-	Cylinder
+	Cylinder,
+	Capsule
 };

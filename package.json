@@ -80,6 +80,10 @@
 		"./mesh/Cylinder.svelte": {
 			"types": "./dist/mesh/Cylinder.svelte.d.ts",
 			"svelte": "./dist/mesh/Cylinder.svelte"
+		},
+		"./mesh/Capsule.svelte": {
+			"types": "./dist/mesh/Capsule.svelte.d.ts",
+			"svelte": "./dist/mesh/Capsule.svelte"
 		}
 	},
 	"peerDependencies": {
