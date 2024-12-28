@@ -8,6 +8,7 @@ import Sphere from '$lib/mesh/Sphere.svelte';
 import Ground from '$lib/mesh/Ground.svelte';
 import Text from '$lib/mesh/Text.svelte';
 import Box from '$lib/mesh/Box.svelte';
+import TiledBox from '$lib/mesh/TiledBox.svelte';
 
 export {
 	Canvas,
@@ -19,5 +20,6 @@ export {
 	Sphere,
 	Ground,
 	Text,
-	Box
+	Box,
+	TiledBox
 };
