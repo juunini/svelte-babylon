@@ -40,6 +40,10 @@
 		"./Scene.svelte": {
 			"types": "./dist/Scene.svelte.d.ts",
 			"svelte": "./dist/Scene.svelte"
+		},
+		"./engine/Engine.svelte": {
+			"types": "./dist/engine/Engine.svelte.d.ts",
+			"svelte": "./dist/engine/Engine.svelte"
 		}
 	},
 	"peerDependencies": {
