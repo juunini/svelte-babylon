@@ -32,6 +32,7 @@ import ExtrudeShapeCustom, {
 } from '$lib/mesh/ExtrudeShapeCustom.svelte';
 import Lathe, { type LatheOptions } from '$lib/mesh/Lathe.svelte';
 import Polygon, { type PolygonOptions } from '$lib/mesh/Polygon.svelte';
+import ExtrudePolygon, { type ExtrudePolygonOptions } from '$lib/mesh/ExtrudePolygon.svelte';
 
 export {
 	Canvas,
@@ -85,5 +86,7 @@ export {
 	Lathe,
 	type LatheOptions,
 	Polygon,
-	type PolygonOptions
+	type PolygonOptions,
+	ExtrudePolygon,
+	type ExtrudePolygonOptions
 };

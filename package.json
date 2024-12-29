@@ -152,6 +152,10 @@
 		"./mesh/Polygon.svelte": {
 			"types": "./dist/mesh/Polygon.svelte.d.ts",
 			"svelte": "./dist/mesh/Polygon.svelte"
+		},
+		"./mesh/ExtrudePolygon.svelte": {
+			"types": "./dist/mesh/ExtrudePolygon.svelte.d.ts",
+			"svelte": "./dist/mesh/ExtrudePolygon.svelte"
 		}
 	},
 	"peerDependencies": {
