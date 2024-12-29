@@ -14,6 +14,7 @@ import Capsule from '$lib/mesh/Capsule.svelte';
 import Plane, { type PlaneOptions } from '$lib/mesh/Plane.svelte';
 import TiledPlane, { type TiledPlaneOptions } from '$lib/mesh/TiledPlane.svelte';
 import Disc, { type DiscOptions } from '$lib/mesh/Disc.svelte';
+import Torus, { type TorusOptions } from '$lib/mesh/Torus.svelte';
 
 export {
 	Canvas,
@@ -40,5 +41,7 @@ export {
 	TiledPlane,
 	type TiledPlaneOptions,
 	Disc,
-	type DiscOptions
+	type DiscOptions,
+	Torus,
+	type TorusOptions
 };
