@@ -168,6 +168,10 @@
 		"./mesh/Geodesic.svelte": {
 			"types": "./dist/mesh/Geodesic.svelte.d.ts",
 			"svelte": "./dist/mesh/Geodesic.svelte"
+		},
+		"./mesh/Goldberg.svelte": {
+			"types": "./dist/mesh/Goldberg.svelte.d.ts",
+			"svelte": "./dist/mesh/Goldberg.svelte"
 		}
 	},
 	"peerDependencies": {
