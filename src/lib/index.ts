@@ -29,6 +29,7 @@ import Tube, { type TubeOptions } from '$lib/mesh/Tube.svelte';
 import Extrusion, { type ExtrusionOptions } from '$lib/mesh/Extrusion.svelte';
 import CustomExtrusion, { type CustomExtrusionOptions } from '$lib/mesh/CustomExtrusion.svelte';
 import Lathe, { type LatheOptions } from '$lib/mesh/Lathe.svelte';
+import Polygon, { type PolygonOptions } from '$lib/mesh/Polygon.svelte';
 
 export {
 	Canvas,
@@ -80,5 +81,7 @@ export {
 	CustomExtrusion,
 	type CustomExtrusionOptions,
 	Lathe,
-	type LatheOptions
+	type LatheOptions,
+	Polygon,
+	type PolygonOptions
 };

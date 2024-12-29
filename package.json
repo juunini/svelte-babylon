@@ -148,6 +148,10 @@
 		"./mesh/Lathe.svelte": {
 			"types": "./dist/mesh/Lathe.svelte.d.ts",
 			"svelte": "./dist/mesh/Lathe.svelte"
+		},
+		"./mesh/Polygon.svelte": {
+			"types": "./dist/mesh/Polygon.svelte.d.ts",
+			"svelte": "./dist/mesh/Polygon.svelte"
 		}
 	},
 	"peerDependencies": {
