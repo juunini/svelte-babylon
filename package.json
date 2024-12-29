@@ -132,6 +132,10 @@
 		"./mesh/Ribbon.svelte": {
 			"types": "./dist/mesh/Ribbon.svelte.d.ts",
 			"svelte": "./dist/mesh/Ribbon.svelte"
+		},
+		"./mesh/Tube.svelte": {
+			"types": "./dist/mesh/Tube.svelte.d.ts",
+			"svelte": "./dist/mesh/Tube.svelte"
 		}
 	},
 	"peerDependencies": {
