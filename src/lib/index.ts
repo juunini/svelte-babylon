@@ -4,15 +4,15 @@ import Engine from '$lib/engine/Engine.svelte';
 import FreeCamera from '$lib/camera/FreeCamera.svelte';
 import TargetCamera from '$lib/camera/TargetCamera.svelte';
 import HemisphericLight from '$lib/light/HemisphericLight.svelte';
-import Sphere from '$lib/mesh/Sphere.svelte';
-import Ground from '$lib/mesh/Ground.svelte';
-import Text from '$lib/mesh/Text.svelte';
-import Box from '$lib/mesh/Box.svelte';
-import TiledBox from '$lib/mesh/TiledBox.svelte';
-import Cylinder from '$lib/mesh/Cylinder.svelte';
+import Sphere, { type SphereOptions } from '$lib/mesh/Sphere.svelte';
+import Ground, { type GroundOptions } from '$lib/mesh/Ground.svelte';
+import Text, { type TextOptions } from '$lib/mesh/Text.svelte';
+import Box, { type BoxOptions } from '$lib/mesh/Box.svelte';
+import TiledBox, { type TiledBoxOptions } from '$lib/mesh/TiledBox.svelte';
+import Cylinder, { type CylinderOptions } from '$lib/mesh/Cylinder.svelte';
 import Capsule from '$lib/mesh/Capsule.svelte';
-import Plane from '$lib/mesh/Plane.svelte';
-import TiledPlane from '$lib/mesh/TiledPlane.svelte';
+import Plane, { type PlaneOptions } from '$lib/mesh/Plane.svelte';
+import TiledPlane, { type TiledPlaneOptions } from '$lib/mesh/TiledPlane.svelte';
 
 export {
 	Canvas,
@@ -22,12 +22,20 @@ export {
 	TargetCamera,
 	HemisphericLight,
 	Sphere,
+	type SphereOptions,
 	Ground,
+	type GroundOptions,
 	Text,
+	type TextOptions,
 	Box,
+	type BoxOptions,
 	TiledBox,
+	type TiledBoxOptions,
 	Cylinder,
+	type CylinderOptions,
 	Capsule,
 	Plane,
-	TiledPlane
+	type PlaneOptions,
+	TiledPlane,
+	type TiledPlaneOptions
 };
