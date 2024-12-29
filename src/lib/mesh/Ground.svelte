@@ -4,7 +4,7 @@
   import { CreateGround } from '@babylonjs/core/Meshes/Builders/groundBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface GroundOptions {
     width?: number;
@@ -24,7 +24,7 @@
   let { ground = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={ground}
   createMeshFunction={CreateGround as any}
   {options}

@@ -8,7 +8,7 @@
   import { CreateLineSystem } from '@babylonjs/core/Meshes/Builders/linesBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface LineSystemOptions {
     colors?: Nullable<Color4[][]>;
@@ -28,7 +28,7 @@
   let { lineSystem = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={lineSystem}
   createMeshFunction={CreateLineSystem}
   {options}

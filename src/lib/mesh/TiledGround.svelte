@@ -4,7 +4,7 @@
   import { CreateTiledGround } from '@babylonjs/core/Meshes/Builders/groundBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface TiledGroundOptions {
     precision?: { h: number; w: number };
@@ -25,7 +25,7 @@
   let { tiledGround = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={tiledGround}
   createMeshFunction={CreateTiledGround}
   {options}

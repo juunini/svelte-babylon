@@ -5,7 +5,7 @@
   import type { Vector3 } from '@babylonjs/core/Maths/math.vector';
   import { CreateDashedLines } from '@babylonjs/core/Meshes/Builders/linesBuilder';
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface DashedLineOptions {
     dashNb?: number;
@@ -27,7 +27,7 @@
   let { dashedLine = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={dashedLine}
   createMeshFunction={CreateDashedLines}
   {options}

@@ -7,7 +7,7 @@
   import { CreateTiledBox } from '@babylonjs/core/Meshes/Builders/tiledBoxBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface TiledBoxOptions {
     alignHorizontal?: number;
@@ -34,7 +34,7 @@
   let { tiledBox = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={tiledBox}
   createMeshFunction={CreateTiledBox}
   {options}

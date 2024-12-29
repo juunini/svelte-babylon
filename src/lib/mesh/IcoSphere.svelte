@@ -1,4 +1,3 @@
-<script lang="ts">
   import type { Scene } from '@babylonjs/core/scene';
   import type { Vector4 } from '@babylonjs/core/Maths/math.vector';
   import type { Mesh } from '@babylonjs/core/Meshes/mesh';
@@ -6,7 +5,7 @@
   import { CreateIcoSphere } from '@babylonjs/core/Meshes/Builders/icoSphereBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface IcoSphereOptions {
     bbackUVs?: Vector4;
@@ -30,7 +29,7 @@
   let { icoSphere = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={icoSphere}
   createMeshFunction={CreateIcoSphere}
   {options}

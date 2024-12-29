@@ -6,7 +6,7 @@
   import type { ICreateCapsuleOptions } from '@babylonjs/core/Meshes/Builders/capsuleBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface Props extends MeshProps {
     capsule?: Mesh;
@@ -17,7 +17,7 @@
   let { capsule = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={capsule}
   createMeshFunction={CreateCapsule}
   {options}

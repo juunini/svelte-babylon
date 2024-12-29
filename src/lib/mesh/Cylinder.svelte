@@ -7,7 +7,7 @@
   import { CreateCylinder } from '@babylonjs/core/Meshes/Builders/cylinderBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface CylinderOptions {
     arc?: number;
@@ -37,7 +37,7 @@
   let { cylinder = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={cylinder}
   createMeshFunction={CreateCylinder}
   {options}

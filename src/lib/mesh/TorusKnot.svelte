@@ -5,7 +5,7 @@
   import { CreateTorusKnot } from '@babylonjs/core/Meshes/Builders/torusKnotBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface TorusKnotOptions {
     backUVs?: Vector4;
@@ -29,7 +29,7 @@
   let { torusKnot = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={torusKnot}
   createMeshFunction={CreateTorusKnot as any}
   {options}

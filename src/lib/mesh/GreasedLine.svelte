@@ -11,7 +11,7 @@
   } from '@babylonjs/core/Meshes/Builders/greasedLineBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface Props extends MeshProps {
     greasedLine?: GreasedLineBaseMesh | GreasedLineMesh | GreasedLineRibbonMesh;
@@ -30,7 +30,7 @@
   }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={greasedLine}
   createMeshFunction={CreateGreasedLine}
   {options}

@@ -6,7 +6,7 @@
   import { CreateLathe } from '@babylonjs/core/Meshes/Builders/latheBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface LatheOptions {
     arc?: number;
@@ -32,7 +32,7 @@
   let { lathe = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={lathe}
   createMeshFunction={CreateLathe}
   {options}

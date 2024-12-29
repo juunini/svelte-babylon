@@ -10,7 +10,7 @@
   } from '@babylonjs/core/Meshes/Builders/goldbergBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface GoldbergOptions {
     backUVs?: Vector4;
@@ -37,7 +37,7 @@
   let { goldberg = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={goldberg}
   createMeshFunction={CreateGoldberg}
   {options}

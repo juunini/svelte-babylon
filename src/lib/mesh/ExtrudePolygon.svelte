@@ -7,7 +7,7 @@
   import { ExtrudePolygon } from '@babylonjs/core/Meshes/Builders/polygonBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface ExtrudePolygonOptions {
     backUVs?: Vector4;
@@ -40,7 +40,7 @@
   }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={extrudePolygon}
   createMeshFunction={ExtrudePolygon}
   {options}

@@ -6,7 +6,7 @@
   import { CreateSphere } from '@babylonjs/core/Meshes/Builders/sphereBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface SphereOptions {
     arc?: number;
@@ -31,7 +31,7 @@
   let { sphere = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={sphere}
   createMeshFunction={CreateSphere}
   {options}

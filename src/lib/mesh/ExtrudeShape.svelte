@@ -6,7 +6,7 @@
   import { ExtrudeShape } from '@babylonjs/core/Meshes/Builders/shapeBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface ExtrudeShapeOptions {
     adjustFrame?: boolean;
@@ -35,7 +35,7 @@
   let { extrdeShape = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={extrdeShape}
   createMeshFunction={ExtrudeShape}
   {options}

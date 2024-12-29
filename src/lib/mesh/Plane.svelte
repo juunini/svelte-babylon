@@ -7,7 +7,7 @@
   import { CreatePlane } from '@babylonjs/core/Meshes/Builders/planeBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface PlaneOptions {
     backUVs?: Vector4;
@@ -29,7 +29,7 @@
   let { plane = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={plane}
   createMeshFunction={CreatePlane}
   {options}

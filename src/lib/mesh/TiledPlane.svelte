@@ -6,7 +6,7 @@
   import { CreateTiledPlane } from '@babylonjs/core/Meshes/Builders/tiledPlaneBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface TiledPlaneOptions {
     alignHorizontal?: number;
@@ -33,7 +33,7 @@
   let { tiledplane = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={tiledplane}
   createMeshFunction={CreateTiledPlane}
   {options}

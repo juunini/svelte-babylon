@@ -7,7 +7,7 @@
   import { CreateBox } from '@babylonjs/core/Meshes/Builders/boxBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface BoxOptions {
     backUVs?: Vector4;
@@ -34,4 +34,4 @@
   let { box = $bindable(), options, position, lookAt, scene }: Props = $props();
 </script>
 
-<CreateMesh bind:mesh={box} createMeshFunction={CreateBox} {options} {scene} {position} {lookAt} />
+<DefaultMesh bind:mesh={box} createMeshFunction={CreateBox} {options} {scene} {position} {lookAt} />

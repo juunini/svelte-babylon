@@ -6,7 +6,7 @@
   import { CreateGroundFromHeightMap } from '@babylonjs/core/Meshes/Builders/groundBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface GroundFromHeightMapOptions {
     alphaFilter?: number;
@@ -39,7 +39,7 @@
   }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={groundFromHeightMap}
   createMeshFunction={CreateGroundFromHeightMap}
   {options}

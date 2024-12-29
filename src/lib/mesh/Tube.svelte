@@ -6,7 +6,7 @@
   import { CreateTube } from '@babylonjs/core/Meshes/Builders/tubeBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface TubeOptions {
     arc?: number;
@@ -32,7 +32,7 @@
   let { tube = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={tube}
   createMeshFunction={CreateTube}
   {options}

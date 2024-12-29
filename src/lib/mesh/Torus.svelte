@@ -5,7 +5,7 @@
   import { CreateTorus } from '@babylonjs/core/Meshes/Builders/torusBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface TorusOptions {
     backUVs?: Vector4;
@@ -26,7 +26,7 @@
   let { torus = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={torus}
   createMeshFunction={CreateTorus as any}
   {options}

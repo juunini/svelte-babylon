@@ -7,7 +7,7 @@
   import { CreatePolygon } from '@babylonjs/core/Meshes/Builders/polygonBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface PolygonOptions {
     backUVs?: Vector4;
@@ -40,7 +40,7 @@
   }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={polygon}
   createMeshFunction={CreatePolygon}
   {options}

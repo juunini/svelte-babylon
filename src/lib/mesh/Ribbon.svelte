@@ -7,7 +7,7 @@
   import { CreateRibbon } from '@babylonjs/core/Meshes/Builders/ribbonBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface RibbonOptions {
     backUVs?: Vector4;
@@ -33,7 +33,7 @@
   let { ribbon = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={ribbon}
   createMeshFunction={CreateRibbon}
   {options}

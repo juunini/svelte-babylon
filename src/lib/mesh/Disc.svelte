@@ -6,7 +6,7 @@
   import { CreateDisc } from '@babylonjs/core/Meshes/Builders/discBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface DiscOptions {
     arc?: number;
@@ -27,4 +27,4 @@
   let { disc = $bindable(), options, scene }: Props = $props();
 </script>
 
-<CreateMesh bind:mesh={disc} createMeshFunction={CreateDisc} {options} {scene} />
+<DefaultMesh bind:mesh={disc} createMeshFunction={CreateDisc} {options} {scene} />

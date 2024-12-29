@@ -7,7 +7,7 @@
   import { CreateGeodesic } from '@babylonjs/core/Meshes/Builders/geodesicBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface GeodesicOptions {
     backUVs?: Vector4;
@@ -34,7 +34,7 @@
   let { geodesic = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={geodesic}
   createMeshFunction={CreateGeodesic}
   {options}

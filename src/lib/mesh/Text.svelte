@@ -7,7 +7,7 @@
   import { CreateText, type IFontData } from '@babylonjs/core/Meshes/Builders/textBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface TextOptions {
     depth?: number;
@@ -41,7 +41,7 @@
   }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={textMesh}
   createMeshFunction={CreateText}
   {options}

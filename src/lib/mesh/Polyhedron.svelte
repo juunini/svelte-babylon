@@ -7,7 +7,7 @@
   import { CreatePolyhedron } from '@babylonjs/core/Meshes/Builders/polyhedronBuilder';
 
   import type { MeshProps } from './interface';
-  import CreateMesh from './_CreateMesh.svelte';
+  import DefaultMesh from './_Mesh.svelte';
 
   interface PolyhedronOptions {
     backUVs?: Vector4;
@@ -34,7 +34,7 @@
   let { polyhedron = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<CreateMesh
+<DefaultMesh
   bind:mesh={polyhedron}
   createMeshFunction={CreatePolyhedron}
   {options}
