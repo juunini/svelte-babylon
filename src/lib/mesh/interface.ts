@@ -1,4 +1,5 @@
 export interface MeshProps {
+  useParentScene?: boolean;
   position?: {
     x?: number;
     y?: number;

@@ -6,6 +6,7 @@
   import { Engine } from '@babylonjs/core/Engines/engine';
 
   interface Props {
+    useParentCanvas?: boolean;
     canvasOrContext?: Nullable<
       WebGL2RenderingContext | WebGLRenderingContext | HTMLCanvasElement | OffscreenCanvas
     >;
@@ -17,6 +18,7 @@
   }
 
   let {
+    useParentCanvas = true,
     children,
     engine = $bindable(),
     canvasOrContext = getContext('canvas'),
@@ -24,6 +26,10 @@
     options,
     adaptToDeviceRatio
   }: Props = $props();
+
+  if (useParentCanvas && canvasOrContext === undefined) {
+    canvasOrContext = getContext('canvas');
+  }
 
   engine = new Engine(canvasOrContext!, antialias, options, adaptToDeviceRatio);
   setContext('engine', engine);

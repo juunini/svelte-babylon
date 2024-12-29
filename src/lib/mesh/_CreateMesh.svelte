@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onDestroy } from 'svelte';
+  import { getContext, onDestroy } from 'svelte';
   import { v7 } from 'uuid';
   import type { Mesh } from '@babylonjs/core/Meshes/mesh';
   import type { Scene } from '@babylonjs/core/scene';
@@ -50,6 +50,7 @@
   }
 
   let {
+    useParentScene = true,
     mesh = $bindable(),
     createMeshFunction,
     options,
@@ -62,6 +63,10 @@
     position,
     lookAt
   }: Props = $props();
+
+  if (useParentScene && scene === undefined) {
+    scene = getContext('scene');
+  }
 
   const name = 'mesh' + v7();
 
