@@ -26,8 +26,10 @@ import LineSystem, { type LineSystemOptions } from '$lib/mesh/LineSystem.svelte'
 import GreasedLine from '$lib/mesh/GreasedLine.svelte';
 import Ribbon, { type RibbonOptions } from '$lib/mesh/Ribbon.svelte';
 import Tube, { type TubeOptions } from '$lib/mesh/Tube.svelte';
-import Extrusion, { type ExtrusionOptions } from '$lib/mesh/Extrusion.svelte';
-import CustomExtrusion, { type CustomExtrusionOptions } from '$lib/mesh/CustomExtrusion.svelte';
+import ExtrudeShape, { type ExtrudeShapeOptions } from '$lib/mesh/ExtrudeShape.svelte';
+import ExtrudeShapeCustom, {
+	type ExtrudeShapeCustomOptions
+} from '$lib/mesh/ExtrudeShapeCustom.svelte';
 import Lathe, { type LatheOptions } from '$lib/mesh/Lathe.svelte';
 import Polygon, { type PolygonOptions } from '$lib/mesh/Polygon.svelte';
 
@@ -76,10 +78,10 @@ export {
 	type RibbonOptions,
 	Tube,
 	type TubeOptions,
-	Extrusion,
-	type ExtrusionOptions,
-	CustomExtrusion,
-	type CustomExtrusionOptions,
+	ExtrudeShape,
+	type ExtrudeShapeOptions,
+	ExtrudeShapeCustom,
+	type ExtrudeShapeCustomOptions,
 	Lathe,
 	type LatheOptions,
 	Polygon,

@@ -137,13 +137,13 @@
 			"types": "./dist/mesh/Tube.svelte.d.ts",
 			"svelte": "./dist/mesh/Tube.svelte"
 		},
-		"./mesh/Extrusion.svelte": {
-			"types": "./dist/mesh/Extrusion.svelte.d.ts",
-			"svelte": "./dist/mesh/Extrusion.svelte"
+		"./mesh/ExtrudeShape.svelte": {
+			"types": "./dist/mesh/ExtrudeShape.svelte.d.ts",
+			"svelte": "./dist/mesh/ExtrudeShape.svelte"
 		},
-		"./mesh/CustomExtrusion.svelte": {
-			"types": "./dist/mesh/CustomExtrusion.svelte.d.ts",
-			"svelte": "./dist/mesh/CustomExtrusion.svelte"
+		"./mesh/ExtrudeShapeCustom.svelte": {
+			"types": "./dist/mesh/ExtrudeShapeCustom.svelte.d.ts",
+			"svelte": "./dist/mesh/ExtrudeShapeCustom.svelte"
 		},
 		"./mesh/Lathe.svelte": {
 			"types": "./dist/mesh/Lathe.svelte.d.ts",
