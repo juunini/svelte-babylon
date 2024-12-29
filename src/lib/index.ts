@@ -26,6 +26,7 @@ import LineSystem, { type LineSystemOptions } from '$lib/mesh/LineSystem.svelte'
 import GreasedLine from '$lib/mesh/GreasedLine.svelte';
 import Ribbon, { type RibbonOptions } from '$lib/mesh/Ribbon.svelte';
 import Tube, { type TubeOptions } from '$lib/mesh/Tube.svelte';
+import Extrusion, { type ExtrusionOptions } from '$lib/mesh/Extrusion.svelte';
 
 export {
 	Canvas,
@@ -71,5 +72,7 @@ export {
 	Ribbon,
 	type RibbonOptions,
 	Tube,
-	type TubeOptions
+	type TubeOptions,
+	Extrusion,
+	type ExtrusionOptions
 };

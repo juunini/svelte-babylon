@@ -136,6 +136,10 @@
 		"./mesh/Tube.svelte": {
 			"types": "./dist/mesh/Tube.svelte.d.ts",
 			"svelte": "./dist/mesh/Tube.svelte"
+		},
+		"./mesh/Extrusion.svelte": {
+			"types": "./dist/mesh/Extrusion.svelte.d.ts",
+			"svelte": "./dist/mesh/Extrusion.svelte"
 		}
 	},
 	"peerDependencies": {
