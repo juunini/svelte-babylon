@@ -1,41 +1,41 @@
 <script lang="ts">
-	import type { Scene } from '@babylonjs/core/scene';
-	import type { Nullable } from '@babylonjs/core/types';
-	import type { GreasedLineBaseMesh } from '@babylonjs/core/Meshes/GreasedLine/greasedLineBaseMesh';
-	import type { GreasedLineMesh } from '@babylonjs/core/Meshes/GreasedLine/greasedLineMesh';
-	import type { GreasedLineRibbonMesh } from '@babylonjs/core/Meshes/GreasedLine/greasedLineRibbonMesh';
-	import {
-		CreateGreasedLine,
-		type GreasedLineMaterialBuilderOptions,
-		type GreasedLineMeshBuilderOptions
-	} from '@babylonjs/core/Meshes/Builders/greasedLineBuilder';
+  import type { Scene } from '@babylonjs/core/scene';
+  import type { Nullable } from '@babylonjs/core/types';
+  import type { GreasedLineBaseMesh } from '@babylonjs/core/Meshes/GreasedLine/greasedLineBaseMesh';
+  import type { GreasedLineMesh } from '@babylonjs/core/Meshes/GreasedLine/greasedLineMesh';
+  import type { GreasedLineRibbonMesh } from '@babylonjs/core/Meshes/GreasedLine/greasedLineRibbonMesh';
+  import {
+    CreateGreasedLine,
+    type GreasedLineMaterialBuilderOptions,
+    type GreasedLineMeshBuilderOptions
+  } from '@babylonjs/core/Meshes/Builders/greasedLineBuilder';
 
-	import type { MeshProps } from './interface';
-	import CreateMesh from './_CreateMesh.svelte';
+  import type { MeshProps } from './interface';
+  import CreateMesh from './_CreateMesh.svelte';
 
-	interface Props extends MeshProps {
-		greasedLine?: GreasedLineBaseMesh | GreasedLineMesh | GreasedLineRibbonMesh;
-		options: GreasedLineMeshBuilderOptions;
-		materialOptions?: Nullable<GreasedLineMaterialBuilderOptions>;
-		scene?: Scene;
-	}
+  interface Props extends MeshProps {
+    greasedLine?: GreasedLineBaseMesh | GreasedLineMesh | GreasedLineRibbonMesh;
+    options: GreasedLineMeshBuilderOptions;
+    materialOptions?: Nullable<GreasedLineMaterialBuilderOptions>;
+    scene?: Scene;
+  }
 
-	let {
-		greasedLine = $bindable(),
-		options,
-		materialOptions = null,
-		scene,
-		position,
-		lookAt
-	}: Props = $props();
+  let {
+    greasedLine = $bindable(),
+    options,
+    materialOptions = null,
+    scene,
+    position,
+    lookAt
+  }: Props = $props();
 </script>
 
 <CreateMesh
-	bind:mesh={greasedLine}
-	createMeshFunction={CreateGreasedLine}
-	{options}
-	{scene}
-	{position}
-	{lookAt}
-	{materialOptions}
+  bind:mesh={greasedLine}
+  createMeshFunction={CreateGreasedLine}
+  {options}
+  {scene}
+  {position}
+  {lookAt}
+  {materialOptions}
 />

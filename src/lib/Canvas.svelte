@@ -1,25 +1,25 @@
 <script lang="ts">
-	import { onMount, setContext, type Snippet } from 'svelte';
+  import { onMount, setContext, type Snippet } from 'svelte';
 
-	interface Props {
-		children: Snippet;
-		canvas?: HTMLCanvasElement;
-		width?: number;
-		height?: number;
-		class?: string;
-		style?: string;
-		props?: any;
-	}
+  interface Props {
+    children: Snippet;
+    canvas?: HTMLCanvasElement;
+    width?: number;
+    height?: number;
+    class?: string;
+    style?: string;
+    props?: any;
+  }
 
-	let { children, canvas = $bindable(), width, height, style, ...props }: Props = $props();
+  let { children, canvas = $bindable(), width, height, style, ...props }: Props = $props();
 
-	onMount(() => {
-		setContext('canvas', canvas);
-	});
+  onMount(() => {
+    setContext('canvas', canvas);
+  });
 </script>
 
 <canvas bind:this={canvas} {width} {height} class={props.class} {style} {...props}>
-	{#if canvas}
-		{@render children()}
-	{/if}
+  {#if canvas}
+    {@render children()}
+  {/if}
 </canvas>

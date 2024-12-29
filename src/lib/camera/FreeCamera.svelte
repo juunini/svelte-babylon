@@ -1,35 +1,35 @@
 <script lang="ts">
-	import { onDestroy, type Snippet } from 'svelte';
-	import { v7 } from 'uuid';
-	import type { Scene } from '@babylonjs/core/scene';
-	import { FreeCamera } from '@babylonjs/core/Cameras/freeCamera';
-	import { Vector3 } from '@babylonjs/core/Maths/math.vector';
+  import { onDestroy, type Snippet } from 'svelte';
+  import { v7 } from 'uuid';
+  import type { Scene } from '@babylonjs/core/scene';
+  import { FreeCamera } from '@babylonjs/core/Cameras/freeCamera';
+  import { Vector3 } from '@babylonjs/core/Maths/math.vector';
 
-	interface Props {
-		name?: string;
-		position?: Vector3;
-		scene?: Scene;
-		setActiveOnSceneIfNoneActive?: boolean;
-		camera?: FreeCamera;
-		children?: Snippet;
-	}
+  interface Props {
+    name?: string;
+    position?: Vector3;
+    scene?: Scene;
+    setActiveOnSceneIfNoneActive?: boolean;
+    camera?: FreeCamera;
+    children?: Snippet;
+  }
 
-	let {
-		children,
-		name = $bindable(`FreeCamera${v7()}`),
-		position = new Vector3(0, 0, 0),
-		scene,
-		setActiveOnSceneIfNoneActive,
-		camera = $bindable()
-	}: Props = $props();
+  let {
+    children,
+    name = $bindable(`FreeCamera${v7()}`),
+    position = new Vector3(0, 0, 0),
+    scene,
+    setActiveOnSceneIfNoneActive,
+    camera = $bindable()
+  }: Props = $props();
 
-	camera = new FreeCamera(name, position, scene, setActiveOnSceneIfNoneActive);
+  camera = new FreeCamera(name, position, scene, setActiveOnSceneIfNoneActive);
 
-	onDestroy(() => {
-		camera.dispose();
-	});
+  onDestroy(() => {
+    camera.dispose();
+  });
 </script>
 
 {#if children}
-	{@render children?.()}
+  {@render children?.()}
 {/if}

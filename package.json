@@ -1,213 +1,213 @@
 {
-	"name": "@juunini/svelte-babylonjs",
-	"version": "0.0.1-alpha.3",
-	"license": "MIT",
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build && npm run package",
-		"preview": "vite preview",
-		"package": "svelte-kit sync && svelte-package && publint",
-		"prepublishOnly": "npm run package",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"format": "prettier --write .",
-		"lint": "prettier --check . && eslint .",
-		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build",
-		"test:unit": "vitest",
-		"test": "npm run test:unit -- --run"
-	},
-	"files": [
-		"dist",
-		"!dist/**/*.test.*",
-		"!dist/**/*.spec.*"
-	],
-	"sideEffects": [
-		"**/*.css"
-	],
-	"svelte": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"type": "module",
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"svelte": "./dist/index.js"
-		},
-		"./Canvas.svelte": {
-			"types": "./dist/Canvas.svelte.d.ts",
-			"svelte": "./dist/Canvas.svelte"
-		},
-		"./Scene.svelte": {
-			"types": "./dist/Scene.svelte.d.ts",
-			"svelte": "./dist/Scene.svelte"
-		},
-		"./engine/Engine.svelte": {
-			"types": "./dist/engine/Engine.svelte.d.ts",
-			"svelte": "./dist/engine/Engine.svelte"
-		},
-		"./camera/FreeCamera.svelte": {
-			"types": "./dist/camera/FreeCamera.svelte.d.ts",
-			"svelte": "./dist/camera/FreeCamera.svelte"
-		},
-		"./camera/TargetCamera.svelte": {
-			"types": "./dist/camera/TargetCamera.svelte.d.ts",
-			"svelte": "./dist/camera/TargetCamera.svelte"
-		},
-		"./light/HemisphericLight.svelte": {
-			"types": "./dist/light/HemisphericLight.svelte.d.ts",
-			"svelte": "./dist/light/HemisphericLight.svelte"
-		},
-		"./mesh/Sphere.svelte": {
-			"types": "./dist/mesh/Sphere.svelte.d.ts",
-			"svelte": "./dist/mesh/Sphere.svelte"
-		},
-		"./mesh/Text.svelte": {
-			"types": "./dist/mesh/Text.svelte.d.ts",
-			"svelte": "./dist/mesh/Text.svelte"
-		},
-		"./mesh/Box.svelte": {
-			"types": "./dist/mesh/Box.svelte.d.ts",
-			"svelte": "./dist/mesh/Box.svelte"
-		},
-		"./mesh/TiledBox.svelte": {
-			"types": "./dist/mesh/TiledBox.svelte.d.ts",
-			"svelte": "./dist/mesh/TiledBox.svelte"
-		},
-		"./mesh/Cylinder.svelte": {
-			"types": "./dist/mesh/Cylinder.svelte.d.ts",
-			"svelte": "./dist/mesh/Cylinder.svelte"
-		},
-		"./mesh/Capsule.svelte": {
-			"types": "./dist/mesh/Capsule.svelte.d.ts",
-			"svelte": "./dist/mesh/Capsule.svelte"
-		},
-		"./mesh/Plane.svelte": {
-			"types": "./dist/mesh/Plane.svelte.d.ts",
-			"svelte": "./dist/mesh/Plane.svelte"
-		},
-		"./mesh/TiledPlane.svelte": {
-			"types": "./dist/mesh/TiledPlane.svelte.d.ts",
-			"svelte": "./dist/mesh/TiledPlane.svelte"
-		},
-		"./mesh/Disc.svelte": {
-			"types": "./dist/mesh/Disc.svelte.d.ts",
-			"svelte": "./dist/mesh/Disc.svelte"
-		},
-		"./mesh/Torus.svelte": {
-			"types": "./dist/mesh/Torus.svelte.d.ts",
-			"svelte": "./dist/mesh/Torus.svelte"
-		},
-		"./mesh/TorusKnot.svelte": {
-			"types": "./dist/mesh/TorusKnot.svelte.d.ts",
-			"svelte": "./dist/mesh/TorusKnot.svelte"
-		},
-		"./mesh/Ground.svelte": {
-			"types": "./dist/mesh/Ground.svelte.d.ts",
-			"svelte": "./dist/mesh/Ground.svelte"
-		},
-		"./mesh/GroundFromHeightMap.svelte": {
-			"types": "./dist/mesh/GroundFromHeightMap.svelte.d.ts",
-			"svelte": "./dist/mesh/GroundFromHeightMap.svelte"
-		},
-		"./mesh/TiledGround.svelte": {
-			"types": "./dist/mesh/TiledGround.svelte.d.ts",
-			"svelte": "./dist/mesh/TiledGround.svelte"
-		},
-		"./mesh/Line.svelte": {
-			"types": "./dist/mesh/Line.svelte.d.ts",
-			"svelte": "./dist/mesh/Line.svelte"
-		},
-		"./mesh/DashedLine.svelte": {
-			"types": "./dist/mesh/DashedLine.svelte.d.ts",
-			"svelte": "./dist/mesh/DashedLine.svelte"
-		},
-		"./mesh/LineSystem.svelte": {
-			"types": "./dist/mesh/LineSystem.svelte.d.ts",
-			"svelte": "./dist/mesh/LineSystem.svelte"
-		},
-		"./mesh/GreasedLine.svelte": {
-			"types": "./dist/mesh/GreasedLine.svelte.d.ts",
-			"svelte": "./dist/mesh/GreasedLine.svelte"
-		},
-		"./mesh/Ribbon.svelte": {
-			"types": "./dist/mesh/Ribbon.svelte.d.ts",
-			"svelte": "./dist/mesh/Ribbon.svelte"
-		},
-		"./mesh/Tube.svelte": {
-			"types": "./dist/mesh/Tube.svelte.d.ts",
-			"svelte": "./dist/mesh/Tube.svelte"
-		},
-		"./mesh/ExtrudeShape.svelte": {
-			"types": "./dist/mesh/ExtrudeShape.svelte.d.ts",
-			"svelte": "./dist/mesh/ExtrudeShape.svelte"
-		},
-		"./mesh/ExtrudeShapeCustom.svelte": {
-			"types": "./dist/mesh/ExtrudeShapeCustom.svelte.d.ts",
-			"svelte": "./dist/mesh/ExtrudeShapeCustom.svelte"
-		},
-		"./mesh/Lathe.svelte": {
-			"types": "./dist/mesh/Lathe.svelte.d.ts",
-			"svelte": "./dist/mesh/Lathe.svelte"
-		},
-		"./mesh/Polygon.svelte": {
-			"types": "./dist/mesh/Polygon.svelte.d.ts",
-			"svelte": "./dist/mesh/Polygon.svelte"
-		},
-		"./mesh/ExtrudePolygon.svelte": {
-			"types": "./dist/mesh/ExtrudePolygon.svelte.d.ts",
-			"svelte": "./dist/mesh/ExtrudePolygon.svelte"
-		},
-		"./mesh/Polyhedron.svelte": {
-			"types": "./dist/mesh/Polyhedron.svelte.d.ts",
-			"svelte": "./dist/mesh/Polyhedron.svelte"
-		},
-		"./mesh/IcoSphere.svelte": {
-			"types": "./dist/mesh/IcoSphere.svelte.d.ts",
-			"svelte": "./dist/mesh/IcoSphere.svelte"
-		},
-		"./mesh/Geodesic.svelte": {
-			"types": "./dist/mesh/Geodesic.svelte.d.ts",
-			"svelte": "./dist/mesh/Geodesic.svelte"
-		},
-		"./mesh/Goldberg.svelte": {
-			"types": "./dist/mesh/Goldberg.svelte.d.ts",
-			"svelte": "./dist/mesh/Goldberg.svelte"
-		}
-	},
-	"peerDependencies": {
-		"svelte": "^5.0.0"
-	},
-	"devDependencies": {
-		"@chromatic-com/storybook": "^3.2.3",
-		"@eslint/compat": "^1.2.3",
-		"@storybook/addon-essentials": "^8.4.7",
-		"@storybook/addon-interactions": "^8.4.7",
-		"@storybook/addon-svelte-csf": "^5.0.0-next.21",
-		"@storybook/blocks": "^8.4.7",
-		"@storybook/svelte": "^8.4.7",
-		"@storybook/sveltekit": "^8.4.7",
-		"@storybook/test": "^8.4.7",
-		"@sveltejs/adapter-auto": "^3.0.0",
-		"@sveltejs/kit": "^2.0.0",
-		"@sveltejs/package": "^2.0.0",
-		"@sveltejs/vite-plugin-svelte": "^4.0.0",
-		"eslint": "^9.7.0",
-		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-svelte": "^2.36.0",
-		"globals": "^15.0.0",
-		"prettier": "^3.3.2",
-		"prettier-plugin-svelte": "^3.2.6",
-		"publint": "^0.2.0",
-		"storybook": "^8.4.7",
-		"svelte": "^5.0.0",
-		"svelte-check": "^4.0.0",
-		"typescript": "^5.0.0",
-		"typescript-eslint": "^8.0.0",
-		"vite": "^5.4.11",
-		"vitest": "^2.0.4"
-	},
-	"dependencies": {
-		"@babylonjs/core": "^7.42.0",
-		"uuid": "^11.0.3"
-	}
+  "name": "@juunini/svelte-babylonjs",
+  "version": "0.0.1-alpha.3",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build && npm run package",
+    "preview": "vite preview",
+    "package": "svelte-kit sync && svelte-package && publint",
+    "prepublishOnly": "npm run package",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "format": "prettier --write .",
+    "lint": "prettier --check . && eslint .",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test:unit": "vitest",
+    "test": "npm run test:unit -- --run"
+  },
+  "files": [
+    "dist",
+    "!dist/**/*.test.*",
+    "!dist/**/*.spec.*"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "svelte": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js"
+    },
+    "./Canvas.svelte": {
+      "types": "./dist/Canvas.svelte.d.ts",
+      "svelte": "./dist/Canvas.svelte"
+    },
+    "./Scene.svelte": {
+      "types": "./dist/Scene.svelte.d.ts",
+      "svelte": "./dist/Scene.svelte"
+    },
+    "./engine/Engine.svelte": {
+      "types": "./dist/engine/Engine.svelte.d.ts",
+      "svelte": "./dist/engine/Engine.svelte"
+    },
+    "./camera/FreeCamera.svelte": {
+      "types": "./dist/camera/FreeCamera.svelte.d.ts",
+      "svelte": "./dist/camera/FreeCamera.svelte"
+    },
+    "./camera/TargetCamera.svelte": {
+      "types": "./dist/camera/TargetCamera.svelte.d.ts",
+      "svelte": "./dist/camera/TargetCamera.svelte"
+    },
+    "./light/HemisphericLight.svelte": {
+      "types": "./dist/light/HemisphericLight.svelte.d.ts",
+      "svelte": "./dist/light/HemisphericLight.svelte"
+    },
+    "./mesh/Sphere.svelte": {
+      "types": "./dist/mesh/Sphere.svelte.d.ts",
+      "svelte": "./dist/mesh/Sphere.svelte"
+    },
+    "./mesh/Text.svelte": {
+      "types": "./dist/mesh/Text.svelte.d.ts",
+      "svelte": "./dist/mesh/Text.svelte"
+    },
+    "./mesh/Box.svelte": {
+      "types": "./dist/mesh/Box.svelte.d.ts",
+      "svelte": "./dist/mesh/Box.svelte"
+    },
+    "./mesh/TiledBox.svelte": {
+      "types": "./dist/mesh/TiledBox.svelte.d.ts",
+      "svelte": "./dist/mesh/TiledBox.svelte"
+    },
+    "./mesh/Cylinder.svelte": {
+      "types": "./dist/mesh/Cylinder.svelte.d.ts",
+      "svelte": "./dist/mesh/Cylinder.svelte"
+    },
+    "./mesh/Capsule.svelte": {
+      "types": "./dist/mesh/Capsule.svelte.d.ts",
+      "svelte": "./dist/mesh/Capsule.svelte"
+    },
+    "./mesh/Plane.svelte": {
+      "types": "./dist/mesh/Plane.svelte.d.ts",
+      "svelte": "./dist/mesh/Plane.svelte"
+    },
+    "./mesh/TiledPlane.svelte": {
+      "types": "./dist/mesh/TiledPlane.svelte.d.ts",
+      "svelte": "./dist/mesh/TiledPlane.svelte"
+    },
+    "./mesh/Disc.svelte": {
+      "types": "./dist/mesh/Disc.svelte.d.ts",
+      "svelte": "./dist/mesh/Disc.svelte"
+    },
+    "./mesh/Torus.svelte": {
+      "types": "./dist/mesh/Torus.svelte.d.ts",
+      "svelte": "./dist/mesh/Torus.svelte"
+    },
+    "./mesh/TorusKnot.svelte": {
+      "types": "./dist/mesh/TorusKnot.svelte.d.ts",
+      "svelte": "./dist/mesh/TorusKnot.svelte"
+    },
+    "./mesh/Ground.svelte": {
+      "types": "./dist/mesh/Ground.svelte.d.ts",
+      "svelte": "./dist/mesh/Ground.svelte"
+    },
+    "./mesh/GroundFromHeightMap.svelte": {
+      "types": "./dist/mesh/GroundFromHeightMap.svelte.d.ts",
+      "svelte": "./dist/mesh/GroundFromHeightMap.svelte"
+    },
+    "./mesh/TiledGround.svelte": {
+      "types": "./dist/mesh/TiledGround.svelte.d.ts",
+      "svelte": "./dist/mesh/TiledGround.svelte"
+    },
+    "./mesh/Line.svelte": {
+      "types": "./dist/mesh/Line.svelte.d.ts",
+      "svelte": "./dist/mesh/Line.svelte"
+    },
+    "./mesh/DashedLine.svelte": {
+      "types": "./dist/mesh/DashedLine.svelte.d.ts",
+      "svelte": "./dist/mesh/DashedLine.svelte"
+    },
+    "./mesh/LineSystem.svelte": {
+      "types": "./dist/mesh/LineSystem.svelte.d.ts",
+      "svelte": "./dist/mesh/LineSystem.svelte"
+    },
+    "./mesh/GreasedLine.svelte": {
+      "types": "./dist/mesh/GreasedLine.svelte.d.ts",
+      "svelte": "./dist/mesh/GreasedLine.svelte"
+    },
+    "./mesh/Ribbon.svelte": {
+      "types": "./dist/mesh/Ribbon.svelte.d.ts",
+      "svelte": "./dist/mesh/Ribbon.svelte"
+    },
+    "./mesh/Tube.svelte": {
+      "types": "./dist/mesh/Tube.svelte.d.ts",
+      "svelte": "./dist/mesh/Tube.svelte"
+    },
+    "./mesh/ExtrudeShape.svelte": {
+      "types": "./dist/mesh/ExtrudeShape.svelte.d.ts",
+      "svelte": "./dist/mesh/ExtrudeShape.svelte"
+    },
+    "./mesh/ExtrudeShapeCustom.svelte": {
+      "types": "./dist/mesh/ExtrudeShapeCustom.svelte.d.ts",
+      "svelte": "./dist/mesh/ExtrudeShapeCustom.svelte"
+    },
+    "./mesh/Lathe.svelte": {
+      "types": "./dist/mesh/Lathe.svelte.d.ts",
+      "svelte": "./dist/mesh/Lathe.svelte"
+    },
+    "./mesh/Polygon.svelte": {
+      "types": "./dist/mesh/Polygon.svelte.d.ts",
+      "svelte": "./dist/mesh/Polygon.svelte"
+    },
+    "./mesh/ExtrudePolygon.svelte": {
+      "types": "./dist/mesh/ExtrudePolygon.svelte.d.ts",
+      "svelte": "./dist/mesh/ExtrudePolygon.svelte"
+    },
+    "./mesh/Polyhedron.svelte": {
+      "types": "./dist/mesh/Polyhedron.svelte.d.ts",
+      "svelte": "./dist/mesh/Polyhedron.svelte"
+    },
+    "./mesh/IcoSphere.svelte": {
+      "types": "./dist/mesh/IcoSphere.svelte.d.ts",
+      "svelte": "./dist/mesh/IcoSphere.svelte"
+    },
+    "./mesh/Geodesic.svelte": {
+      "types": "./dist/mesh/Geodesic.svelte.d.ts",
+      "svelte": "./dist/mesh/Geodesic.svelte"
+    },
+    "./mesh/Goldberg.svelte": {
+      "types": "./dist/mesh/Goldberg.svelte.d.ts",
+      "svelte": "./dist/mesh/Goldberg.svelte"
+    }
+  },
+  "peerDependencies": {
+    "svelte": "^5.0.0"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.3",
+    "@eslint/compat": "^1.2.3",
+    "@storybook/addon-essentials": "^8.4.7",
+    "@storybook/addon-interactions": "^8.4.7",
+    "@storybook/addon-svelte-csf": "^5.0.0-next.21",
+    "@storybook/blocks": "^8.4.7",
+    "@storybook/svelte": "^8.4.7",
+    "@storybook/sveltekit": "^8.4.7",
+    "@storybook/test": "^8.4.7",
+    "@sveltejs/adapter-auto": "^3.0.0",
+    "@sveltejs/kit": "^2.0.0",
+    "@sveltejs/package": "^2.0.0",
+    "@sveltejs/vite-plugin-svelte": "^4.0.0",
+    "eslint": "^9.7.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-svelte": "^2.36.0",
+    "globals": "^15.0.0",
+    "prettier": "^3.3.2",
+    "prettier-plugin-svelte": "^3.2.6",
+    "publint": "^0.2.0",
+    "storybook": "^8.4.7",
+    "svelte": "^5.0.0",
+    "svelte-check": "^4.0.0",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.0.0",
+    "vite": "^5.4.11",
+    "vitest": "^2.0.4"
+  },
+  "dependencies": {
+    "@babylonjs/core": "^7.42.0",
+    "uuid": "^11.0.3"
+  }
 }

@@ -1,38 +1,38 @@
 <script lang="ts">
-	import type { Scene } from '@babylonjs/core/scene';
-	import type { LinesMesh } from '@babylonjs/core/Meshes/linesMesh';
-	import type { Color4 } from '@babylonjs/core/Maths/math.color';
-	import type { Nullable } from '@babylonjs/core/types';
-	import type { Material } from '@babylonjs/core/Materials/material';
-	import type { Vector3 } from '@babylonjs/core/Maths/math.vector';
-	import { CreateLines } from '@babylonjs/core/Meshes/Builders/linesBuilder';
+  import type { Scene } from '@babylonjs/core/scene';
+  import type { LinesMesh } from '@babylonjs/core/Meshes/linesMesh';
+  import type { Color4 } from '@babylonjs/core/Maths/math.color';
+  import type { Nullable } from '@babylonjs/core/types';
+  import type { Material } from '@babylonjs/core/Materials/material';
+  import type { Vector3 } from '@babylonjs/core/Maths/math.vector';
+  import { CreateLines } from '@babylonjs/core/Meshes/Builders/linesBuilder';
 
-	import type { MeshProps } from './interface';
-	import CreateMesh from './_CreateMesh.svelte';
+  import type { MeshProps } from './interface';
+  import CreateMesh from './_CreateMesh.svelte';
 
-	interface LineOptions {
-		colors?: Color4[];
-		instance?: Nullable<LinesMesh>;
-		material?: Material;
-		points: Vector3[];
-		updatable?: boolean;
-		useVertexAlpha?: boolean;
-	}
+  interface LineOptions {
+    colors?: Color4[];
+    instance?: Nullable<LinesMesh>;
+    material?: Material;
+    points: Vector3[];
+    updatable?: boolean;
+    useVertexAlpha?: boolean;
+  }
 
-	interface Props extends MeshProps {
-		line?: LinesMesh;
-		options: LineOptions;
-		scene?: Scene;
-	}
+  interface Props extends MeshProps {
+    line?: LinesMesh;
+    options: LineOptions;
+    scene?: Scene;
+  }
 
-	let { line = $bindable(), options, scene, position, lookAt }: Props = $props();
+  let { line = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
 <CreateMesh
-	bind:mesh={line}
-	createMeshFunction={CreateLines}
-	{options}
-	{scene}
-	{position}
-	{lookAt}
+  bind:mesh={line}
+  createMeshFunction={CreateLines}
+  {options}
+  {scene}
+  {position}
+  {lookAt}
 />
