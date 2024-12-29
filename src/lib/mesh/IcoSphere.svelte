@@ -7,21 +7,19 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface IcoSphereOptions {
-    bbackUVs?: Vector4;
-    flat?: boolean;
-    frontUVs?: Vector4;
-    radius?: number;
-    radiusX?: number;
-    radiusY?: number;
-    radiusZ?: number;
-    sideOrientation?: number;
-    subdivisions?: number;
-    updatable?: boolean;
-  }
-
   interface Props extends MeshProps {
-    options?: IcoSphereOptions;
+    options?: {
+      bbackUVs?: Vector4;
+      flat?: boolean;
+      frontUVs?: Vector4;
+      radius?: number;
+      radiusX?: number;
+      radiusY?: number;
+      radiusZ?: number;
+      sideOrientation?: number;
+      subdivisions?: number;
+      updatable?: boolean;
+    };
     scene?: Nullable<Scene>;
   }
 

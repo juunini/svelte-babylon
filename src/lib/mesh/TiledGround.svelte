@@ -5,18 +5,16 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface TiledGroundOptions {
-    precision?: { h: number; w: number };
-    subdivisions?: { h: number; w: number };
-    updatable?: boolean;
-    xmax: number;
-    xmin: number;
-    zmax: number;
-    zmin: number;
-  }
-
   interface Props extends MeshProps {
-    options: TiledGroundOptions;
+    options: {
+      precision?: { h: number; w: number };
+      subdivisions?: { h: number; w: number };
+      updatable?: boolean;
+      xmax: number;
+      xmin: number;
+      zmax: number;
+      zmin: number;
+    };
     scene?: Scene;
   }
 

@@ -8,7 +8,6 @@
     height?: number;
     class?: string;
     style?: string;
-    props?: any;
   }
 
   let { children, canvas = $bindable(), width, height, style, ...props }: Props = $props();

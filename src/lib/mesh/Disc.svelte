@@ -7,18 +7,16 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface DiscOptions {
-    arc?: number;
-    backUVs?: Vector4;
-    frontUVs?: Vector4;
-    radius?: number;
-    sideOrientation?: number;
-    tessellation?: number;
-    updatable?: boolean;
-  }
-
   interface Props extends MeshProps {
-    options?: DiscOptions;
+    options?: {
+      arc?: number;
+      backUVs?: Vector4;
+      frontUVs?: Vector4;
+      radius?: number;
+      sideOrientation?: number;
+      tessellation?: number;
+      updatable?: boolean;
+    };
     scene?: Nullable<Scene>;
   }
 

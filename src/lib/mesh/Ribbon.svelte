@@ -9,23 +9,21 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface RibbonOptions {
-    backUVs?: Vector4;
-    closeArray?: boolean;
-    closePath?: boolean;
-    colors?: Color4[];
-    frontUVs?: Vector4;
-    instance?: Mesh;
-    invertUV?: boolean;
-    offset?: number;
-    pathArray: Vector3[][];
-    sideOrientation?: number;
-    updatable?: boolean;
-    uvs?: Vector2[];
-  }
-
   interface Props extends MeshProps {
-    options: RibbonOptions;
+    options: {
+      backUVs?: Vector4;
+      closeArray?: boolean;
+      closePath?: boolean;
+      colors?: Color4[];
+      frontUVs?: Vector4;
+      instance?: Mesh;
+      invertUV?: boolean;
+      offset?: number;
+      pathArray: Vector3[][];
+      sideOrientation?: number;
+      updatable?: boolean;
+      uvs?: Vector2[];
+    };
     scene?: Nullable<Scene>;
   }
 

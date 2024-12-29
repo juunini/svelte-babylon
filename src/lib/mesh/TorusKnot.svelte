@@ -6,21 +6,19 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface TorusKnotOptions {
-    backUVs?: Vector4;
-    frontUVs?: Vector4;
-    p?: number;
-    q?: number;
-    radialSegments?: number;
-    radius?: number;
-    sideOrientation?: number;
-    tube?: number;
-    tubularSegments?: number;
-    updatable?: boolean;
-  }
-
   interface Props extends MeshProps {
-    options?: TorusKnotOptions;
+    options?: {
+      backUVs?: Vector4;
+      frontUVs?: Vector4;
+      p?: number;
+      q?: number;
+      radialSegments?: number;
+      radius?: number;
+      sideOrientation?: number;
+      tube?: number;
+      tubularSegments?: number;
+      updatable?: boolean;
+    };
     scene?: Scene;
   }
 

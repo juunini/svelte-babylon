@@ -10,18 +10,16 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface LineOptions {
-    colors?: Color4[];
-    instance?: Nullable<LinesMesh>;
-    material?: Material;
-    points: Vector3[];
-    updatable?: boolean;
-    useVertexAlpha?: boolean;
-  }
-
   interface Props extends MeshProps {
     mesh?: LinesMesh;
-    options: LineOptions;
+    options: {
+      colors?: Color4[];
+      instance?: Nullable<LinesMesh>;
+      material?: Material;
+      points: Vector3[];
+      updatable?: boolean;
+      useVertexAlpha?: boolean;
+    };
     scene?: Scene;
   }
 

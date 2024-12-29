@@ -8,27 +8,25 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface CylinderOptions {
-    arc?: number;
-    backUVs?: Vector4;
-    cap?: number;
-    diameter?: number;
-    diameterBottom?: number;
-    diameterTop?: number;
-    enclose?: boolean;
-    faceColors?: Color4[];
-    faceUV?: Vector4[];
-    frontUVs?: Vector4;
-    hasRings?: boolean;
-    height?: number;
-    sideOrientation?: number;
-    subdivisions?: number;
-    tessellation?: number;
-    updatable?: boolean;
-  }
-
   interface Props extends MeshProps {
-    options?: CylinderOptions;
+    options?: {
+      arc?: number;
+      backUVs?: Vector4;
+      cap?: number;
+      diameter?: number;
+      diameterBottom?: number;
+      diameterTop?: number;
+      enclose?: boolean;
+      faceColors?: Color4[];
+      faceUV?: Vector4[];
+      frontUVs?: Vector4;
+      hasRings?: boolean;
+      height?: number;
+      sideOrientation?: number;
+      subdivisions?: number;
+      tessellation?: number;
+      updatable?: boolean;
+    };
     scene?: Nullable<Scene>;
   }
 

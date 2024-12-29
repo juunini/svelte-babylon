@@ -7,23 +7,21 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface LatheOptions {
-    arc?: number;
-    backUVs?: Vector4;
-    cap?: number;
-    clip?: number;
-    closed?: boolean;
-    frontUVs?: Vector4;
-    invertUV?: boolean;
-    radius?: number;
-    shape: Vector3[];
-    sideOrientation?: number;
-    tessellation?: number;
-    updatable?: boolean;
-  }
-
   interface Props extends MeshProps {
-    options: LatheOptions;
+    options: {
+      arc?: number;
+      backUVs?: Vector4;
+      cap?: number;
+      clip?: number;
+      closed?: boolean;
+      frontUVs?: Vector4;
+      invertUV?: boolean;
+      radius?: number;
+      shape: Vector3[];
+      sideOrientation?: number;
+      tessellation?: number;
+      updatable?: boolean;
+    };
     scene?: Nullable<Scene>;
   }
 

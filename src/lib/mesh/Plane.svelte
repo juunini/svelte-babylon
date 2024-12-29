@@ -8,19 +8,17 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface PlaneOptions {
-    backUVs?: Vector4;
-    frontUVs?: Vector4;
-    height?: number;
-    sideOrientation?: number;
-    size?: number;
-    sourcePlane?: Plane;
-    updatable?: boolean;
-    width?: number;
-  }
-
   interface Props extends MeshProps {
-    options?: PlaneOptions;
+    options?: {
+      backUVs?: Vector4;
+      frontUVs?: Vector4;
+      height?: number;
+      sideOrientation?: number;
+      size?: number;
+      sourcePlane?: Plane;
+      updatable?: boolean;
+      width?: number;
+    };
     scene?: Nullable<Scene>;
   }
 

@@ -7,24 +7,22 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface TiledPlaneOptions {
-    alignHorizontal?: number;
-    alignVertical?: number;
-    backUVs?: Vector4;
-    frontUVs?: Vector4;
-    height?: number;
-    pattern?: number;
-    sideOrientation?: number;
-    size?: number;
-    tileHeight?: number;
-    tileSize?: number;
-    tileWidth?: number;
-    updatable?: boolean;
-    width?: number;
-  }
-
   interface Props extends MeshProps {
-    options: TiledPlaneOptions;
+    options: {
+      alignHorizontal?: number;
+      alignVertical?: number;
+      backUVs?: Vector4;
+      frontUVs?: Vector4;
+      height?: number;
+      pattern?: number;
+      sideOrientation?: number;
+      size?: number;
+      tileHeight?: number;
+      tileSize?: number;
+      tileWidth?: number;
+      updatable?: boolean;
+      width?: number;
+    };
     scene?: Nullable<Scene>;
   }
 

@@ -8,24 +8,22 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface PolyhedronOptions {
-    backUVs?: Vector4;
-    custom?: any;
-    faceColors?: Color4[];
-    faceUV?: Vector4[];
-    flat?: boolean;
-    frontUVs?: Vector4;
-    sideOrientation?: number;
-    size?: number;
-    sizeX?: number;
-    sizeY?: number;
-    sizeZ?: number;
-    type?: number;
-    updatable?: boolean;
-  }
-
   interface Props extends MeshProps {
-    options?: PolyhedronOptions;
+    options?: {
+      backUVs?: Vector4;
+      custom?: any;
+      faceColors?: Color4[];
+      faceUV?: Vector4[];
+      flat?: boolean;
+      frontUVs?: Vector4;
+      sideOrientation?: number;
+      size?: number;
+      sizeX?: number;
+      sizeY?: number;
+      sizeZ?: number;
+      type?: number;
+      updatable?: boolean;
+    };
     scene?: Nullable<Scene>;
   }
 

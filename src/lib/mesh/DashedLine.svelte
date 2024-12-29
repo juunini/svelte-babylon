@@ -7,20 +7,18 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface DashedLineOptions {
-    dashNb?: number;
-    dashSize?: number;
-    gapSize?: number;
-    instance?: LinesMesh;
-    material?: Material;
-    points: Vector3[];
-    updatable?: boolean;
-    useVertexAlpha?: boolean;
-  }
-
   interface Props extends MeshProps {
     mesh?: LinesMesh;
-    options: DashedLineOptions;
+    options: {
+      dashNb?: number;
+      dashSize?: number;
+      gapSize?: number;
+      instance?: LinesMesh;
+      material?: Material;
+      points: Vector3[];
+      updatable?: boolean;
+      useVertexAlpha?: boolean;
+    };
     scene?: Scene;
   }
 

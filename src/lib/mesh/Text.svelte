@@ -9,22 +9,20 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface TextOptions {
-    depth?: number;
-    faceColors?: Color4[];
-    faceUV?: Vector4[];
-    perLetterFaceColors?: (letterIndex: number) => Color4[];
-    perLetterFaceUV?: (letterIndex: number) => Vector4[];
-    resolution?: number;
-    sideOrientation?: number;
-    size?: number;
-  }
-
   interface Props extends Omit<MeshProps, 'mesh'> {
     mesh?: Nullable<Mesh>;
     text: string;
     fontData: IFontData;
-    options?: TextOptions;
+    options?: {
+      depth?: number;
+      faceColors?: Color4[];
+      faceUV?: Vector4[];
+      perLetterFaceColors?: (letterIndex: number) => Color4[];
+      perLetterFaceUV?: (letterIndex: number) => Vector4[];
+      resolution?: number;
+      sideOrientation?: number;
+      size?: number;
+    };
     scene?: Nullable<Scene>;
     earcutInjection?: any;
   }

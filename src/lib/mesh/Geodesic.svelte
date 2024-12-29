@@ -8,24 +8,22 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface GeodesicOptions {
-    backUVs?: Vector4;
-    faceColors?: Color4[];
-    faceUV?: Vector4[];
-    flat?: boolean;
-    frontUVs?: Vector4;
-    m?: number;
-    n?: number;
-    sideOrientation?: number;
-    size?: number;
-    sizeX?: number;
-    sizeY?: number;
-    sizeZ?: number;
-    updatable?: boolean;
-  }
-
   interface Props extends MeshProps {
-    options: GeodesicOptions;
+    options: {
+      backUVs?: Vector4;
+      faceColors?: Color4[];
+      faceUV?: Vector4[];
+      flat?: boolean;
+      frontUVs?: Vector4;
+      m?: number;
+      n?: number;
+      sideOrientation?: number;
+      size?: number;
+      sizeX?: number;
+      sizeY?: number;
+      sizeZ?: number;
+      updatable?: boolean;
+    };
     scene?: Nullable<Scene>;
   }
 

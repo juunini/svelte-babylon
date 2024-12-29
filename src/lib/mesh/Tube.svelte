@@ -8,23 +8,21 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface TubeOptions {
-    arc?: number;
-    backUVs?: Vector4;
-    cap?: number;
-    frontUVs?: Vector4;
-    instance?: Mesh;
-    invertUV?: boolean;
-    path: Vector3[];
-    radius?: number;
-    radiusFunction?: (i: number, distance: number) => number;
-    sideOrientation?: number;
-    tessellation?: number;
-    updatable?: boolean;
-  }
-
   interface Props extends MeshProps {
-    options: TubeOptions;
+    options: {
+      arc?: number;
+      backUVs?: Vector4;
+      cap?: number;
+      frontUVs?: Vector4;
+      instance?: Mesh;
+      invertUV?: boolean;
+      path: Vector3[];
+      radius?: number;
+      radiusFunction?: (i: number, distance: number) => number;
+      sideOrientation?: number;
+      tessellation?: number;
+      updatable?: boolean;
+    };
     scene?: Nullable<Scene>;
   }
 

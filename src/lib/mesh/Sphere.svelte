@@ -7,22 +7,20 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface SphereOptions {
-    arc?: number;
-    backUVs?: Vector4;
-    diameter?: number;
-    diameterX?: number;
-    diameterY?: number;
-    diameterZ?: number;
-    frontUVs?: Vector4;
-    segments?: number;
-    sideOrientation?: number;
-    slice?: number;
-    updatable?: boolean;
-  }
-
   interface Props extends MeshProps {
-    options?: SphereOptions;
+    options?: {
+      arc?: number;
+      backUVs?: Vector4;
+      diameter?: number;
+      diameterX?: number;
+      diameterY?: number;
+      diameterZ?: number;
+      frontUVs?: Vector4;
+      segments?: number;
+      sideOrientation?: number;
+      slice?: number;
+      updatable?: boolean;
+    };
     scene?: Nullable<Scene>;
   }
 

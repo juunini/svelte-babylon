@@ -6,26 +6,24 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface TorusOptions {
-    backUVs?: Vector4;
-    diameter?: number;
-    frontUVs?: Vector4;
-    sideOrientation?: number;
-    tessellation?: number;
-    thickness?: number;
-    updatable?: boolean;
-  }
-
   interface Props extends MeshProps {
-    options?: TorusOptions;
+    options?: {
+      backUVs?: Vector4;
+      diameter?: number;
+      frontUVs?: Vector4;
+      sideOrientation?: number;
+      tessellation?: number;
+      thickness?: number;
+      updatable?: boolean;
+    };
     scene?: Scene;
   }
 
-  let { meesh = $bindable(), options, scene, position, lookAt }: Props = $props();
+  let { mesh = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
 <DefaultMesh
-  bind:mesh={meesh}
+  bind:mesh
   createMeshFunction={CreateTorus as any}
   {options}
   {scene}

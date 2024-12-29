@@ -8,22 +8,20 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface ExtrudePolygonOptions {
-    backUVs?: Vector4;
-    depth?: number;
-    faceColors?: Color4[];
-    faceUV?: Vector4[];
-    frontUVs?: Vector4;
-    holes?: Vector3[][];
-    shape: Vector3[];
-    sideOrientation?: number;
-    updatable?: boolean;
-    wrap?: boolean;
-  }
-
   interface Props extends MeshProps {
     name?: string;
-    options: ExtrudePolygonOptions;
+    options: {
+      backUVs?: Vector4;
+      depth?: number;
+      faceColors?: Color4[];
+      faceUV?: Vector4[];
+      frontUVs?: Vector4;
+      holes?: Vector3[][];
+      shape: Vector3[];
+      sideOrientation?: number;
+      updatable?: boolean;
+      wrap?: boolean;
+    };
     scene?: Nullable<Scene>;
     earcutInjection?: any;
   }

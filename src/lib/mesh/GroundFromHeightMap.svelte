@@ -8,24 +8,22 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface GroundFromHeightMapOptions {
-    alphaFilter?: number;
-    colorFilter?: Color3;
-    height?: number;
-    maxHeight?: number;
-    minHeight?: number;
-    onError?: (message?: string, exception?: any) => void;
-    onReady?: (mesh: GroundMesh, heightBuffer?: Float32Array) => void;
-    passHeightBufferInCallback?: boolean;
-    subdivisions?: number;
-    updatable?: boolean;
-    width?: number;
-  }
-
   interface Props extends MeshProps {
     mesh?: GroundMesh;
     url: string | { data: Uint8Array; height: number; width: number };
-    options?: GroundFromHeightMapOptions;
+    options?: {
+      alphaFilter?: number;
+      colorFilter?: Color3;
+      height?: number;
+      maxHeight?: number;
+      minHeight?: number;
+      onError?: (message?: string, exception?: any) => void;
+      onReady?: (mesh: GroundMesh, heightBuffer?: Float32Array) => void;
+      passHeightBufferInCallback?: boolean;
+      subdivisions?: number;
+      updatable?: boolean;
+      width?: number;
+    };
     scene?: Nullable<Scene>;
   }
 

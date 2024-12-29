@@ -8,24 +8,22 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface BoxOptions {
-    backUVs?: Vector4;
-    bottomBaseAt?: number;
-    depth?: number;
-    faceColors?: Color4[];
-    faceUV?: Vector4[];
-    frontUVs?: Vector4;
-    height?: number;
-    sideOrientation?: number;
-    size?: number;
-    topBaseAt?: number;
-    updatable?: boolean;
-    width?: number;
-    wrap?: boolean;
-  }
-
   interface Props extends MeshProps {
-    options?: BoxOptions;
+    options?: {
+      backUVs?: Vector4;
+      bottomBaseAt?: number;
+      depth?: number;
+      faceColors?: Color4[];
+      faceUV?: Vector4[];
+      frontUVs?: Vector4;
+      height?: number;
+      sideOrientation?: number;
+      size?: number;
+      topBaseAt?: number;
+      updatable?: boolean;
+      width?: number;
+      wrap?: boolean;
+    };
     scene?: Nullable<Scene>;
   }
 

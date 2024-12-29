@@ -37,7 +37,7 @@
     earcutInjection?: any
   ) => Nullable<Mesh>;
 
-  interface Props extends MeshProps {
+  interface Props extends Omit<MeshProps, 'mesh'> {
     mesh?: Mesh | Nullable<Mesh>;
     createMeshFunction: CreateMesh | CreatGreasedLine | CreateGroundFromHeightMap | CreateText;
     options?: any;

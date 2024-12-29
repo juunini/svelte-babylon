@@ -6,18 +6,16 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface GroundOptions {
-    width?: number;
-    height?: number;
-    subdivisions?: number;
-    subdivisionsX?: number;
-    subdivisionsY?: number;
-    updatable?: boolean;
-  }
-
   interface Props extends MeshProps {
     mesh?: GroundMesh;
-    options?: GroundOptions;
+    options?: {
+      width?: number;
+      height?: number;
+      subdivisions?: number;
+      subdivisionsX?: number;
+      subdivisionsY?: number;
+      updatable?: boolean;
+    };
     scene?: Scene;
   }
 

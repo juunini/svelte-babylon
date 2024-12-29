@@ -8,24 +8,22 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface TiledBoxOptions {
-    alignHorizontal?: number;
-    alignVertical?: number;
-    depth?: number;
-    faceColors?: Color4[];
-    faceUV?: Vector4[];
-    height?: number;
-    pattern?: number;
-    sideOrientation?: number;
-    tileHeight?: number;
-    tileSize?: number;
-    tileWidth?: number;
-    updatable?: boolean;
-    width?: number;
-  }
-
   interface Props extends MeshProps {
-    options: TiledBoxOptions;
+    options: {
+      alignHorizontal?: number;
+      alignVertical?: number;
+      depth?: number;
+      faceColors?: Color4[];
+      faceUV?: Vector4[];
+      height?: number;
+      pattern?: number;
+      sideOrientation?: number;
+      tileHeight?: number;
+      tileSize?: number;
+      tileWidth?: number;
+      updatable?: boolean;
+      width?: number;
+    };
     scene?: Nullable<Scene>;
   }
 

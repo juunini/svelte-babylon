@@ -6,14 +6,12 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface HemisphereOptions {
-    diameter?: number;
-    segments?: number;
-    sideOrientation?: number;
-  }
-
   interface Props extends MeshProps {
-    options?: HemisphereOptions;
+    options?: {
+      diameter?: number;
+      segments?: number;
+      sideOrientation?: number;
+    };
     scene?: Nullable<Scene>;
   }
 

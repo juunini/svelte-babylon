@@ -8,28 +8,26 @@
   import type { MeshProps } from './interface';
   import DefaultMesh from './_Mesh.svelte';
 
-  interface ExtrudeShapeCustomOptions {
-    adjustFrame?: boolean;
-    backUVs?: Vector4;
-    cap?: number;
-    closePath?: boolean;
-    closeShape?: boolean;
-    firstNormal?: Vector3;
-    frontUVs?: Vector4;
-    instance?: Mesh;
-    invertUV?: boolean;
-    path: Vector3[];
-    ribbonCloseArray?: boolean;
-    ribbonClosePath?: boolean;
-    rotationFunction?: Nullable<(i: number, distance: number) => number>;
-    scaleFunction?: Nullable<(i: number, distance: number) => number>;
-    shape: Vector3[];
-    sideOrientation?: number;
-    updatable?: boolean;
-  }
-
   interface Props extends MeshProps {
-    options: ExtrudeShapeCustomOptions;
+    options: {
+      adjustFrame?: boolean;
+      backUVs?: Vector4;
+      cap?: number;
+      closePath?: boolean;
+      closeShape?: boolean;
+      firstNormal?: Vector3;
+      frontUVs?: Vector4;
+      instance?: Mesh;
+      invertUV?: boolean;
+      path: Vector3[];
+      ribbonCloseArray?: boolean;
+      ribbonClosePath?: boolean;
+      rotationFunction?: Nullable<(i: number, distance: number) => number>;
+      scaleFunction?: Nullable<(i: number, distance: number) => number>;
+      shape: Vector3[];
+      sideOrientation?: number;
+      updatable?: boolean;
+    };
     scene?: Nullable<Scene>;
   }
 
