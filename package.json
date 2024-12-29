@@ -61,10 +61,6 @@
 			"types": "./dist/mesh/Sphere.svelte.d.ts",
 			"svelte": "./dist/mesh/Sphere.svelte"
 		},
-		"./mesh/Ground.svelte": {
-			"types": "./dist/mesh/Ground.svelte.d.ts",
-			"svelte": "./dist/mesh/Ground.svelte"
-		},
 		"./mesh/Text.svelte": {
 			"types": "./dist/mesh/Text.svelte.d.ts",
 			"svelte": "./dist/mesh/Text.svelte"
@@ -104,6 +100,14 @@
 		"./mesh/TorusKnot.svelte": {
 			"types": "./dist/mesh/TorusKnot.svelte.d.ts",
 			"svelte": "./dist/mesh/TorusKnot.svelte"
+		},
+		"./mesh/Ground.svelte": {
+			"types": "./dist/mesh/Ground.svelte.d.ts",
+			"svelte": "./dist/mesh/Ground.svelte"
+		},
+		"./mesh/GroundFromHeightMap.svelte": {
+			"types": "./dist/mesh/GroundFromHeightMap.svelte.d.ts",
+			"svelte": "./dist/mesh/GroundFromHeightMap.svelte"
 		}
 	},
 	"peerDependencies": {

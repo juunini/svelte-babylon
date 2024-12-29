@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { getContext, onDestroy, setContext, type Snippet } from 'svelte';
 	import '@babylonjs/core/Materials/standardMaterial';
-	import type { EngineOptions, Nullable } from '@babylonjs/core';
+	import type { Nullable } from '@babylonjs/core/types';
+	import type { EngineOptions } from '@babylonjs/core/Engines/thinEngine';
 	import { Engine } from '@babylonjs/core/Engines/engine';
 
 	interface Props {
