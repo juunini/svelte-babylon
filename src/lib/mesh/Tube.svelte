@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { onDestroy, type Snippet } from 'svelte';
-	import { v7 } from 'uuid';
 	import type { Scene } from '@babylonjs/core/scene';
 	import type { Vector3, Vector4 } from '@babylonjs/core/Maths/math.vector';
 	import type { Mesh } from '@babylonjs/core/Meshes/mesh';
 	import type { Nullable } from '@babylonjs/core/types';
 	import { CreateTube } from '@babylonjs/core/Meshes/Builders/tubeBuilder';
 
-	export interface TubeOptions {
+	import type { MeshProps } from './interface';
+	import CreateMesh from './_CreateMesh.svelte';
+
+	interface TubeOptions {
 		arc?: number;
 		backUVs?: Vector4;
 		cap?: number;
@@ -22,27 +23,20 @@
 		updatable?: boolean;
 	}
 
-	interface Props {
+	interface Props extends MeshProps {
 		tube?: Mesh;
-		name?: string;
 		options: TubeOptions;
 		scene?: Nullable<Scene>;
-		children?: Snippet;
 	}
 
-	let {
-		tube = $bindable(),
-		name = $bindable(`tube${v7()}`),
-		options,
-		scene,
-		children
-	}: Props = $props();
-
-	tube = CreateTube(name, options, scene);
-
-	onDestroy(() => {
-		tube.dispose();
-	});
+	let { tube = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-{@render children?.()}
+<CreateMesh
+	bind:mesh={tube}
+	createMeshFunction={CreateTube}
+	{options}
+	{scene}
+	{position}
+	{lookAt}
+/>

@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { onDestroy, type Snippet } from 'svelte';
-	import { v7 } from 'uuid';
 	import type { GroundMesh } from '@babylonjs/core/Meshes/groundMesh';
 	import type { Scene } from '@babylonjs/core/scene';
 	import type { Color3 } from '@babylonjs/core/Maths/math.color';
 	import type { Nullable } from '@babylonjs/core/types';
 	import { CreateGroundFromHeightMap } from '@babylonjs/core/Meshes/Builders/groundBuilder';
 
-	export interface GroundFromHeightMapOptions {
+	import type { MeshProps } from './interface';
+	import CreateMesh from './_CreateMesh.svelte';
+
+	interface GroundFromHeightMapOptions {
 		alphaFilter?: number;
 		colorFilter?: Color3;
 		height?: number;
@@ -21,29 +22,29 @@
 		width?: number;
 	}
 
-	interface Props {
+	interface Props extends MeshProps {
 		groundFromHeightMap?: GroundMesh;
-		name?: string;
 		url: string | { data: Uint8Array; height: number; width: number };
 		options?: GroundFromHeightMapOptions;
 		scene?: Nullable<Scene>;
-		children?: Snippet;
 	}
 
 	let {
 		groundFromHeightMap = $bindable(),
-		name = $bindable(`groundFromHeightMap${v7()}`),
 		url,
 		options,
 		scene,
-		children
+		position,
+		lookAt
 	}: Props = $props();
-
-	groundFromHeightMap = CreateGroundFromHeightMap(name, url, options, scene);
-
-	onDestroy(() => {
-		groundFromHeightMap.dispose();
-	});
 </script>
 
-{@render children?.()}
+<CreateMesh
+	bind:mesh={groundFromHeightMap}
+	createMeshFunction={CreateGroundFromHeightMap}
+	{options}
+	{scene}
+	{url}
+	{position}
+	{lookAt}
+/>

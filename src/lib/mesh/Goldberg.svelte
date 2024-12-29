@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { onDestroy, type Snippet } from 'svelte';
-	import { v7 } from 'uuid';
 	import type { Scene } from '@babylonjs/core/scene';
 	import type { Vector4 } from '@babylonjs/core/Maths/math.vector';
 	import type { Nullable } from '@babylonjs/core/types';
@@ -11,7 +9,10 @@
 		type GoldbergCreationOption
 	} from '@babylonjs/core/Meshes/Builders/goldbergBuilder';
 
-	export interface GoldbergOptions {
+	import type { MeshProps } from './interface';
+	import CreateMesh from './_CreateMesh.svelte';
+
+	interface GoldbergOptions {
 		backUVs?: Vector4;
 		faceColors?: Color4[];
 		faceUV?: Vector4[];
@@ -27,27 +28,20 @@
 		updatable?: boolean;
 	}
 
-	interface Props {
+	interface Props extends MeshProps {
 		goldberg?: GoldbergMesh;
-		name?: string;
 		options: GoldbergCreationOption;
 		scene?: Nullable<Scene>;
-		children?: Snippet;
 	}
 
-	let {
-		goldberg = $bindable(),
-		name = $bindable(`goldberg${v7()}`),
-		options,
-		scene,
-		children
-	}: Props = $props();
-
-	goldberg = CreateGoldberg(name, options, scene);
-
-	onDestroy(() => {
-		goldberg.dispose();
-	});
+	let { goldberg = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-{@render children?.()}
+<CreateMesh
+	bind:mesh={goldberg}
+	createMeshFunction={CreateGoldberg}
+	{options}
+	{scene}
+	{position}
+	{lookAt}
+/>

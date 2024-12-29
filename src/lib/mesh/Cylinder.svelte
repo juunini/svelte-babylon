@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { onDestroy, type Snippet } from 'svelte';
-	import { v7 } from 'uuid';
 	import type { Scene } from '@babylonjs/core/scene';
 	import type { Mesh } from '@babylonjs/core/Meshes/mesh';
 	import type { Vector4 } from '@babylonjs/core/Maths/math.vector';
@@ -8,7 +6,10 @@
 	import type { Nullable } from '@babylonjs/core/types';
 	import { CreateCylinder } from '@babylonjs/core/Meshes/Builders/cylinderBuilder';
 
-	export interface CylinderOptions {
+	import type { MeshProps } from './interface';
+	import CreateMesh from './_CreateMesh.svelte';
+
+	interface CylinderOptions {
 		arc?: number;
 		backUVs?: Vector4;
 		cap?: number;
@@ -27,27 +28,20 @@
 		updatable?: boolean;
 	}
 
-	interface Props {
+	interface Props extends MeshProps {
 		cylinder?: Mesh;
-		name?: string;
 		options?: CylinderOptions;
 		scene?: Nullable<Scene>;
-		children?: Snippet;
 	}
 
-	let {
-		cylinder = $bindable(),
-		name = $bindable(`cylinder${v7()}`),
-		options,
-		scene,
-		children
-	}: Props = $props();
-
-	cylinder = CreateCylinder(name, options, scene);
-
-	onDestroy(() => {
-		cylinder.dispose();
-	});
+	let { cylinder = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-{@render children?.()}
+<CreateMesh
+	bind:mesh={cylinder}
+	createMeshFunction={CreateCylinder}
+	{options}
+	{scene}
+	{position}
+	{lookAt}
+/>

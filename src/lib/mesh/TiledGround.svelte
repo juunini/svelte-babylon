@@ -1,11 +1,12 @@
 <script lang="ts">
-	import { onDestroy, type Snippet } from 'svelte';
-	import { v7 } from 'uuid';
 	import type { Scene } from '@babylonjs/core/scene';
 	import type { Mesh } from '@babylonjs/core/Meshes/mesh';
 	import { CreateTiledGround } from '@babylonjs/core/Meshes/Builders/groundBuilder';
 
-	export interface TiledGroundOptions {
+	import type { MeshProps } from './interface';
+	import CreateMesh from './_CreateMesh.svelte';
+
+	interface TiledGroundOptions {
 		precision?: { h: number; w: number };
 		subdivisions?: { h: number; w: number };
 		updatable?: boolean;
@@ -15,27 +16,20 @@
 		zmin: number;
 	}
 
-	interface Props {
+	interface Props extends MeshProps {
 		tiledGround?: Mesh;
-		name?: string;
 		options: TiledGroundOptions;
 		scene?: Scene;
-		children?: Snippet;
 	}
 
-	let {
-		tiledGround = $bindable(),
-		name = $bindable(`tiledGround${v7()}`),
-		options,
-		scene,
-		children
-	}: Props = $props();
-
-	tiledGround = CreateTiledGround(name, options, scene);
-
-	onDestroy(() => {
-		tiledGround.dispose();
-	});
+	let { tiledGround = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-{@render children?.()}
+<CreateMesh
+	bind:mesh={tiledGround}
+	createMeshFunction={CreateTiledGround}
+	{options}
+	{scene}
+	{position}
+	{lookAt}
+/>

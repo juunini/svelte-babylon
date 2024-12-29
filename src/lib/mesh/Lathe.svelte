@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { onDestroy, type Snippet } from 'svelte';
-	import { v7 } from 'uuid';
 	import type { Scene } from '@babylonjs/core/scene';
 	import type { Vector3, Vector4 } from '@babylonjs/core/Maths/math.vector';
 	import type { Mesh } from '@babylonjs/core/Meshes/mesh';
 	import type { Nullable } from '@babylonjs/core/types';
 	import { CreateLathe } from '@babylonjs/core/Meshes/Builders/latheBuilder';
 
-	export interface LatheOptions {
+	import type { MeshProps } from './interface';
+	import CreateMesh from './_CreateMesh.svelte';
+
+	interface LatheOptions {
 		arc?: number;
 		backUVs?: Vector4;
 		cap?: number;
@@ -22,27 +23,20 @@
 		updatable?: boolean;
 	}
 
-	interface Props {
+	interface Props extends MeshProps {
 		lathe?: Mesh;
-		name?: string;
 		options: LatheOptions;
 		scene?: Nullable<Scene>;
-		children?: Snippet;
 	}
 
-	let {
-		lathe = $bindable(),
-		name = $bindable(`lathe${v7()}`),
-		options,
-		scene,
-		children
-	}: Props = $props();
-
-	lathe = CreateLathe(name, options, scene);
-
-	onDestroy(() => {
-		lathe.dispose();
-	});
+	let { lathe = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-{@render children?.()}
+<CreateMesh
+	bind:mesh={lathe}
+	createMeshFunction={CreateLathe}
+	{options}
+	{scene}
+	{position}
+	{lookAt}
+/>

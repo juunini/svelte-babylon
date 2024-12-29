@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { onDestroy, type Snippet } from 'svelte';
-	import { v7 } from 'uuid';
 	import type { Scene } from '@babylonjs/core/scene';
 	import type { Mesh } from '@babylonjs/core/Meshes/mesh';
 	import type { Vector4 } from '@babylonjs/core/Maths/math.vector';
@@ -8,7 +6,10 @@
 	import type { Plane } from '@babylonjs/core/Maths/math.plane';
 	import { CreatePlane } from '@babylonjs/core/Meshes/Builders/planeBuilder';
 
-	export interface PlaneOptions {
+	import type { MeshProps } from './interface';
+	import CreateMesh from './_CreateMesh.svelte';
+
+	interface PlaneOptions {
 		backUVs?: Vector4;
 		frontUVs?: Vector4;
 		height?: number;
@@ -19,27 +20,20 @@
 		width?: number;
 	}
 
-	interface Props {
+	interface Props extends MeshProps {
 		plane?: Mesh;
-		name?: string;
 		options?: PlaneOptions;
 		scene?: Nullable<Scene>;
-		children?: Snippet;
 	}
 
-	let {
-		plane = $bindable(),
-		name = $bindable(`plane${v7()}`),
-		options,
-		scene,
-		children
-	}: Props = $props();
-
-	plane = CreatePlane(name, options, scene);
-
-	onDestroy(() => {
-		plane.dispose();
-	});
+	let { plane = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-{@render children?.()}
+<CreateMesh
+	bind:mesh={plane}
+	createMeshFunction={CreatePlane}
+	{options}
+	{scene}
+	{position}
+	{lookAt}
+/>

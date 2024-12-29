@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { onDestroy, type Snippet } from 'svelte';
-	import { v7 } from 'uuid';
 	import type { Scene } from '@babylonjs/core/scene';
 	import type { Color4 } from '@babylonjs/core/Maths/math.color';
 	import type { Vector2, Vector3, Vector4 } from '@babylonjs/core/Maths/math.vector';
@@ -8,7 +6,10 @@
 	import type { Nullable } from '@babylonjs/core/types';
 	import { CreateRibbon } from '@babylonjs/core/Meshes/Builders/ribbonBuilder';
 
-	export interface RibbonOptions {
+	import type { MeshProps } from './interface';
+	import CreateMesh from './_CreateMesh.svelte';
+
+	interface RibbonOptions {
 		backUVs?: Vector4;
 		closeArray?: boolean;
 		closePath?: boolean;
@@ -23,27 +24,20 @@
 		uvs?: Vector2[];
 	}
 
-	interface Props {
+	interface Props extends MeshProps {
 		ribbon?: Mesh;
-		name?: string;
 		options: RibbonOptions;
 		scene?: Nullable<Scene>;
-		children?: Snippet;
 	}
 
-	let {
-		ribbon = $bindable(),
-		name = $bindable(`ribbon${v7()}`),
-		options,
-		scene,
-		children
-	}: Props = $props();
-
-	ribbon = CreateRibbon(name, options, scene);
-
-	onDestroy(() => {
-		ribbon.dispose();
-	});
+	let { ribbon = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-{@render children?.()}
+<CreateMesh
+	bind:mesh={ribbon}
+	createMeshFunction={CreateRibbon}
+	{options}
+	{scene}
+	{position}
+	{lookAt}
+/>

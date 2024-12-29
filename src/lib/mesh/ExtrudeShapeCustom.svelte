@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { onDestroy, type Snippet } from 'svelte';
-	import { v7 } from 'uuid';
 	import type { Scene } from '@babylonjs/core/scene';
 	import type { Vector3, Vector4 } from '@babylonjs/core/Maths/math.vector';
 	import type { Mesh } from '@babylonjs/core/Meshes/mesh';
 	import type { Nullable } from '@babylonjs/core/types';
 	import { ExtrudeShapeCustom } from '@babylonjs/core/Meshes/Builders/shapeBuilder';
 
-	export interface ExtrudeShapeCustomOptions {
+	import type { MeshProps } from './interface';
+	import CreateMesh from './_CreateMesh.svelte';
+
+	interface ExtrudeShapeCustomOptions {
 		adjustFrame?: boolean;
 		backUVs?: Vector4;
 		cap?: number;
@@ -27,27 +28,20 @@
 		updatable?: boolean;
 	}
 
-	interface Props {
+	interface Props extends MeshProps {
 		extrudeShapeCustom?: Mesh;
-		name?: string;
 		options: ExtrudeShapeCustomOptions;
 		scene?: Nullable<Scene>;
-		children?: Snippet;
 	}
 
-	let {
-		extrudeShapeCustom = $bindable(),
-		name = $bindable(`extrudeShapeCustom${v7()}`),
-		options,
-		scene,
-		children
-	}: Props = $props();
-
-	extrudeShapeCustom = ExtrudeShapeCustom(name, options, scene);
-
-	onDestroy(() => {
-		extrudeShapeCustom.dispose();
-	});
+	let { extrudeShapeCustom = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-{@render children?.()}
+<CreateMesh
+	bind:mesh={extrudeShapeCustom}
+	createMeshFunction={ExtrudeShapeCustom}
+	{options}
+	{scene}
+	{position}
+	{lookAt}
+/>

@@ -4,39 +4,35 @@ import Engine from '$lib/engine/Engine.svelte';
 import FreeCamera from '$lib/camera/FreeCamera.svelte';
 import TargetCamera from '$lib/camera/TargetCamera.svelte';
 import HemisphericLight from '$lib/light/HemisphericLight.svelte';
-import Sphere, { type SphereOptions } from '$lib/mesh/Sphere.svelte';
-import Text, { type TextOptions } from '$lib/mesh/Text.svelte';
-import Box, { type BoxOptions } from '$lib/mesh/Box.svelte';
-import TiledBox, { type TiledBoxOptions } from '$lib/mesh/TiledBox.svelte';
-import Cylinder, { type CylinderOptions } from '$lib/mesh/Cylinder.svelte';
+import Sphere from '$lib/mesh/Sphere.svelte';
+import Text from '$lib/mesh/Text.svelte';
+import Box from '$lib/mesh/Box.svelte';
+import TiledBox from '$lib/mesh/TiledBox.svelte';
+import Cylinder from '$lib/mesh/Cylinder.svelte';
 import Capsule from '$lib/mesh/Capsule.svelte';
-import Plane, { type PlaneOptions } from '$lib/mesh/Plane.svelte';
-import TiledPlane, { type TiledPlaneOptions } from '$lib/mesh/TiledPlane.svelte';
-import Disc, { type DiscOptions } from '$lib/mesh/Disc.svelte';
-import Torus, { type TorusOptions } from '$lib/mesh/Torus.svelte';
-import TorusKnot, { type TorusKnotOptions } from '$lib/mesh/TorusKnot.svelte';
-import Ground, { type GroundOptions } from '$lib/mesh/Ground.svelte';
-import GroundFromHeightMap, {
-	type GroundFromHeightMapOptions
-} from '$lib/mesh/GroundFromHeightMap.svelte';
-import TiledGround, { type TiledGroundOptions } from '$lib/mesh/TiledGround.svelte';
-import Line, { type LineOptions } from '$lib/mesh/Line.svelte';
-import DashedLine, { type DashedLineOptions } from '$lib/mesh/DashedLine.svelte';
-import LineSystem, { type LineSystemOptions } from '$lib/mesh/LineSystem.svelte';
+import Plane from '$lib/mesh/Plane.svelte';
+import TiledPlane from '$lib/mesh/TiledPlane.svelte';
+import Disc from '$lib/mesh/Disc.svelte';
+import Torus from '$lib/mesh/Torus.svelte';
+import TorusKnot from '$lib/mesh/TorusKnot.svelte';
+import Ground from '$lib/mesh/Ground.svelte';
+import GroundFromHeightMap from '$lib/mesh/GroundFromHeightMap.svelte';
+import TiledGround from '$lib/mesh/TiledGround.svelte';
+import Line from '$lib/mesh/Line.svelte';
+import DashedLine from '$lib/mesh/DashedLine.svelte';
+import LineSystem from '$lib/mesh/LineSystem.svelte';
 import GreasedLine from '$lib/mesh/GreasedLine.svelte';
-import Ribbon, { type RibbonOptions } from '$lib/mesh/Ribbon.svelte';
-import Tube, { type TubeOptions } from '$lib/mesh/Tube.svelte';
-import ExtrudeShape, { type ExtrudeShapeOptions } from '$lib/mesh/ExtrudeShape.svelte';
-import ExtrudeShapeCustom, {
-	type ExtrudeShapeCustomOptions
-} from '$lib/mesh/ExtrudeShapeCustom.svelte';
-import Lathe, { type LatheOptions } from '$lib/mesh/Lathe.svelte';
-import Polygon, { type PolygonOptions } from '$lib/mesh/Polygon.svelte';
-import ExtrudePolygon, { type ExtrudePolygonOptions } from '$lib/mesh/ExtrudePolygon.svelte';
-import Polyhedron, { type PolyhedronOptions } from '$lib/mesh/Polyhedron.svelte';
-import IcoSphere, { type IcoSphereOptions } from '$lib/mesh/IcoSphere.svelte';
-import Geodesic, { type GeodesicOptions } from '$lib/mesh/Geodesic.svelte';
-import Goldberg, { type GoldbergOptions } from '$lib/mesh/Goldberg.svelte';
+import Ribbon from '$lib/mesh/Ribbon.svelte';
+import Tube from '$lib/mesh/Tube.svelte';
+import ExtrudeShape from '$lib/mesh/ExtrudeShape.svelte';
+import ExtrudeShapeCustom from '$lib/mesh/ExtrudeShapeCustom.svelte';
+import Lathe from '$lib/mesh/Lathe.svelte';
+import Polygon from '$lib/mesh/Polygon.svelte';
+import ExtrudePolygon from '$lib/mesh/ExtrudePolygon.svelte';
+import Polyhedron from '$lib/mesh/Polyhedron.svelte';
+import IcoSphere from '$lib/mesh/IcoSphere.svelte';
+import Geodesic from '$lib/mesh/Geodesic.svelte';
+import Goldberg from '$lib/mesh/Goldberg.svelte';
 
 export {
 	Canvas,
@@ -46,59 +42,32 @@ export {
 	TargetCamera,
 	HemisphericLight,
 	Sphere,
-	type SphereOptions,
 	Text,
-	type TextOptions,
 	Box,
-	type BoxOptions,
 	TiledBox,
-	type TiledBoxOptions,
 	Cylinder,
-	type CylinderOptions,
 	Capsule,
 	Plane,
-	type PlaneOptions,
 	TiledPlane,
-	type TiledPlaneOptions,
 	Disc,
-	type DiscOptions,
 	Torus,
-	type TorusOptions,
 	TorusKnot,
-	type TorusKnotOptions,
 	Ground,
-	type GroundOptions,
 	GroundFromHeightMap,
-	type GroundFromHeightMapOptions,
 	TiledGround,
-	type TiledGroundOptions,
 	Line,
-	type LineOptions,
 	DashedLine,
-	type DashedLineOptions,
 	LineSystem,
-	type LineSystemOptions,
 	GreasedLine,
 	Ribbon,
-	type RibbonOptions,
 	Tube,
-	type TubeOptions,
 	ExtrudeShape,
-	type ExtrudeShapeOptions,
 	ExtrudeShapeCustom,
-	type ExtrudeShapeCustomOptions,
 	Lathe,
-	type LatheOptions,
 	Polygon,
-	type PolygonOptions,
 	ExtrudePolygon,
-	type ExtrudePolygonOptions,
 	Polyhedron,
-	type PolyhedronOptions,
 	IcoSphere,
-	type IcoSphereOptions,
 	Geodesic,
-	type GeodesicOptions,
-	Goldberg,
-	type GoldbergOptions
+	Goldberg
 };

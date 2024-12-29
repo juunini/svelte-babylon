@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { onDestroy, type Snippet } from 'svelte';
-	import { v7 } from 'uuid';
 	import type { Scene } from '@babylonjs/core/scene';
 	import type { LinesMesh } from '@babylonjs/core/Meshes/linesMesh';
 	import type { Material } from '@babylonjs/core/Materials/material';
@@ -9,7 +7,10 @@
 	import type { Color4 } from '@babylonjs/core/Maths/math.color';
 	import { CreateLineSystem } from '@babylonjs/core/Meshes/Builders/linesBuilder';
 
-	export interface LineSystemOptions {
+	import type { MeshProps } from './interface';
+	import CreateMesh from './_CreateMesh.svelte';
+
+	interface LineSystemOptions {
 		colors?: Nullable<Color4[][]>;
 		instance?: Nullable<LinesMesh>;
 		lines: Vector3[][];
@@ -18,27 +19,20 @@
 		useVertexAlpha?: boolean;
 	}
 
-	interface Props {
+	interface Props extends MeshProps {
 		lineSystem?: LinesMesh;
-		name?: string;
 		options: LineSystemOptions;
 		scene?: Scene;
-		children?: Snippet;
 	}
 
-	let {
-		lineSystem = $bindable(),
-		name = $bindable(`lineSystem${v7()}`),
-		options,
-		scene,
-		children
-	}: Props = $props();
-
-	lineSystem = CreateLineSystem(name, options, scene);
-
-	onDestroy(() => {
-		lineSystem.dispose();
-	});
+	let { lineSystem = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-{@render children?.()}
+<CreateMesh
+	bind:mesh={lineSystem}
+	createMeshFunction={CreateLineSystem}
+	{options}
+	{scene}
+	{position}
+	{lookAt}
+/>

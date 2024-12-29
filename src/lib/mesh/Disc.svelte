@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { onDestroy, type Snippet } from 'svelte';
-	import { v7 } from 'uuid';
 	import type { Scene } from '@babylonjs/core/scene';
 	import type { Mesh } from '@babylonjs/core/Meshes/mesh';
 	import type { Vector4 } from '@babylonjs/core/Maths/math.vector';
 	import type { Nullable } from '@babylonjs/core/types';
 	import { CreateDisc } from '@babylonjs/core/Meshes/Builders/discBuilder';
 
-	export interface DiscOptions {
+	import type { MeshProps } from './interface';
+	import CreateMesh from './_CreateMesh.svelte';
+
+	interface DiscOptions {
 		arc?: number;
 		backUVs?: Vector4;
 		frontUVs?: Vector4;
@@ -17,27 +18,13 @@
 		updatable?: boolean;
 	}
 
-	interface Props {
+	interface Props extends MeshProps {
 		disc?: Mesh;
-		name?: string;
 		options?: DiscOptions;
 		scene?: Nullable<Scene>;
-		children?: Snippet;
 	}
 
-	let {
-		disc = $bindable(),
-		name = $bindable(`disc${v7()}`),
-		options,
-		scene,
-		children
-	}: Props = $props();
-
-	disc = CreateDisc(name, options, scene);
-
-	onDestroy(() => {
-		disc.dispose();
-	});
+	let { disc = $bindable(), options, scene }: Props = $props();
 </script>
 
-{@render children?.()}
+<CreateMesh bind:mesh={disc} createMeshFunction={CreateDisc} {options} {scene} />

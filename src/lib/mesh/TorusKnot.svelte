@@ -1,12 +1,13 @@
 <script lang="ts">
-	import { onDestroy, type Snippet } from 'svelte';
-	import { v7 } from 'uuid';
 	import type { Scene } from '@babylonjs/core/scene';
 	import type { Mesh } from '@babylonjs/core/Meshes/mesh';
 	import type { Vector4 } from '@babylonjs/core/Maths/math.vector';
 	import { CreateTorusKnot } from '@babylonjs/core/Meshes/Builders/torusKnotBuilder';
 
-	export interface TorusKnotOptions {
+	import type { MeshProps } from './interface';
+	import CreateMesh from './_CreateMesh.svelte';
+
+	interface TorusKnotOptions {
 		backUVs?: Vector4;
 		frontUVs?: Vector4;
 		p?: number;
@@ -19,27 +20,20 @@
 		updatable?: boolean;
 	}
 
-	interface Props {
+	interface Props extends MeshProps {
 		torusKnot?: Mesh;
-		name?: string;
 		options?: TorusKnotOptions;
 		scene?: Scene;
-		children?: Snippet;
 	}
 
-	let {
-		torusKnot = $bindable(),
-		name = $bindable(`torusKnot${v7()}`),
-		options,
-		scene,
-		children
-	}: Props = $props();
-
-	torusKnot = CreateTorusKnot(name, options, scene);
-
-	onDestroy(() => {
-		torusKnot.dispose();
-	});
+	let { torusKnot = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-{@render children?.()}
+<CreateMesh
+	bind:mesh={torusKnot}
+	createMeshFunction={CreateTorusKnot as any}
+	{options}
+	{scene}
+	{position}
+	{lookAt}
+/>

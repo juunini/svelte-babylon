@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { onDestroy, type Snippet } from 'svelte';
-	import { v7 } from 'uuid';
 	import type { Scene } from '@babylonjs/core/scene';
 	import type { LinesMesh } from '@babylonjs/core/Meshes/linesMesh';
 	import type { Material } from '@babylonjs/core/Materials/material';
 	import type { Vector3 } from '@babylonjs/core/Maths/math.vector';
 	import { CreateDashedLines } from '@babylonjs/core/Meshes/Builders/linesBuilder';
+	import type { MeshProps } from './interface';
+	import CreateMesh from './_CreateMesh.svelte';
 
-	export interface DashedLineOptions {
+	interface DashedLineOptions {
 		dashNb?: number;
 		dashSize?: number;
 		gapSize?: number;
@@ -18,27 +18,20 @@
 		useVertexAlpha?: boolean;
 	}
 
-	interface Props {
+	interface Props extends MeshProps {
 		dashedLine?: LinesMesh;
-		name?: string;
 		options: DashedLineOptions;
 		scene?: Scene;
-		children?: Snippet;
 	}
 
-	let {
-		dashedLine = $bindable(),
-		name = $bindable(`dashedLine${v7()}`),
-		options,
-		scene,
-		children
-	}: Props = $props();
-
-	dashedLine = CreateDashedLines(name, options, scene);
-
-	onDestroy(() => {
-		dashedLine.dispose();
-	});
+	let { dashedLine = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-{@render children?.()}
+<CreateMesh
+	bind:mesh={dashedLine}
+	createMeshFunction={CreateDashedLines}
+	{options}
+	{scene}
+	{position}
+	{lookAt}
+/>

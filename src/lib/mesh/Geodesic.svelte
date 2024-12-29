@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { onDestroy, type Snippet } from 'svelte';
-	import { v7 } from 'uuid';
 	import type { Scene } from '@babylonjs/core/scene';
 	import type { Vector4 } from '@babylonjs/core/Maths/math.vector';
 	import type { Mesh } from '@babylonjs/core/Meshes/mesh';
@@ -8,7 +6,10 @@
 	import type { Color4 } from '@babylonjs/core/Maths/math.color';
 	import { CreateGeodesic } from '@babylonjs/core/Meshes/Builders/geodesicBuilder';
 
-	export interface GeodesicOptions {
+	import type { MeshProps } from './interface';
+	import CreateMesh from './_CreateMesh.svelte';
+
+	interface GeodesicOptions {
 		backUVs?: Vector4;
 		faceColors?: Color4[];
 		faceUV?: Vector4[];
@@ -24,27 +25,20 @@
 		updatable?: boolean;
 	}
 
-	interface Props {
+	interface Props extends MeshProps {
 		geodesic?: Mesh;
-		name?: string;
 		options: GeodesicOptions;
 		scene?: Nullable<Scene>;
-		children?: Snippet;
 	}
 
-	let {
-		geodesic = $bindable(),
-		name = $bindable(`geodesic${v7()}`),
-		options,
-		scene,
-		children
-	}: Props = $props();
-
-	geodesic = CreateGeodesic(name, options, scene);
-
-	onDestroy(() => {
-		geodesic.dispose();
-	});
+	let { geodesic = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-{@render children?.()}
+<CreateMesh
+	bind:mesh={geodesic}
+	createMeshFunction={CreateGeodesic}
+	{options}
+	{scene}
+	{position}
+	{lookAt}
+/>

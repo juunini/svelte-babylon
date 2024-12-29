@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { onDestroy, type Snippet } from 'svelte';
-	import { v7 } from 'uuid';
 	import type { Scene } from '@babylonjs/core/scene';
 	import type { Nullable } from '@babylonjs/core/types';
 	import type { GreasedLineBaseMesh } from '@babylonjs/core/Meshes/GreasedLine/greasedLineBaseMesh';
@@ -12,29 +10,32 @@
 		type GreasedLineMeshBuilderOptions
 	} from '@babylonjs/core/Meshes/Builders/greasedLineBuilder';
 
-	interface Props {
+	import type { MeshProps } from './interface';
+	import CreateMesh from './_CreateMesh.svelte';
+
+	interface Props extends MeshProps {
 		greasedLine?: GreasedLineBaseMesh | GreasedLineMesh | GreasedLineRibbonMesh;
-		name?: string;
 		options: GreasedLineMeshBuilderOptions;
 		materialOptions?: Nullable<GreasedLineMaterialBuilderOptions>;
 		scene?: Scene;
-		children?: Snippet;
 	}
 
 	let {
 		greasedLine = $bindable(),
-		name = $bindable(`greasedLine${v7()}`),
 		options,
-		materialOptions,
+		materialOptions = null,
 		scene,
-		children
+		position,
+		lookAt
 	}: Props = $props();
-
-	greasedLine = CreateGreasedLine(name, options, materialOptions, scene);
-
-	onDestroy(() => {
-		greasedLine.dispose();
-	});
 </script>
 
-{@render children?.()}
+<CreateMesh
+	bind:mesh={greasedLine}
+	createMeshFunction={CreateGreasedLine}
+	{options}
+	{scene}
+	{position}
+	{lookAt}
+	{materialOptions}
+/>

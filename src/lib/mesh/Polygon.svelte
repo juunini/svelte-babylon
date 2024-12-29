@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { onDestroy, type Snippet } from 'svelte';
-	import { v7 } from 'uuid';
 	import type { Scene } from '@babylonjs/core/scene';
 	import type { Vector3, Vector4 } from '@babylonjs/core/Maths/math.vector';
 	import type { Mesh } from '@babylonjs/core/Meshes/mesh';
@@ -8,7 +6,10 @@
 	import type { Color4 } from '@babylonjs/core/Maths/math.color';
 	import { CreatePolygon } from '@babylonjs/core/Meshes/Builders/polygonBuilder';
 
-	export interface PolygonOptions {
+	import type { MeshProps } from './interface';
+	import CreateMesh from './_CreateMesh.svelte';
+
+	interface PolygonOptions {
 		backUVs?: Vector4;
 		depth?: number;
 		faceColors?: Color4[];
@@ -22,29 +23,29 @@
 		wrap?: boolean;
 	}
 
-	interface Props {
+	interface Props extends MeshProps {
 		polygon?: Mesh;
-		name?: string;
 		options: PolygonOptions;
 		scene?: Nullable<Scene>;
 		earcutInjection?: any;
-		children?: Snippet;
 	}
 
 	let {
 		polygon = $bindable(),
-		name = $bindable(`polygon${v7()}`),
 		options,
 		scene,
 		earcutInjection,
-		children
+		position,
+		lookAt
 	}: Props = $props();
-
-	polygon = CreatePolygon(name, options, scene, earcutInjection);
-
-	onDestroy(() => {
-		polygon.dispose();
-	});
 </script>
 
-{@render children?.()}
+<CreateMesh
+	bind:mesh={polygon}
+	createMeshFunction={CreatePolygon}
+	{options}
+	{scene}
+	{earcutInjection}
+	{position}
+	{lookAt}
+/>

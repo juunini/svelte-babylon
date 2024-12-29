@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { onDestroy, type Snippet } from 'svelte';
-	import { v7 } from 'uuid';
 	import type { Scene } from '@babylonjs/core/scene';
 	import type { Vector4 } from '@babylonjs/core/Maths/math.vector';
 	import type { Mesh } from '@babylonjs/core/Meshes/mesh';
@@ -8,7 +6,10 @@
 	import type { Color4 } from '@babylonjs/core/Maths/math.color';
 	import { CreatePolyhedron } from '@babylonjs/core/Meshes/Builders/polyhedronBuilder';
 
-	export interface PolyhedronOptions {
+	import type { MeshProps } from './interface';
+	import CreateMesh from './_CreateMesh.svelte';
+
+	interface PolyhedronOptions {
 		backUVs?: Vector4;
 		custom?: any;
 		faceColors?: Color4[];
@@ -24,27 +25,20 @@
 		updatable?: boolean;
 	}
 
-	interface Props {
+	interface Props extends MeshProps {
 		polyhedron?: Mesh;
-		name?: string;
 		options?: PolyhedronOptions;
 		scene?: Nullable<Scene>;
-		children?: Snippet;
 	}
 
-	let {
-		polyhedron = $bindable(),
-		name = $bindable(`polyhedron${v7()}`),
-		options,
-		scene,
-		children
-	}: Props = $props();
-
-	polyhedron = CreatePolyhedron(name, options, scene);
-
-	onDestroy(() => {
-		polyhedron.dispose();
-	});
+	let { polyhedron = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-{@render children?.()}
+<CreateMesh
+	bind:mesh={polyhedron}
+	createMeshFunction={CreatePolyhedron}
+	{options}
+	{scene}
+	{position}
+	{lookAt}
+/>
