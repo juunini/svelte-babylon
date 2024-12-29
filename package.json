@@ -108,6 +108,10 @@
 		"./mesh/GroundFromHeightMap.svelte": {
 			"types": "./dist/mesh/GroundFromHeightMap.svelte.d.ts",
 			"svelte": "./dist/mesh/GroundFromHeightMap.svelte"
+		},
+		"./mesh/TiledGround.svelte": {
+			"types": "./dist/mesh/TiledGround.svelte.d.ts",
+			"svelte": "./dist/mesh/TiledGround.svelte"
 		}
 	},
 	"peerDependencies": {
