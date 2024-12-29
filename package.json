@@ -100,6 +100,10 @@
 		"./mesh/Torus.svelte": {
 			"types": "./dist/mesh/Torus.svelte.d.ts",
 			"svelte": "./dist/mesh/Torus.svelte"
+		},
+		"./mesh/TorusKnot.svelte": {
+			"types": "./dist/mesh/TorusKnot.svelte.d.ts",
+			"svelte": "./dist/mesh/TorusKnot.svelte"
 		}
 	},
 	"peerDependencies": {

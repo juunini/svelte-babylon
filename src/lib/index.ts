@@ -15,6 +15,7 @@ import Plane, { type PlaneOptions } from '$lib/mesh/Plane.svelte';
 import TiledPlane, { type TiledPlaneOptions } from '$lib/mesh/TiledPlane.svelte';
 import Disc, { type DiscOptions } from '$lib/mesh/Disc.svelte';
 import Torus, { type TorusOptions } from '$lib/mesh/Torus.svelte';
+import TorusKnot, { type TorusKnotOptions } from '$lib/mesh/TorusKnot.svelte';
 
 export {
 	Canvas,
@@ -43,5 +44,7 @@ export {
 	Disc,
 	type DiscOptions,
 	Torus,
-	type TorusOptions
+	type TorusOptions,
+	TorusKnot,
+	type TorusKnotOptions
 };
