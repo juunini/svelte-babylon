@@ -164,6 +164,10 @@
 		"./mesh/IcoSphere.svelte": {
 			"types": "./dist/mesh/IcoSphere.svelte.d.ts",
 			"svelte": "./dist/mesh/IcoSphere.svelte"
+		},
+		"./mesh/Geodesic.svelte": {
+			"types": "./dist/mesh/Geodesic.svelte.d.ts",
+			"svelte": "./dist/mesh/Geodesic.svelte"
 		}
 	},
 	"peerDependencies": {
