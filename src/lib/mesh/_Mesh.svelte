@@ -6,7 +6,6 @@
   import type { Nullable } from '@babylonjs/core/types';
   import type { GreasedLineMaterialBuilderOptions } from '@babylonjs/core/Meshes/Builders/greasedLineBuilder';
   import type { IFontData } from '@babylonjs/core/Meshes/Builders/textBuilder';
-  import { Vector3 } from '@babylonjs/core/Maths/math.vector';
 
   import type { MeshProps } from './interface';
 
@@ -86,11 +85,13 @@
   });
 
   $effect(() => {
-    mesh?.position.set(position?.x ?? 0, position?.y ?? 0, position?.z ?? 0);
+    if (position === undefined) return;
+    mesh?.position.set(position.x, position.y, position.z);
   });
 
   $effect(() => {
-    mesh?.lookAt(new Vector3(lookAt?.x ?? 0, lookAt?.y ?? 0, lookAt?.z ?? 0));
+    if (lookAt === undefined) return;
+    mesh?.lookAt(lookAt?.targetPoint, lookAt?.yawCor, lookAt?.pitchCor, lookAt?.rollCor);
   });
 
   onDestroy(() => {

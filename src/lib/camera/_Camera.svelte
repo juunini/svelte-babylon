@@ -26,8 +26,9 @@
     scene = getContext('scene');
   }
 
-  camera = new CameraClass(`camera${v7()}`, position, scene, setActiveOnSceneIfNoneActive);
+  const name = `camera${v7()}`;
 
+  camera = new CameraClass(name, position, scene, setActiveOnSceneIfNoneActive);
   camera.setTarget?.(Vector3.Zero());
 
   $effect(() => {

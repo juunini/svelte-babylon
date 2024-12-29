@@ -40,7 +40,7 @@ bun add @juunini/svelte-babylonjs
       <BabylonFreeCamera position={new Vector3(0, 5, -10)} />
       <BabylonHemisphericLight direction={new Vector3(0, 1, 0)} intensity={0.7} />
       <BabylonGround options={{ width: 6, height: 6 }} />
-      <BabylonSphere options={{ diameter: 2, segments: 32 }} position={{ x: 0, y: 1, z: 0 }} />
+      <BabylonSphere options={{ diameter: 2, segments: 32 }} position={new Vector3(0, 1, 0)} />
     </BabylonScene>
   </BabylonEngine>
 </Canvas>
