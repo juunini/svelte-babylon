@@ -5,9 +5,9 @@
 	import type { Vector3, Vector4 } from '@babylonjs/core/Maths/math.vector';
 	import type { Mesh } from '@babylonjs/core/Meshes/mesh';
 	import type { Nullable } from '@babylonjs/core/types';
-	import { ExtrudeShape } from '@babylonjs/core/Meshes/Builders/shapeBuilder';
+	import { ExtrudeShapeCustom } from '@babylonjs/core/Meshes/Builders/shapeBuilder';
 
-	export interface ExtrusionOptions {
+	export interface CustomExtrusionOptions {
 		adjustFrame?: boolean;
 		backUVs?: Vector4;
 		cap?: number;
@@ -18,33 +18,35 @@
 		instance?: Mesh;
 		invertUV?: boolean;
 		path: Vector3[];
-		rotation?: number;
-		scale?: number;
+		ribbonCloseArray?: boolean;
+		ribbonClosePath?: boolean;
+		rotationFunction?: Nullable<(i: number, distance: number) => number>;
+		scaleFunction?: Nullable<(i: number, distance: number) => number>;
 		shape: Vector3[];
 		sideOrientation?: number;
 		updatable?: boolean;
 	}
 
 	interface Props {
-		extrusion?: Mesh;
+		customExtrusion?: Mesh;
 		name?: string;
-		options: ExtrusionOptions;
+		options: CustomExtrusionOptions;
 		scene?: Nullable<Scene>;
 		children?: Snippet;
 	}
 
 	let {
-		extrusion = $bindable(),
-		name = $bindable(`extrusion${v7()}`),
+		customExtrusion = $bindable(),
+		name = $bindable(`customExtrusion${v7()}`),
 		options,
 		scene,
 		children
 	}: Props = $props();
 
-	extrusion = ExtrudeShape(name, options, scene);
+	customExtrusion = ExtrudeShapeCustom(name, options, scene);
 
 	onDestroy(() => {
-		extrusion.dispose();
+		customExtrusion.dispose();
 	});
 </script>
 
