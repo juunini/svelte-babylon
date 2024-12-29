@@ -120,6 +120,10 @@
 		"./mesh/DashedLine.svelte": {
 			"types": "./dist/mesh/DashedLine.svelte.d.ts",
 			"svelte": "./dist/mesh/DashedLine.svelte"
+		},
+		"./mesh/LineSystem.svelte": {
+			"types": "./dist/mesh/LineSystem.svelte.d.ts",
+			"svelte": "./dist/mesh/LineSystem.svelte"
 		}
 	},
 	"peerDependencies": {
