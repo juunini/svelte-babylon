@@ -28,6 +28,7 @@ import Ribbon, { type RibbonOptions } from '$lib/mesh/Ribbon.svelte';
 import Tube, { type TubeOptions } from '$lib/mesh/Tube.svelte';
 import Extrusion, { type ExtrusionOptions } from '$lib/mesh/Extrusion.svelte';
 import CustomExtrusion, { type CustomExtrusionOptions } from '$lib/mesh/CustomExtrusion.svelte';
+import Lathe, { type LatheOptions } from '$lib/mesh/Lathe.svelte';
 
 export {
 	Canvas,
@@ -77,5 +78,7 @@ export {
 	Extrusion,
 	type ExtrusionOptions,
 	CustomExtrusion,
-	type CustomExtrusionOptions
+	type CustomExtrusionOptions,
+	Lathe,
+	type LatheOptions
 };

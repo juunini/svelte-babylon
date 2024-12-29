@@ -144,6 +144,10 @@
 		"./mesh/CustomExtrusion.svelte": {
 			"types": "./dist/mesh/CustomExtrusion.svelte.d.ts",
 			"svelte": "./dist/mesh/CustomExtrusion.svelte"
+		},
+		"./mesh/Lathe.svelte": {
+			"types": "./dist/mesh/Lathe.svelte.d.ts",
+			"svelte": "./dist/mesh/Lathe.svelte"
 		}
 	},
 	"peerDependencies": {
