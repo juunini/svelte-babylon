@@ -19,6 +19,8 @@ bun add @juunini/svelte-babylonjs
 
 ## Usage
 
+![image](https://github.com/user-attachments/assets/95007a0b-6ef6-45f4-a910-e4ade279f79f)
+
 ```svelte
 <script lang="ts">
   import { Vector3 } from '@babylonjs/core/Maths/math.vector';
@@ -42,10 +44,27 @@ bun add @juunini/svelte-babylonjs
     </BabylonScene>
   </BabylonEngine>
 </Canvas>
-
 ```
 
-![image](https://github.com/user-attachments/assets/95007a0b-6ef6-45f4-a910-e4ade279f79f)
+### Bind Mesh, Camera, Light, etc.
+
+You can bind the mesh to a variable.  
+(Not only Mesh, but also Camera, Light, etc.)
+
+```svelte
+<script lang="ts">
+  import type { GroundMesh } from '@babylonjs/core/Meshes/groundMesh';
+  import BabylonGround from '@juunini/svelte-babylonjs/mesh/Ground.svelte';
+
+  let groundMesh = $state<GroundMesh>();
+
+  $effect(() => {
+    // using groundMesh here...
+  });
+</script>
+
+<BabylonGround bind:mesh={groundMesh} />
+```
 
 ## License
 
