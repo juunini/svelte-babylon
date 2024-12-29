@@ -1,7 +1,7 @@
 <script lang="ts">
   import { v7 } from 'uuid';
   import { getContext, onDestroy } from 'svelte';
-  import { Camera } from '@babylonjs/core/Cameras/camera';
+  import type { Camera } from '@babylonjs/core/Cameras/camera';
   import { Vector3 } from '@babylonjs/core/Maths/math.vector';
 
   import type { CameraProps } from './interface';
