@@ -21,6 +21,7 @@ import GroundFromHeightMap, {
 } from '$lib/mesh/GroundFromHeightMap.svelte';
 import TiledGround, { type TiledGroundOptions } from '$lib/mesh/TiledGround.svelte';
 import Line, { type LineOptions } from '$lib/mesh/Line.svelte';
+import DashedLine, { type DashedLineOptions } from '$lib/mesh/DashedLine.svelte';
 
 export {
 	Canvas,
@@ -57,5 +58,7 @@ export {
 	TiledGround,
 	type TiledGroundOptions,
 	Line,
-	type LineOptions
+	type LineOptions,
+	DashedLine,
+	type DashedLineOptions
 };

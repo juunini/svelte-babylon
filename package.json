@@ -116,6 +116,10 @@
 		"./mesh/Line.svelte": {
 			"types": "./dist/mesh/Line.svelte.d.ts",
 			"svelte": "./dist/mesh/Line.svelte"
+		},
+		"./mesh/DashedLine.svelte": {
+			"types": "./dist/mesh/DashedLine.svelte.d.ts",
+			"svelte": "./dist/mesh/DashedLine.svelte"
 		}
 	},
 	"peerDependencies": {
