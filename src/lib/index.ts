@@ -20,6 +20,7 @@ import GroundFromHeightMap, {
 	type GroundFromHeightMapOptions
 } from '$lib/mesh/GroundFromHeightMap.svelte';
 import TiledGround, { type TiledGroundOptions } from '$lib/mesh/TiledGround.svelte';
+import Line, { type LineOptions } from '$lib/mesh/Line.svelte';
 
 export {
 	Canvas,
@@ -54,5 +55,7 @@ export {
 	GroundFromHeightMap,
 	type GroundFromHeightMapOptions,
 	TiledGround,
-	type TiledGroundOptions
+	type TiledGroundOptions,
+	Line,
+	type LineOptions
 };

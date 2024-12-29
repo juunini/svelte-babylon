@@ -112,6 +112,10 @@
 		"./mesh/TiledGround.svelte": {
 			"types": "./dist/mesh/TiledGround.svelte.d.ts",
 			"svelte": "./dist/mesh/TiledGround.svelte"
+		},
+		"./mesh/Line.svelte": {
+			"types": "./dist/mesh/Line.svelte.d.ts",
+			"svelte": "./dist/mesh/Line.svelte"
 		}
 	},
 	"peerDependencies": {
