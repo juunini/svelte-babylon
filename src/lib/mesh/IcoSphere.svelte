@@ -1,3 +1,4 @@
+<script lang="ts">
   import type { Scene } from '@babylonjs/core/scene';
   import type { Vector4 } from '@babylonjs/core/Maths/math.vector';
   import type { Mesh } from '@babylonjs/core/Meshes/mesh';
