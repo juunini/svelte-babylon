@@ -24,6 +24,7 @@ import Line, { type LineOptions } from '$lib/mesh/Line.svelte';
 import DashedLine, { type DashedLineOptions } from '$lib/mesh/DashedLine.svelte';
 import LineSystem, { type LineSystemOptions } from '$lib/mesh/LineSystem.svelte';
 import GreasedLine from '$lib/mesh/GreasedLine.svelte';
+import Ribbon, { type RibbonOptions } from '$lib/mesh/Ribbon.svelte';
 
 export {
 	Canvas,
@@ -65,5 +66,7 @@ export {
 	type DashedLineOptions,
 	LineSystem,
 	type LineSystemOptions,
-	GreasedLine
+	GreasedLine,
+	Ribbon,
+	type RibbonOptions
 };

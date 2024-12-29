@@ -128,6 +128,10 @@
 		"./mesh/GreasedLine.svelte": {
 			"types": "./dist/mesh/GreasedLine.svelte.d.ts",
 			"svelte": "./dist/mesh/GreasedLine.svelte"
+		},
+		"./mesh/Ribbon.svelte": {
+			"types": "./dist/mesh/Ribbon.svelte.d.ts",
+			"svelte": "./dist/mesh/Ribbon.svelte"
 		}
 	},
 	"peerDependencies": {
