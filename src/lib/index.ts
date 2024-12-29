@@ -34,6 +34,7 @@ import Lathe, { type LatheOptions } from '$lib/mesh/Lathe.svelte';
 import Polygon, { type PolygonOptions } from '$lib/mesh/Polygon.svelte';
 import ExtrudePolygon, { type ExtrudePolygonOptions } from '$lib/mesh/ExtrudePolygon.svelte';
 import Polyhedron, { type PolyhedronOptions } from '$lib/mesh/Polyhedron.svelte';
+import IcoSphere, { type IcoSphereOptions } from '$lib/mesh/IcoSphere.svelte';
 
 export {
 	Canvas,
@@ -91,5 +92,7 @@ export {
 	ExtrudePolygon,
 	type ExtrudePolygonOptions,
 	Polyhedron,
-	type PolyhedronOptions
+	type PolyhedronOptions,
+	IcoSphere,
+	type IcoSphereOptions
 };

@@ -160,6 +160,10 @@
 		"./mesh/Polyhedron.svelte": {
 			"types": "./dist/mesh/Polyhedron.svelte.d.ts",
 			"svelte": "./dist/mesh/Polyhedron.svelte"
+		},
+		"./mesh/IcoSphere.svelte": {
+			"types": "./dist/mesh/IcoSphere.svelte.d.ts",
+			"svelte": "./dist/mesh/IcoSphere.svelte"
 		}
 	},
 	"peerDependencies": {
