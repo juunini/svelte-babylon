@@ -24,19 +24,11 @@
   }
 
   interface Props extends MeshProps {
-    tube?: Mesh;
     options: TubeOptions;
     scene?: Nullable<Scene>;
   }
 
-  let { tube = $bindable(), options, scene, position, lookAt }: Props = $props();
+  let { mesh = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<DefaultMesh
-  bind:mesh={tube}
-  createMeshFunction={CreateTube}
-  {options}
-  {scene}
-  {position}
-  {lookAt}
-/>
+<DefaultMesh bind:mesh createMeshFunction={CreateTube} {options} {scene} {position} {lookAt} />

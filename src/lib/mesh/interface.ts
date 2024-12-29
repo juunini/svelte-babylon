@@ -1,4 +1,7 @@
+import type { Mesh } from '@babylonjs/core/Meshes/mesh';
+
 export interface MeshProps {
+  mesh?: Mesh;
   useParentScene?: boolean;
   position?: {
     x?: number;

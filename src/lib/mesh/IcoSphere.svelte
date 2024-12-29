@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { Scene } from '@babylonjs/core/scene';
   import type { Vector4 } from '@babylonjs/core/Maths/math.vector';
-  import type { Mesh } from '@babylonjs/core/Meshes/mesh';
   import type { Nullable } from '@babylonjs/core/types';
   import { CreateIcoSphere } from '@babylonjs/core/Meshes/Builders/icoSphereBuilder';
 
@@ -22,19 +21,11 @@
   }
 
   interface Props extends MeshProps {
-    icoSphere?: Mesh;
     options?: IcoSphereOptions;
     scene?: Nullable<Scene>;
   }
 
-  let { icoSphere = $bindable(), options, scene, position, lookAt }: Props = $props();
+  let { mesh = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<DefaultMesh
-  bind:mesh={icoSphere}
-  createMeshFunction={CreateIcoSphere}
-  {options}
-  {scene}
-  {position}
-  {lookAt}
-/>
+<DefaultMesh bind:mesh createMeshFunction={CreateIcoSphere} {options} {scene} {position} {lookAt} />

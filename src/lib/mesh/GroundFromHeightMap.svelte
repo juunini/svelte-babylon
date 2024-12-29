@@ -23,24 +23,17 @@
   }
 
   interface Props extends MeshProps {
-    groundFromHeightMap?: GroundMesh;
+    mesh?: GroundMesh;
     url: string | { data: Uint8Array; height: number; width: number };
     options?: GroundFromHeightMapOptions;
     scene?: Nullable<Scene>;
   }
 
-  let {
-    groundFromHeightMap = $bindable(),
-    url,
-    options,
-    scene,
-    position,
-    lookAt
-  }: Props = $props();
+  let { mesh = $bindable(), url, options, scene, position, lookAt }: Props = $props();
 </script>
 
 <DefaultMesh
-  bind:mesh={groundFromHeightMap}
+  bind:mesh
   createMeshFunction={CreateGroundFromHeightMap}
   {options}
   {scene}

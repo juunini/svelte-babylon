@@ -25,19 +25,11 @@
   }
 
   interface Props extends MeshProps {
-    ribbon?: Mesh;
     options: RibbonOptions;
     scene?: Nullable<Scene>;
   }
 
-  let { ribbon = $bindable(), options, scene, position, lookAt }: Props = $props();
+  let { mesh = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<DefaultMesh
-  bind:mesh={ribbon}
-  createMeshFunction={CreateRibbon}
-  {options}
-  {scene}
-  {position}
-  {lookAt}
-/>
+<DefaultMesh bind:mesh createMeshFunction={CreateRibbon} {options} {scene} {position} {lookAt} />

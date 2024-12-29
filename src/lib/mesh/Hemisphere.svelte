@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { Scene } from '@babylonjs/core/scene';
-  import type { Mesh } from '@babylonjs/core/Meshes/mesh';
   import type { Nullable } from '@babylonjs/core/types';
   import { CreateHemisphere } from '@babylonjs/core/Meshes/Builders/hemisphereBuilder';
 
@@ -14,7 +13,6 @@
   }
 
   interface Props extends MeshProps {
-    mesh?: Mesh;
     options?: HemisphereOptions;
     scene?: Nullable<Scene>;
   }

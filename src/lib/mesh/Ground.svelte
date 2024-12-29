@@ -16,16 +16,16 @@
   }
 
   interface Props extends MeshProps {
-    ground?: GroundMesh;
+    mesh?: GroundMesh;
     options?: GroundOptions;
     scene?: Scene;
   }
 
-  let { ground = $bindable(), options, scene, position, lookAt }: Props = $props();
+  let { mesh = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
 <DefaultMesh
-  bind:mesh={ground}
+  bind:mesh
   createMeshFunction={CreateGround as any}
   {options}
   {scene}

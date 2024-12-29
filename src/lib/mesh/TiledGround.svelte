@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { Scene } from '@babylonjs/core/scene';
-  import type { Mesh } from '@babylonjs/core/Meshes/mesh';
   import { CreateTiledGround } from '@babylonjs/core/Meshes/Builders/groundBuilder';
 
   import type { MeshProps } from './interface';
@@ -17,16 +16,15 @@
   }
 
   interface Props extends MeshProps {
-    tiledGround?: Mesh;
     options: TiledGroundOptions;
     scene?: Scene;
   }
 
-  let { tiledGround = $bindable(), options, scene, position, lookAt }: Props = $props();
+  let { mesh = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
 <DefaultMesh
-  bind:mesh={tiledGround}
+  bind:mesh
   createMeshFunction={CreateTiledGround}
   {options}
   {scene}

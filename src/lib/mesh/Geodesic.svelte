@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { Scene } from '@babylonjs/core/scene';
   import type { Vector4 } from '@babylonjs/core/Maths/math.vector';
-  import type { Mesh } from '@babylonjs/core/Meshes/mesh';
   import type { Nullable } from '@babylonjs/core/types';
   import type { Color4 } from '@babylonjs/core/Maths/math.color';
   import { CreateGeodesic } from '@babylonjs/core/Meshes/Builders/geodesicBuilder';
@@ -26,19 +25,11 @@
   }
 
   interface Props extends MeshProps {
-    geodesic?: Mesh;
     options: GeodesicOptions;
     scene?: Nullable<Scene>;
   }
 
-  let { geodesic = $bindable(), options, scene, position, lookAt }: Props = $props();
+  let { mesh = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<DefaultMesh
-  bind:mesh={geodesic}
-  createMeshFunction={CreateGeodesic}
-  {options}
-  {scene}
-  {position}
-  {lookAt}
-/>
+<DefaultMesh bind:mesh createMeshFunction={CreateGeodesic} {options} {scene} {position} {lookAt} />

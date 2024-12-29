@@ -14,14 +14,14 @@
   import DefaultMesh from './_Mesh.svelte';
 
   interface Props extends MeshProps {
-    greasedLine?: GreasedLineBaseMesh | GreasedLineMesh | GreasedLineRibbonMesh;
+    mesh?: GreasedLineBaseMesh | GreasedLineMesh | GreasedLineRibbonMesh;
     options: GreasedLineMeshBuilderOptions;
     materialOptions?: Nullable<GreasedLineMaterialBuilderOptions>;
     scene?: Scene;
   }
 
   let {
-    greasedLine = $bindable(),
+    mesh = $bindable(),
     options,
     materialOptions = null,
     scene,
@@ -31,7 +31,7 @@
 </script>
 
 <DefaultMesh
-  bind:mesh={greasedLine}
+  bind:mesh
   createMeshFunction={CreateGreasedLine}
   {options}
   {scene}

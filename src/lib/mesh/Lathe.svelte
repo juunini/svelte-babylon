@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { Scene } from '@babylonjs/core/scene';
   import type { Vector3, Vector4 } from '@babylonjs/core/Maths/math.vector';
-  import type { Mesh } from '@babylonjs/core/Meshes/mesh';
   import type { Nullable } from '@babylonjs/core/types';
   import { CreateLathe } from '@babylonjs/core/Meshes/Builders/latheBuilder';
 
@@ -24,19 +23,11 @@
   }
 
   interface Props extends MeshProps {
-    lathe?: Mesh;
     options: LatheOptions;
     scene?: Nullable<Scene>;
   }
 
-  let { lathe = $bindable(), options, scene, position, lookAt }: Props = $props();
+  let { mesh = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<DefaultMesh
-  bind:mesh={lathe}
-  createMeshFunction={CreateLathe}
-  {options}
-  {scene}
-  {position}
-  {lookAt}
-/>
+<DefaultMesh bind:mesh createMeshFunction={CreateLathe} {options} {scene} {position} {lookAt} />

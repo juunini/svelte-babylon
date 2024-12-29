@@ -20,8 +20,8 @@
     size?: number;
   }
 
-  interface Props extends MeshProps {
-    textMesh?: Nullable<Mesh>;
+  interface Props extends Omit<MeshProps, 'mesh'> {
+    mesh?: Nullable<Mesh>;
     text: string;
     fontData: IFontData;
     options?: TextOptions;
@@ -30,7 +30,7 @@
   }
 
   let {
-    textMesh = $bindable(),
+    mesh = $bindable(),
     text,
     fontData,
     options,
@@ -42,7 +42,7 @@
 </script>
 
 <DefaultMesh
-  bind:mesh={textMesh}
+  bind:mesh
   createMeshFunction={CreateText}
   {options}
   {scene}

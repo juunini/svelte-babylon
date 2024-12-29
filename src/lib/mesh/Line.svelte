@@ -20,19 +20,12 @@
   }
 
   interface Props extends MeshProps {
-    line?: LinesMesh;
+    mesh?: LinesMesh;
     options: LineOptions;
     scene?: Scene;
   }
 
-  let { line = $bindable(), options, scene, position, lookAt }: Props = $props();
+  let { mesh = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<DefaultMesh
-  bind:mesh={line}
-  createMeshFunction={CreateLines}
-  {options}
-  {scene}
-  {position}
-  {lookAt}
-/>
+<DefaultMesh bind:mesh createMeshFunction={CreateLines} {options} {scene} {position} {lookAt} />

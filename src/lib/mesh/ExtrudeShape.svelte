@@ -27,19 +27,11 @@
   }
 
   interface Props extends MeshProps {
-    extrdeShape?: Mesh;
     options: ExtrudeShapeOptions;
     scene?: Nullable<Scene>;
   }
 
-  let { extrdeShape = $bindable(), options, scene, position, lookAt }: Props = $props();
+  let { mesh = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
-<DefaultMesh
-  bind:mesh={extrdeShape}
-  createMeshFunction={ExtrudeShape}
-  {options}
-  {scene}
-  {position}
-  {lookAt}
-/>
+<DefaultMesh bind:mesh createMeshFunction={ExtrudeShape} {options} {scene} {position} {lookAt} />

@@ -19,16 +19,16 @@
   }
 
   interface Props extends MeshProps {
-    dashedLine?: LinesMesh;
+    mesh?: LinesMesh;
     options: DashedLineOptions;
     scene?: Scene;
   }
 
-  let { dashedLine = $bindable(), options, scene, position, lookAt }: Props = $props();
+  let { mesh = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
 <DefaultMesh
-  bind:mesh={dashedLine}
+  bind:mesh
   createMeshFunction={CreateDashedLines}
   {options}
   {scene}

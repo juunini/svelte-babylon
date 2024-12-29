@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { Scene } from '@babylonjs/core/scene';
-  import type { Mesh } from '@babylonjs/core/Meshes/mesh';
   import type { Vector4 } from '@babylonjs/core/Maths/math.vector';
   import { CreateTorus } from '@babylonjs/core/Meshes/Builders/torusBuilder';
 
@@ -18,16 +17,15 @@
   }
 
   interface Props extends MeshProps {
-    torus?: Mesh;
     options?: TorusOptions;
     scene?: Scene;
   }
 
-  let { torus = $bindable(), options, scene, position, lookAt }: Props = $props();
+  let { meesh = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
 <DefaultMesh
-  bind:mesh={torus}
+  bind:mesh={meesh}
   createMeshFunction={CreateTorus as any}
   {options}
   {scene}

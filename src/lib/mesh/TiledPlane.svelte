@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { Scene } from '@babylonjs/core/scene';
-  import type { Mesh } from '@babylonjs/core/Meshes/mesh';
   import type { Vector4 } from '@babylonjs/core/Maths/math.vector';
   import type { Nullable } from '@babylonjs/core/types';
   import { CreateTiledPlane } from '@babylonjs/core/Meshes/Builders/tiledPlaneBuilder';
@@ -25,16 +24,15 @@
   }
 
   interface Props extends MeshProps {
-    tiledplane?: Mesh;
     options: TiledPlaneOptions;
     scene?: Nullable<Scene>;
   }
 
-  let { tiledplane = $bindable(), options, scene, position, lookAt }: Props = $props();
+  let { mesh = $bindable(), options, scene, position, lookAt }: Props = $props();
 </script>
 
 <DefaultMesh
-  bind:mesh={tiledplane}
+  bind:mesh
   createMeshFunction={CreateTiledPlane}
   {options}
   {scene}

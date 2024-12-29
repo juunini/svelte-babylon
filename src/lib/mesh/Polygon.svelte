@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { Scene } from '@babylonjs/core/scene';
   import type { Vector3, Vector4 } from '@babylonjs/core/Maths/math.vector';
-  import type { Mesh } from '@babylonjs/core/Meshes/mesh';
   import type { Nullable } from '@babylonjs/core/types';
   import type { Color4 } from '@babylonjs/core/Maths/math.color';
   import { CreatePolygon } from '@babylonjs/core/Meshes/Builders/polygonBuilder';
@@ -24,24 +23,16 @@
   }
 
   interface Props extends MeshProps {
-    polygon?: Mesh;
     options: PolygonOptions;
     scene?: Nullable<Scene>;
     earcutInjection?: any;
   }
 
-  let {
-    polygon = $bindable(),
-    options,
-    scene,
-    earcutInjection,
-    position,
-    lookAt
-  }: Props = $props();
+  let { mesh = $bindable(), options, scene, earcutInjection, position, lookAt }: Props = $props();
 </script>
 
 <DefaultMesh
-  bind:mesh={polygon}
+  bind:mesh
   createMeshFunction={CreatePolygon}
   {options}
   {scene}
