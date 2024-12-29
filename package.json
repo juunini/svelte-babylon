@@ -124,6 +124,10 @@
 		"./mesh/LineSystem.svelte": {
 			"types": "./dist/mesh/LineSystem.svelte.d.ts",
 			"svelte": "./dist/mesh/LineSystem.svelte"
+		},
+		"./mesh/GreasedLine.svelte": {
+			"types": "./dist/mesh/GreasedLine.svelte.d.ts",
+			"svelte": "./dist/mesh/GreasedLine.svelte"
 		}
 	},
 	"peerDependencies": {
