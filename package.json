@@ -92,6 +92,10 @@
 		"./mesh/TiledPlane.svelte": {
 			"types": "./dist/mesh/TiledPlane.svelte.d.ts",
 			"svelte": "./dist/mesh/TiledPlane.svelte"
+		},
+		"./mesh/Disc.svelte": {
+			"types": "./dist/mesh/Disc.svelte.d.ts",
+			"svelte": "./dist/mesh/Disc.svelte"
 		}
 	},
 	"peerDependencies": {

@@ -13,6 +13,7 @@ import Cylinder, { type CylinderOptions } from '$lib/mesh/Cylinder.svelte';
 import Capsule from '$lib/mesh/Capsule.svelte';
 import Plane, { type PlaneOptions } from '$lib/mesh/Plane.svelte';
 import TiledPlane, { type TiledPlaneOptions } from '$lib/mesh/TiledPlane.svelte';
+import Disc, { type DiscOptions } from '$lib/mesh/Disc.svelte';
 
 export {
 	Canvas,
@@ -37,5 +38,7 @@ export {
 	Plane,
 	type PlaneOptions,
 	TiledPlane,
-	type TiledPlaneOptions
+	type TiledPlaneOptions,
+	Disc,
+	type DiscOptions
 };
