@@ -1,48 +1,21 @@
 <script lang="ts">
-  import { getContext, onDestroy, type Snippet } from 'svelte';
-  import { v7 } from 'uuid';
-  import type { Scene } from '@babylonjs/core/scene';
   import { FreeCamera } from '@babylonjs/core/Cameras/freeCamera';
-  import { Vector3 } from '@babylonjs/core/Maths/math.vector';
 
-  interface Props {
-    useParentScene?: boolean;
-    name?: string;
-    position?: Vector3;
-    scene?: Scene;
-    setActiveOnSceneIfNoneActive?: boolean;
+  import type { CameraProps } from './interface';
+  import DefaultCamera from './_Camera.svelte';
+
+  interface Props extends CameraProps {
     camera?: FreeCamera;
-    children?: Snippet;
+    setActiveOnSceneIfNoneActive?: boolean;
   }
 
-  let {
-    useParentScene = true,
-    children,
-    name = $bindable(`FreeCamera${v7()}`),
-    position = new Vector3(0, 0, 0),
-    scene,
-    setActiveOnSceneIfNoneActive,
-    camera = $bindable()
-  }: Props = $props();
-
-  if (useParentScene && scene === undefined) {
-    scene = getContext('scene');
-  }
-
-  const canvas = getContext('canvas');
-
-  camera = new FreeCamera(name, position, scene, setActiveOnSceneIfNoneActive);
-  camera.setTarget(Vector3.Zero());
-
-  if (canvas) {
-    camera.attachControl(canvas, true);
-  }
-
-  onDestroy(() => {
-    camera.dispose();
-  });
+  let { camera = $bindable(), position, scene, setActiveOnSceneIfNoneActive }: Props = $props();
 </script>
 
-{#if children}
-  {@render children?.()}
-{/if}
+<DefaultCamera
+  bind:camera
+  CameraClass={FreeCamera}
+  {scene}
+  {position}
+  {setActiveOnSceneIfNoneActive}
+/>
