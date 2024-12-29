@@ -9,7 +9,7 @@
 - [v] GreasedLine
 - [v] Ground
 - [v] GroundFromHeightMap
-- [] Hemisphere
+- [v] Hemisphere
 - [v] IcoSphere
 - [v] Lathe
 - [v] Lines
