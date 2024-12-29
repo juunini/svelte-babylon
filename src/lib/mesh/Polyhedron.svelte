@@ -2,47 +2,48 @@
 	import { onDestroy, type Snippet } from 'svelte';
 	import { v7 } from 'uuid';
 	import type { Scene } from '@babylonjs/core/scene';
-	import type { Vector3, Vector4 } from '@babylonjs/core/Maths/math.vector';
+	import type { Vector4 } from '@babylonjs/core/Maths/math.vector';
 	import type { Mesh } from '@babylonjs/core/Meshes/mesh';
 	import type { Nullable } from '@babylonjs/core/types';
 	import type { Color4 } from '@babylonjs/core/Maths/math.color';
-	import { ExtrudePolygon } from '@babylonjs/core/Meshes/Builders/polygonBuilder';
+	import { CreatePolyhedron } from '@babylonjs/core/Meshes/Builders/polyhedronBuilder';
 
-	export interface ExtrudePolygonOptions {
+	export interface PolyhedronOptions {
 		backUVs?: Vector4;
-		depth?: number;
+		custom?: any;
 		faceColors?: Color4[];
 		faceUV?: Vector4[];
+		flat?: boolean;
 		frontUVs?: Vector4;
-		holes?: Vector3[][];
-		shape: Vector3[];
 		sideOrientation?: number;
+		size?: number;
+		sizeX?: number;
+		sizeY?: number;
+		sizeZ?: number;
+		type?: number;
 		updatable?: boolean;
-		wrap?: boolean;
 	}
 
 	interface Props {
-		extrudePolygon?: Mesh;
+		polyhedron?: Mesh;
 		name?: string;
-		options: ExtrudePolygonOptions;
+		options?: PolyhedronOptions;
 		scene?: Nullable<Scene>;
-		earcutInjection?: any;
 		children?: Snippet;
 	}
 
 	let {
-		extrudePolygon = $bindable(),
-		name = $bindable(`extrudePolygon${v7()}`),
+		polyhedron = $bindable(),
+		name = $bindable(`polyhedron${v7()}`),
 		options,
 		scene,
-		earcutInjection,
 		children
 	}: Props = $props();
 
-	extrudePolygon = ExtrudePolygon(name, options, scene, earcutInjection);
+	polyhedron = CreatePolyhedron(name, options, scene);
 
 	onDestroy(() => {
-		extrudePolygon.dispose();
+		polyhedron.dispose();
 	});
 </script>
 
