@@ -29,7 +29,14 @@
     scene = getContext('scene');
   }
 
+  const canvas = getContext('canvas');
+
   camera = new FreeCamera(name, position, scene, setActiveOnSceneIfNoneActive);
+  camera.setTarget(Vector3.Zero());
+
+  if (canvas) {
+    camera.attachControl(canvas, true);
+  }
 
   onDestroy(() => {
     camera.dispose();

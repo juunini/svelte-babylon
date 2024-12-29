@@ -30,6 +30,7 @@
   }
 
   camera = new TargetCamera(name, position, scene, setActiveOnSceneIfNoneActive);
+  camera.setTarget(Vector3.Zero());
 
   onDestroy(() => {
     camera.dispose();

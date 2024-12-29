@@ -11,6 +11,7 @@
     name?: string;
     direction?: Vector3;
     scene?: Scene;
+    intensity?: number;
     children?: Snippet;
   }
 
@@ -19,6 +20,7 @@
     light = $bindable(),
     name = $bindable(`light${v7()}`),
     direction = new Vector3(0, 0, 0),
+    intensity = 1,
     scene,
     children
   }: Props = $props();
@@ -28,6 +30,10 @@
   }
 
   light = new HemisphericLight(name, direction, scene);
+
+  $effect(() => {
+    light.intensity = intensity;
+  });
 
   onDestroy(() => {
     light.dispose();
