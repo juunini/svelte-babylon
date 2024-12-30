@@ -1,3 +1,5 @@
+import path from 'path';
+
 /** @type { import('@storybook/sveltekit').StorybookConfig } */
 const config = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|ts|svelte)'],
@@ -10,6 +12,14 @@ const config = {
   framework: {
     name: '@storybook/sveltekit',
     options: {}
+  },
+  viteFinal: async (config) => {
+    config.resolve.alias = {
+      ...config.resolve?.alias,
+      '@juunini/svelte-babylonjs': path.resolve(__dirname, '../src/lib')
+    };
+
+    return config;
   }
 };
 export default config;
