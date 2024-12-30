@@ -26,15 +26,7 @@
     earcutInjection?: any;
   }
 
-  let { mesh = $bindable(), options, scene, earcutInjection, position, lookAt }: Props = $props();
+  let { mesh = $bindable(), ...props }: Props = $props();
 </script>
 
-<DefaultMesh
-  bind:mesh
-  createMeshFunction={CreatePolygon}
-  {options}
-  {scene}
-  {earcutInjection}
-  {position}
-  {lookAt}
-/>
+<DefaultMesh bind:mesh createMeshFunction={CreatePolygon} {...props} />

@@ -9,14 +9,7 @@
     intensity?: number;
   }
 
-  let { attachParentScene, light = $bindable(), direction, intensity, scene }: Props = $props();
+  let { light = $bindable(), ...props }: Props = $props();
 </script>
 
-<DefaultLight
-  bind:light
-  LightClass={HemisphericLight}
-  {scene}
-  {attachParentScene}
-  {direction}
-  {intensity}
-/>
+<DefaultLight bind:light LightClass={HemisphericLight} {...props} />

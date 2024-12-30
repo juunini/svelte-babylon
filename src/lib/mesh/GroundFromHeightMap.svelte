@@ -27,15 +27,7 @@
     scene?: Nullable<Scene>;
   }
 
-  let { mesh = $bindable(), url, options, scene, position, lookAt }: Props = $props();
+  let { mesh = $bindable(), url, ...props }: Props = $props();
 </script>
 
-<DefaultMesh
-  bind:mesh
-  createMeshFunction={CreateGroundFromHeightMap}
-  {options}
-  {scene}
-  {url}
-  {position}
-  {lookAt}
-/>
+<DefaultMesh bind:mesh createMeshFunction={CreateGroundFromHeightMap} {...props} />

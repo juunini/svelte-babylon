@@ -23,7 +23,7 @@
     scene?: Nullable<Scene>;
   }
 
-  let { mesh = $bindable(), options, scene, position, lookAt }: Props = $props();
+  let { mesh = $bindable(), ...props }: Props = $props();
 </script>
 
-<DefaultMesh bind:mesh createMeshFunction={CreateIcoSphere} {options} {scene} {position} {lookAt} />
+<DefaultMesh bind:mesh createMeshFunction={CreateIcoSphere} {...props} />

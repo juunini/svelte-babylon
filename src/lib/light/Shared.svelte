@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getContext, onDestroy } from 'svelte';
+  import { onDestroy } from 'svelte';
   import { v7 } from 'uuid';
   import { PointLight } from '@babylonjs/core/Lights/pointLight';
   import { SpotLight } from '@babylonjs/core/Lights/spotLight';
@@ -15,7 +15,6 @@
   }
 
   let {
-    attachParentScene = true,
     light = $bindable(),
     LightClass,
     scene,
@@ -25,10 +24,6 @@
     exponent,
     intensity
   }: Props = $props();
-
-  if (attachParentScene && scene === undefined) {
-    scene = getContext('scene');
-  }
 
   const name = `light${v7()}`;
 

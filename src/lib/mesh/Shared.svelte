@@ -49,7 +49,6 @@
   }
 
   let {
-    useParentScene = true,
     mesh = $bindable(),
     createMeshFunction,
     options,
@@ -60,12 +59,9 @@
     text,
     fontData,
     position,
-    lookAt
+    rotation,
+    scaling
   }: Props = $props();
-
-  if (useParentScene && scene === undefined) {
-    scene = getContext('scene');
-  }
 
   const name = 'mesh' + v7();
 
@@ -86,12 +82,17 @@
 
   $effect(() => {
     if (position === undefined) return;
-    mesh?.position.set(position.x, position.y, position.z);
+    mesh?.position?.set(position?.x ?? 0, position?.y ?? 0, position?.z ?? 0);
   });
 
   $effect(() => {
-    if (lookAt === undefined) return;
-    mesh?.lookAt(lookAt?.targetPoint, lookAt?.yawCor, lookAt?.pitchCor, lookAt?.rollCor);
+    if (rotation === undefined) return;
+    mesh?.rotation?.set(rotation?.x ?? 0, rotation?.y ?? 0, rotation?.z ?? 0);
+  });
+
+  $effect(() => {
+    if (scaling === undefined) return;
+    mesh?.scaling?.set(scaling?.x ?? 0, scaling?.y ?? 0, scaling?.z ?? 0);
   });
 
   onDestroy(() => {

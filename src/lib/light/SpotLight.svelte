@@ -11,26 +11,7 @@
     intensity?: number;
   }
 
-  let {
-    attachParentScene,
-    light = $bindable(),
-    angle,
-    exponent,
-    direction,
-    position,
-    intensity,
-    scene
-  }: Props = $props();
+  let { light = $bindable(), ...props }: Props = $props();
 </script>
 
-<DefaultLight
-  bind:light
-  LightClass={SpotLight}
-  {scene}
-  {attachParentScene}
-  {position}
-  {direction}
-  {angle}
-  {exponent}
-  {intensity}
-/>
+<DefaultLight bind:light LightClass={SpotLight} {...props} />

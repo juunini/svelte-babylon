@@ -20,22 +20,7 @@
     scene?: Scene;
   }
 
-  let {
-    mesh = $bindable(),
-    options,
-    materialOptions = null,
-    scene,
-    position,
-    lookAt
-  }: Props = $props();
+  let { mesh = $bindable(), ...props }: Props = $props();
 </script>
 
-<DefaultMesh
-  bind:mesh
-  createMeshFunction={CreateGreasedLine}
-  {options}
-  {scene}
-  {position}
-  {lookAt}
-  {materialOptions}
-/>
+<DefaultMesh bind:mesh createMeshFunction={CreateGreasedLine} {...props} />

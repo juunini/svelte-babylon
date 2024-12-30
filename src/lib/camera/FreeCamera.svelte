@@ -9,13 +9,7 @@
     setActiveOnSceneIfNoneActive?: boolean;
   }
 
-  let { camera = $bindable(), position, scene, setActiveOnSceneIfNoneActive }: Props = $props();
+  let { camera = $bindable(), ...props }: Props = $props();
 </script>
 
-<DefaultCamera
-  bind:camera
-  CameraClass={FreeCamera}
-  {scene}
-  {position}
-  {setActiveOnSceneIfNoneActive}
-/>
+<DefaultCamera bind:camera CameraClass={FreeCamera} {...props} />

@@ -10,14 +10,14 @@
     style?: string;
   }
 
-  let { children, canvas = $bindable(), width, height, style, ...props }: Props = $props();
+  let { children, canvas = $bindable(), ...props }: Props = $props();
 
   onMount(() => {
     setContext('canvas', canvas);
   });
 </script>
 
-<canvas bind:this={canvas} {width} {height} class={props.class} {style} {...props}>
+<canvas bind:this={canvas} {...props}>
   {#if canvas}
     {@render children()}
   {/if}

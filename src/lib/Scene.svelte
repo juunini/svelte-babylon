@@ -4,7 +4,6 @@
   import { getContext, onDestroy, setContext, type Snippet } from 'svelte';
 
   interface Props {
-    useParentEngine?: boolean;
     engine?: AbstractEngine;
     scene?: Scene;
     options?: SceneOptions;
@@ -12,16 +11,11 @@
   }
 
   let {
-    useParentEngine = true,
     engine = getContext<AbstractEngine>('engine'),
     scene = $bindable(),
     options,
     children
   }: Props = $props();
-
-  if (useParentEngine && engine === undefined) {
-    engine = getContext<AbstractEngine>('engine');
-  }
 
   scene = new Scene(engine, options);
   setContext('scene', scene);

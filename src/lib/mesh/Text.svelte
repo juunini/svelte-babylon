@@ -27,26 +27,7 @@
     earcutInjection?: any;
   }
 
-  let {
-    mesh = $bindable(),
-    text,
-    fontData,
-    options,
-    scene,
-    earcutInjection,
-    position,
-    lookAt
-  }: Props = $props();
+  let { mesh = $bindable(), ...props }: Props = $props();
 </script>
 
-<DefaultMesh
-  bind:mesh
-  createMeshFunction={CreateText}
-  {options}
-  {scene}
-  {text}
-  {fontData}
-  {earcutInjection}
-  {position}
-  {lookAt}
-/>
+<DefaultMesh bind:mesh createMeshFunction={CreateText} {...props} />

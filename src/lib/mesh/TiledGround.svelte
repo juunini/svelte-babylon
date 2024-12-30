@@ -18,14 +18,7 @@
     scene?: Scene;
   }
 
-  let { mesh = $bindable(), options, scene, position, lookAt }: Props = $props();
+  let { mesh = $bindable(), ...props }: Props = $props();
 </script>
 
-<DefaultMesh
-  bind:mesh
-  createMeshFunction={CreateTiledGround}
-  {options}
-  {scene}
-  {position}
-  {lookAt}
-/>
+<DefaultMesh bind:mesh createMeshFunction={CreateTiledGround} {...props} />

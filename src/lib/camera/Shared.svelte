@@ -16,16 +16,10 @@
     camera = $bindable(),
     CameraClass,
     attachParentCanvas = true,
-    attachParentScene = true,
     scene,
     position = new Vector3(0, 5, -10),
     setActiveOnSceneIfNoneActive
   }: Props = $props();
-
-  if (attachParentScene && scene === undefined) {
-    scene = getContext('scene');
-  }
-
   const name = `camera${v7()}`;
 
   camera = new CameraClass(name, position, scene, setActiveOnSceneIfNoneActive);

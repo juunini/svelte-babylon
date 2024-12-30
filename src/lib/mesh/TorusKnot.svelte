@@ -22,14 +22,7 @@
     scene?: Scene;
   }
 
-  let { mesh = $bindable(), options, scene, position, lookAt }: Props = $props();
+  let { mesh = $bindable(), ...props }: Props = $props();
 </script>
 
-<DefaultMesh
-  bind:mesh
-  createMeshFunction={CreateTorusKnot as any}
-  {options}
-  {scene}
-  {position}
-  {lookAt}
-/>
+<DefaultMesh bind:mesh createMeshFunction={CreateTorusKnot as any} {...props} />

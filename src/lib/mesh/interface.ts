@@ -1,14 +1,9 @@
-import type { Vector3 } from '@babylonjs/core/Maths/math.vector';
 import type { Mesh } from '@babylonjs/core/Meshes/mesh';
 
 export interface MeshProps {
+  /** if you want to use a mesh api, bind it */
   mesh?: Mesh;
-  useParentScene?: boolean;
-  position?: Vector3;
-  lookAt?: {
-    targetPoint: Vector3;
-    yawCor?: number;
-    pitchCor?: number;
-    rollCor?: number;
-  };
+  position?: { x: number; y: number; z: number };
+  rotation?: { x: number; y: number; z: number };
+  scaling?: { x: number; y: number; z: number };
 }

@@ -20,7 +20,7 @@
     scene?: Nullable<Scene>;
   }
 
-  let { mesh = $bindable(), options, scene }: Props = $props();
+  let { mesh = $bindable(), ...props }: Props = $props();
 </script>
 
-<DefaultMesh bind:mesh createMeshFunction={CreateDisc} {options} {scene} />
+<DefaultMesh bind:mesh createMeshFunction={CreateDisc} {...props} />
