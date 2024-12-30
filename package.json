@@ -58,124 +58,124 @@
       "svelte": "./dist/light/DirectionalLight.svelte"
     },
     "./light/HemisphericLight.svelte": {
-      "types": "./dist/light/DirectionalLight.svelte.d.ts",
-      "svelte": "./dist/light/DirectionalLight.svelte"
+      "types": "./dist/light/HemisphericLight.svelte.d.ts",
+      "svelte": "./dist/light/HemisphericLight.svelte"
     },
     "./light/PointLight.svelte": {
-      "types": "./dist/light/DirectionalLight.svelte.d.ts",
-      "svelte": "./dist/light/DirectionalLight.svelte"
+      "types": "./dist/light/PointLight.svelte.d.ts",
+      "svelte": "./dist/light/PointLight.svelte"
     },
     "./light/SpotLight.svelte": {
-      "types": "./dist/light/DirectionalLight.svelte.d.ts",
-      "svelte": "./dist/light/DirectionalLight.svelte"
+      "types": "./dist/light/SpotLight.svelte.d.ts",
+      "svelte": "./dist/light/SpotLight.svelte"
     },
     "./mesh/Box.svelte": {
       "types": "./dist/mesh/Box.svelte.d.ts",
       "svelte": "./dist/mesh/Box.svelte"
     },
     "./mesh/Capsule.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/Capsule.svelte.d.ts",
+      "svelte": "./dist/mesh/Capsule.svelte"
     },
     "./mesh/Cylinder.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/Cylinder.svelte.d.ts",
+      "svelte": "./dist/mesh/Cylinder.svelte"
     },
-    "./mesh/DashedLines.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+    "./mesh/DashedLine.svelte": {
+      "types": "./dist/mesh/DashedLine.svelte.d.ts",
+      "svelte": "./dist/mesh/DashedLine.svelte"
     },
     "./mesh/Disc.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/Disc.svelte.d.ts",
+      "svelte": "./dist/mesh/Disc.svelte"
     },
     "./mesh/Geodesic.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/Geodesic.svelte.d.ts",
+      "svelte": "./dist/mesh/Geodesic.svelte"
     },
     "./mesh/Goldberg.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/Goldberg.svelte.d.ts",
+      "svelte": "./dist/mesh/Goldberg.svelte"
     },
     "./mesh/GreasedLine.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/GreasedLine.svelte.d.ts",
+      "svelte": "./dist/mesh/GreasedLine.svelte"
     },
     "./mesh/Ground.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/Ground.svelte.d.ts",
+      "svelte": "./dist/mesh/Ground.svelte"
     },
     "./mesh/GroundFromHeightMap.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/GroundFromHeightMap.svelte.d.ts",
+      "svelte": "./dist/mesh/GroundFromHeightMap.svelte"
     },
     "./mesh/Hemisphere.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/Hemisphere.svelte.d.ts",
+      "svelte": "./dist/mesh/Hemisphere.svelte"
     },
     "./mesh/IcoSphere.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/IcoSphere.svelte.d.ts",
+      "svelte": "./dist/mesh/IcoSphere.svelte"
     },
     "./mesh/Lathe.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/Lathe.svelte.d.ts",
+      "svelte": "./dist/mesh/Lathe.svelte"
     },
-    "./mesh/Lines.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+    "./mesh/Line.svelte": {
+      "types": "./dist/mesh/Line.svelte.d.ts",
+      "svelte": "./dist/mesh/Line.svelte"
     },
     "./mesh/LineSystem.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/LineSystem.svelte.d.ts",
+      "svelte": "./dist/mesh/LineSystem.svelte"
     },
     "./mesh/Plane.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/Plane.svelte.d.ts",
+      "svelte": "./dist/mesh/Plane.svelte"
     },
     "./mesh/Polygon.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/Polygon.svelte.d.ts",
+      "svelte": "./dist/mesh/Polygon.svelte"
     },
     "./mesh/Polyhedron.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/Polyhedron.svelte.d.ts",
+      "svelte": "./dist/mesh/Polyhedron.svelte"
     },
     "./mesh/Ribbon.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/Ribbon.svelte.d.ts",
+      "svelte": "./dist/mesh/Ribbon.svelte"
     },
     "./mesh/Sphere.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/Sphere.svelte.d.ts",
+      "svelte": "./dist/mesh/Sphere.svelte"
     },
     "./mesh/Text.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/Text.svelte.d.ts",
+      "svelte": "./dist/mesh/Text.svelte"
     },
     "./mesh/TiledBox.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/TiledBox.svelte.d.ts",
+      "svelte": "./dist/mesh/TiledBox.svelte"
     },
     "./mesh/TiledGround.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/TiledGround.svelte.d.ts",
+      "svelte": "./dist/mesh/TiledGround.svelte"
     },
     "./mesh/TiledPlane.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/TiledPlane.svelte.d.ts",
+      "svelte": "./dist/mesh/TiledPlane.svelte"
     },
     "./mesh/Torus.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/Torus.svelte.d.ts",
+      "svelte": "./dist/mesh/Torus.svelte"
     },
     "./mesh/TorusKnot.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/TorusKnot.svelte.d.ts",
+      "svelte": "./dist/mesh/TorusKnot.svelte"
     },
     "./mesh/Tube.svelte": {
-      "types": "./dist/mesh/Box.svelte.d.ts",
-      "svelte": "./dist/mesh/Box.svelte"
+      "types": "./dist/mesh/Tube.svelte.d.ts",
+      "svelte": "./dist/mesh/Tube.svelte"
     }
   },
   "peerDependencies": {
