@@ -5,7 +5,7 @@
   import type { Vector3 } from '@babylonjs/core/Maths/math.vector';
   import { CreateDashedLines } from '@babylonjs/core/Meshes/Builders/linesBuilder';
   import type { MeshProps } from './interface';
-  import DefaultMesh from './_Mesh.svelte';
+  import DefaultMesh from './Shared.svelte';
 
   interface Props extends MeshProps {
     mesh?: LinesMesh;

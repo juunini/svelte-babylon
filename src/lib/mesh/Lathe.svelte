@@ -5,7 +5,7 @@
   import { CreateLathe } from '@babylonjs/core/Meshes/Builders/latheBuilder';
 
   import type { MeshProps } from './interface';
-  import DefaultMesh from './_Mesh.svelte';
+  import DefaultMesh from './Shared.svelte';
 
   interface Props extends MeshProps {
     options: {

@@ -4,7 +4,7 @@
   import { CreateHemisphere } from '@babylonjs/core/Meshes/Builders/hemisphereBuilder';
 
   import type { MeshProps } from './interface';
-  import DefaultMesh from './_Mesh.svelte';
+  import DefaultMesh from './Shared.svelte';
 
   interface Props extends MeshProps {
     options?: {

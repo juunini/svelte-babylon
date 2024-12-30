@@ -5,7 +5,7 @@
   import { CreateTiledPlane } from '@babylonjs/core/Meshes/Builders/tiledPlaneBuilder';
 
   import type { MeshProps } from './interface';
-  import DefaultMesh from './_Mesh.svelte';
+  import DefaultMesh from './Shared.svelte';
 
   interface Props extends MeshProps {
     options: {

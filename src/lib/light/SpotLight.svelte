@@ -2,7 +2,7 @@
   import { SpotLight } from '@babylonjs/core/Lights/spotLight';
 
   import type { LightProps } from './interface';
-  import DefaultLight from './_Light.svelte';
+  import DefaultLight from './Shared.svelte';
 
   interface Props extends LightProps {
     light?: SpotLight;

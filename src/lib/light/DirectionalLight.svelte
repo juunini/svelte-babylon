@@ -2,7 +2,7 @@
   import { DirectionalLight } from '@babylonjs/core/Lights/directionalLight';
 
   import type { LightProps } from './interface';
-  import DefaultLight from './_Light.svelte';
+  import DefaultLight from './Shared.svelte';
 
   interface Props extends LightProps {
     light?: DirectionalLight;

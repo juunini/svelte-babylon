@@ -8,7 +8,7 @@
   import { CreateLines } from '@babylonjs/core/Meshes/Builders/linesBuilder';
 
   import type { MeshProps } from './interface';
-  import DefaultMesh from './_Mesh.svelte';
+  import DefaultMesh from './Shared.svelte';
 
   interface Props extends MeshProps {
     mesh?: LinesMesh;

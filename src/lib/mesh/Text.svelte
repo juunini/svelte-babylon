@@ -7,7 +7,7 @@
   import { CreateText, type IFontData } from '@babylonjs/core/Meshes/Builders/textBuilder';
 
   import type { MeshProps } from './interface';
-  import DefaultMesh from './_Mesh.svelte';
+  import DefaultMesh from './Shared.svelte';
 
   interface Props extends Omit<MeshProps, 'mesh'> {
     mesh?: Nullable<Mesh>;

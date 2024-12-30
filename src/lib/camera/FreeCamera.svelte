@@ -2,7 +2,7 @@
   import { FreeCamera } from '@babylonjs/core/Cameras/freeCamera';
 
   import type { CameraProps } from './interface';
-  import DefaultCamera from './_Camera.svelte';
+  import DefaultCamera from './Shared.svelte';
 
   interface Props extends CameraProps {
     camera?: FreeCamera;
