@@ -1,22 +1,30 @@
 <script lang="ts">
-  import { HemisphericLight } from '@babylonjs/core/Lights/hemisphericLight';
+  import { PointLight } from '@babylonjs/core/Lights/pointLight';
 
   import type { LightProps } from './interface';
   import DefaultLight from './_Light.svelte';
 
   interface Props extends LightProps {
-    light?: HemisphericLight;
+    light?: PointLight;
     intensity?: number;
   }
 
-  let { attachParentScene, light = $bindable(), direction, intensity, scene }: Props = $props();
+  let {
+    attachParentScene,
+    light = $bindable(),
+    direction,
+    intensity,
+    position,
+    scene
+  }: Props = $props();
 </script>
 
 <DefaultLight
   bind:light
-  LightClass={HemisphericLight}
+  LightClass={PointLight}
   {scene}
   {attachParentScene}
   {direction}
   {intensity}
+  {position}
 />

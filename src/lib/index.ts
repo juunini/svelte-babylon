@@ -3,7 +3,10 @@ import Scene from '$lib/Scene.svelte';
 import Engine from '$lib/engine/Engine.svelte';
 import FreeCamera from '$lib/camera/FreeCamera.svelte';
 import TargetCamera from '$lib/camera/TargetCamera.svelte';
-import HemisphericLight from '$lib/light/HemisphericLight.svelte';
+import DirectionalLight from '$lib/light/DirectionalLight.svelte';
+import HemisphericLight from '$lib/light/DirectionalLight.svelte';
+import PointLight from '$lib/light/DirectionalLight.svelte';
+import SpotLight from '$lib/light/DirectionalLight.svelte';
 import Sphere from '$lib/mesh/Sphere.svelte';
 import Text from '$lib/mesh/Text.svelte';
 import Box from '$lib/mesh/Box.svelte';
@@ -40,7 +43,10 @@ export {
   Engine,
   FreeCamera,
   TargetCamera,
+  DirectionalLight,
   HemisphericLight,
+  PointLight,
+  SpotLight,
   Sphere,
   Text,
   Box,

@@ -1,6 +1,6 @@
 {
   "name": "@juunini/svelte-babylonjs",
-  "version": "0.0.1-alpha.7",
+  "version": "0.0.1-alpha.8",
   "license": "MIT",
   "scripts": {
     "dev": "vite dev",
@@ -53,9 +53,21 @@
       "types": "./dist/camera/TargetCamera.svelte.d.ts",
       "svelte": "./dist/camera/TargetCamera.svelte"
     },
+    "./light/DirectionalLight.svelte": {
+      "types": "./dist/light/DirectionalLight.svelte.d.ts",
+      "svelte": "./dist/light/DirectionalLight.svelte"
+    },
     "./light/HemisphericLight.svelte": {
-      "types": "./dist/light/HemisphericLight.svelte.d.ts",
-      "svelte": "./dist/light/HemisphericLight.svelte"
+      "types": "./dist/light/DirectionalLight.svelte.d.ts",
+      "svelte": "./dist/light/DirectionalLight.svelte"
+    },
+    "./light/PointLight.svelte": {
+      "types": "./dist/light/DirectionalLight.svelte.d.ts",
+      "svelte": "./dist/light/DirectionalLight.svelte"
+    },
+    "./light/SpotLight.svelte": {
+      "types": "./dist/light/DirectionalLight.svelte.d.ts",
+      "svelte": "./dist/light/DirectionalLight.svelte"
     },
     "./mesh/Box.svelte": {
       "types": "./dist/mesh/Box.svelte.d.ts",
