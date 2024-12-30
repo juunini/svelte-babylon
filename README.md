@@ -19,6 +19,11 @@ bun add @juunini/svelte-babylonjs
 
 ## Usage
 
+You can see the example and code below link (storybook)  
+https://juunini.github.io/svelte-babylonjs  
+
+---
+
 ![image](https://github.com/user-attachments/assets/95007a0b-6ef6-45f4-a910-e4ade279f79f)
 
 ```svelte
