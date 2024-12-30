@@ -1,0 +1,36 @@
+import{p as I,s as M,r as z,i as X,a as B,t as E}from"./props-Biv-wkS8.js";import{p as q,f as V,a as A,b as S}from"./index-client-rkuF54Lr.js";import{e as O,o as W,V as v,M as x,p as D,k as c,f as J,h as K,i as N,j as Q,F as ee,H as te,g as ne}from"./create-runtime-stories-BfL98lhW.js";import"./iframe-DD4yETVY.js";import"../sb-preview/runtime.js";import"./index-D-8MO0q_.js";import"./index-BHYIh-Xd.js";import"./_commonjsHelpers-Cpj98o6Y.js";function Y(e,t){let s=I(t,"mesh",15),a=z(t,["$$slots","$$events","$$legacy","mesh"]);O(e,M({createMeshFunction:W},()=>a,{get mesh(){return s()},set mesh(r){s(r)}}))}Y.__docgen={data:[{name:"mesh",visibility:"public",description:"if you want to use a mesh api, bind it",keywords:[],kind:"let",type:{kind:"type",type:"object",text:"GroundMesh"},static:!1,readonly:!1,defaultValue:"..."},{name:"options",visibility:"public",keywords:[],kind:"let",type:{kind:"type",type:"object",text:"{ width?: number | undefined; height?: number | undefined; subdivisions?: number | undefined; subdivisionsX?: number | undefined; subdivisionsY?: number | undefined; updatable?: boolean | undefined; }"},static:!1,readonly:!1},{name:"scene",visibility:"public",keywords:[],kind:"let",type:{kind:"type",type:"object",text:"Scene"},static:!1,readonly:!1},{name:"position",visibility:"public",keywords:[],kind:"let",type:{kind:"type",type:"object",text:"{ x: number; y: number; z: number; }"},static:!1,readonly:!1},{name:"rotation",visibility:"public",keywords:[],kind:"let",type:{kind:"type",type:"object",text:"{ x: number; y: number; z: number; }"},static:!1,readonly:!1},{name:"scaling",visibility:"public",keywords:[],kind:"let",type:{kind:"type",type:"object",text:"{ x: number; y: number; z: number; }"},static:!1,readonly:!1}],name:"Ground.svelte"};function Z(e){const t=(e.segments||32)|0,s=e.diameterX||e.diameter||1,a=e.diameterY||e.diameter||1,r=e.diameterZ||e.diameter||1,f=e.arc&&(e.arc<=0||e.arc>1)?1:e.arc||1,h=e.slice&&e.slice<=0?1:e.slice||1,_=e.sideOrientation===0?0:e.sideOrientation||v.DEFAULTSIDE,g=!!e.dedupTopBottomIndices,k=new c(s/2,a/2,r/2),u=2+t,o=2*u,n=[],l=[],p=[],m=[];for(let y=0;y<=u;y++){const C=y/u,T=C*Math.PI*h;for(let b=0;b<=o;b++){const i=b/o,L=i*Math.PI*2*f,P=D.RotationZ(-T),H=D.RotationY(L),U=c.TransformCoordinates(c.Up(),P),$=c.TransformCoordinates(U,H),j=$.multiply(k),w=$.divide(k).normalize();l.push(j.x,j.y,j.z),p.push(w.x,w.y,w.z),m.push(i,C)}if(y>0){const b=l.length/3;for(let i=b-2*(o+1);i+o+2<b;i++)g?(y>1&&(n.push(i),n.push(i+1),n.push(i+o+1)),(y<u||h<1)&&(n.push(i+o+1),n.push(i+1),n.push(i+o+2))):(n.push(i),n.push(i+1),n.push(i+o+1),n.push(i+o+1),n.push(i+1),n.push(i+o+2))}}v._ComputeSides(_,l,n,p,m,e.frontUVs,e.backUVs);const d=new v;return d.indices=n,d.positions=l,d.normals=p,d.uvs=m,d}function F(e,t={},s=null){const a=new x(e,s);return t.sideOrientation=x._GetDefaultSideOrientation(t.sideOrientation),a._originalBuilderSideOrientation=t.sideOrientation,Z(t).applyToMesh(a,t.updatable),a}v.CreateSphere=Z;x.CreateSphere=(e,t,s,a,r,f)=>F(e,{segments:t,diameterX:s,diameterY:s,diameterZ:s,sideOrientation:f,updatable:r},a);function G(e,t){let s=I(t,"mesh",15),a=z(t,["$$slots","$$events","$$legacy","mesh"]);O(e,M({createMeshFunction:F},()=>a,{get mesh(){return s()},set mesh(r){s(r)}}))}G.__docgen={data:[{name:"options",visibility:"public",keywords:[],kind:"let",type:{kind:"type",type:"object",text:"{ arc?: number | undefined; backUVs?: Vector4 | undefined; diameter?: number | undefined; diameterX?: number | undefined; diameterY?: number | undefined; diameterZ?: number | undefined; ... 4 more ...; updatable?: boolean | undefined; }"},static:!1,readonly:!1},{name:"scene",visibility:"public",keywords:[],kind:"let",type:{kind:"type",type:"object",text:"Scene"},static:!1,readonly:!1},{name:"mesh",visibility:"public",description:"if you want to use a mesh api, bind it",keywords:[],kind:"let",type:{kind:"type",type:"object",text:"Mesh"},static:!1,readonly:!1,defaultValue:"..."},{name:"position",visibility:"public",keywords:[],kind:"let",type:{kind:"type",type:"object",text:"{ x: number; y: number; z: number; }"},static:!1,readonly:!1},{name:"rotation",visibility:"public",keywords:[],kind:"let",type:{kind:"type",type:"object",text:"{ x: number; y: number; z: number; }"},static:!1,readonly:!1},{name:"scaling",visibility:"public",keywords:[],kind:"let",type:{kind:"type",type:"object",text:"{ x: number; y: number; z: number; }"},static:!1,readonly:!1}],name:"Sphere.svelte"};const ie={title:"Introduce",tags:["autodocs"]},{Story:se}=ne();var ae=E("<!> <!> <!> <!>",1),oe=E(`<!> <h1>@juunini/svelte-babylonjs</h1> <h2>Caution</h2> <blockquote><p>❗ This is WIP and not ready for production use.</p></blockquote> <h2>Introduction</h2> Easily create 3D scenes with Babylon.js in Svelte. <h2>Usage</h2> <p>Click under <code>Show code</code> button or to see category</p> <h2>Installation</h2> <code><pre>
+npm install @juunini/svelte-babylonjs
+yarn add @juunini/svelte-babylonjs
+pnpm add @juunini/svelte-babylonjs
+bun add @juunini/svelte-babylonjs
+  </pre></code> <h2>License</h2> MIT`,1);function R(e,t){q(t,!1),X();var s=oe(),a=V(s);se(a,{name:"Docs",parameters:{docs:{source:{language:"html",code:`<script lang="ts">
+  import { Vector3 } from '@babylonjs/core/Maths/math.vector';
+
+  import Canvas from '@juunini/svelte-babylonjs/Canvas.svelte';
+  import BabylonEngine from '@juunini/svelte-babylonjs/engine/Engine.svelte';
+  import BabylonScene from '@juunini/svelte-babylonjs/Scene.svelte';
+  import BabylonFreeCamera from '@juunini/svelte-babylonjs/camera/FreeCamera.svelte';
+  import BabylonGround from '@juunini/svelte-babylonjs/mesh/Ground.svelte';
+  import BabylonHemisphericLight from '@juunini/svelte-babylonjs/light/HemisphericLight.svelte';
+  import BabylonSphere from '@juunini/svelte-babylonjs/mesh/Sphere.svelte';
+<\/script>
+
+<Canvas style="width: 100%;">
+  <BabylonEngine>
+    <BabylonScene>
+      <BabylonFreeCamera position={new Vector3(0, 5, -10)} />
+      <BabylonHemisphericLight direction={new Vector3(0, 1, 0)} intensity={0.7} />
+      <BabylonGround options={{ width: 6, height: 6 }} />
+      <BabylonSphere options={{ diameter: 2, segments: 32 }} position={new Vector3(0, 1, 0)} />
+    </BabylonScene>
+  </BabylonEngine>
+</Canvas>`}},__svelteCsf:{rawCode:`<Canvas style="width: 100%;">
+  <Engine>
+    <Scene>
+      <FreeCamera position={new Vector3(0, 5, -10)} />
+      <HemisphericLight direction={new Vector3(0, 1, 0)} intensity={0.7} />
+      <Ground options={{ width: 6, height: 6 }} />
+      <Sphere options={{ diameter: 2, segments: 32 }} position={new Vector3(0, 1, 0)} />
+    </Scene>
+  </Engine>
+</Canvas>`}},children:(r,f)=>{K(r,{style:"width: 100%;",children:(h,_)=>{N(h,{children:(g,k)=>{Q(g,{children:(u,o)=>{var n=ae(),l=V(n);ee(l,{position:new c(0,5,-10)});var p=S(l,2);te(p,{direction:new c(0,1,0),intensity:.7});var m=S(p,2);Y(m,{options:{width:6,height:6}});var d=S(m,2);G(d,{options:{diameter:2,segments:32},position:new c(0,1,0)}),B(u,n)},$$slots:{default:!0}})},$$slots:{default:!0}})},$$slots:{default:!0}})},$$slots:{default:!0}}),B(e,s),A()}R.__docgen={version:3,name:"Introduce.stories.svelte",data:[],computed:[],methods:[],components:[],description:null,keywords:[],events:[],slots:[],refs:[]};const re=J(R,ie),he=["Docs"],fe=re.Docs;export{fe as Docs,he as __namedExportsOrder,ie as default};
