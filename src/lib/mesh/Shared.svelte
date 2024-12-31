@@ -1,11 +1,12 @@
 <script lang="ts">
-  import { getContext, onDestroy } from 'svelte';
+  import { getContext, onDestroy, setContext } from 'svelte';
   import { v7 } from 'uuid';
   import type { Mesh } from '@babylonjs/core/Meshes/mesh';
   import type { Scene } from '@babylonjs/core/scene';
   import type { Nullable } from '@babylonjs/core/types';
   import type { GreasedLineMaterialBuilderOptions } from '@babylonjs/core/Meshes/Builders/greasedLineBuilder';
   import type { IFontData } from '@babylonjs/core/Meshes/Builders/textBuilder';
+  import { TransformNode } from '@babylonjs/core/Meshes/transformNode';
 
   import type { MeshProps } from './interface';
 
@@ -60,24 +61,47 @@
     fontData,
     position,
     rotation,
-    scaling
+    scaling,
+    children
   }: Props = $props();
 
   const name = 'mesh' + v7();
 
-  if (materialOptions !== undefined) {
-    mesh = createMeshFunction(name, options, materialOptions, scene);
-  } else if (url !== undefined) {
-    mesh = createMeshFunction(name, url, options, scene);
-  } else if (text !== undefined) {
-    mesh = createMeshFunction(name, text, fontData, options, scene, earcutInjection);
-  } else {
-    mesh = createMeshFunction(name, options, scene, earcutInjection);
+  function createMesh() {
+    if (materialOptions !== undefined) {
+      return createMeshFunction(name, options, materialOptions, scene);
+    } else if (url !== undefined) {
+      return createMeshFunction(name, url, options, scene);
+    } else if (text !== undefined) {
+      return createMeshFunction(name, text, fontData, options, scene, earcutInjection);
+    } else {
+      return createMeshFunction(name, options, scene, earcutInjection);
+    }
   }
 
+  const parent = getContext<Mesh>('mesh') || null;
+  mesh = createMesh();
+  mesh?.setParent(parent);
+
+  setContext('mesh', mesh);
+
   $effect(() => {
+    if (options === undefined) return;
+
+    const parent = mesh?.parent || null;
+    const childNodes = mesh?.getChildren();
+    childNodes?.forEach((child) => {
+      mesh?.removeChild(child as TransformNode);
+    });
+
     mesh?.dispose();
-    mesh = createMeshFunction(name, options, scene);
+    mesh = createMesh();
+
+    mesh?.setParent(parent);
+
+    childNodes?.forEach((child) => {
+      mesh?.addChild(child as TransformNode);
+    });
   });
 
   $effect(() => {
@@ -99,3 +123,5 @@
     mesh?.dispose();
   });
 </script>
+
+{@render children?.()}
