@@ -18,7 +18,7 @@
 - [] FollowCamera
 - [] ArcFollowCamera
 - [] FlyCamera
-- [] ArcRotateCamera
+- [v] ArcRotateCamera
 - [] VRDeviceOrientationArcRotateCamera
 - [] StereoscopicArcRotateCamera
 - [] AnaglyphArcRotateCamera

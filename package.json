@@ -66,6 +66,10 @@
       "types": "./dist/camera/TargetCamera.svelte.d.ts",
       "svelte": "./dist/camera/TargetCamera.svelte"
     },
+    "./camera/ArcRotateCamera.svelte": {
+      "types": "./dist/camera/ArcRotateCamera.svelte.d.ts",
+      "svelte": "./dist/camera/ArcRotateCamera.svelte"
+    },
     "./light/DirectionalLight.svelte": {
       "types": "./dist/light/DirectionalLight.svelte.d.ts",
       "svelte": "./dist/light/DirectionalLight.svelte"
