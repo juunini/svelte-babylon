@@ -4,6 +4,7 @@
   import { Vector3 } from '@babylonjs/core/Maths/math.vector';
   import { ArcRotateCamera } from '@babylonjs/core/Cameras/arcRotateCamera';
   import { ArcFollowCamera, FollowCamera } from '@babylonjs/core/Cameras/followCamera';
+  import { StereoscopicFreeCamera } from '@babylonjs/core/Cameras/Stereoscopic/stereoscopicFreeCamera';
   import type { Camera } from '@babylonjs/core/Cameras/camera';
 
   import type { CameraProps } from './interface';
@@ -26,27 +27,49 @@
   }: Props = $props();
   const name = `camera${v7()}`;
 
-  if (CameraClass === ArcRotateCamera) {
-    camera = new ArcRotateCamera(
-      name,
-      props.alpha,
-      props.beta,
-      props.radius,
-      props.target,
-      scene,
-      setActiveOnSceneIfNoneActive
-    );
-  } else if (CameraClass === FollowCamera) {
-    camera = new FollowCamera(name, position, scene, props.lockedTarget);
-  } else if (CameraClass === ArcFollowCamera) {
-    if (scene == null) {
-      throw new Error('ArcFollowCamera requires a scene to be provided');
-    }
+  switch (CameraClass) {
+    case ArcRotateCamera:
+      camera = new ArcRotateCamera(
+        name,
+        props.alpha,
+        props.beta,
+        props.radius,
+        props.target,
+        scene,
+        setActiveOnSceneIfNoneActive
+      );
+      break;
+    case FollowCamera:
+      camera = new FollowCamera(name, position, scene, props.lockedTarget);
+      break;
+    case ArcFollowCamera:
+      if (scene == null) {
+        throw new Error('ArcFollowCamera requires a scene to be provided');
+      }
 
-    camera = new ArcFollowCamera(name, props.alpha, props.beta, props.radius, props.target, scene);
-  } else {
-    camera = new CameraClass(name, position, scene, setActiveOnSceneIfNoneActive);
+      camera = new ArcFollowCamera(
+        name,
+        props.alpha,
+        props.beta,
+        props.radius,
+        props.target,
+        scene
+      );
+      break;
+    case StereoscopicFreeCamera:
+      camera = new StereoscopicFreeCamera(
+        name,
+        position,
+        props.interaxialDistance,
+        props.isStereoscopicSideBySide,
+        scene
+      );
+      break;
+    default:
+      camera = new CameraClass(name, position, scene, setActiveOnSceneIfNoneActive);
+      break;
   }
+
   camera.setTarget?.(Vector3.Zero());
 
   $effect(() => {

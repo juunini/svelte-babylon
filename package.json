@@ -66,6 +66,10 @@
       "types": "./dist/camera/TargetCamera.svelte.d.ts",
       "svelte": "./dist/camera/TargetCamera.svelte"
     },
+    "./camera/StereoscopicFreeCamera.svelte": {
+      "types": "./dist/camera/StereoscopicFreeCamera.svelte.d.ts",
+      "svelte": "./dist/camera/StereoscopicFreeCamera.svelte"
+    },
     "./camera/FlyCamera.svelte": {
       "types": "./dist/camera/FlyCamera.svelte.d.ts",
       "svelte": "./dist/camera/FlyCamera.svelte"

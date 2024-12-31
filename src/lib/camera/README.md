@@ -13,7 +13,7 @@
 - [] DeviceOrientationCamera
 - [] VRDeviceOrientationFreeCamera
 - [] VRDeviceOrientationGamepadCamera
-- [] StereoscopicFreeCamera
+- [v] StereoscopicFreeCamera
 - [] AnaglyphFreeCamera
 - [v] FollowCamera
 - [v] ArcFollowCamera
