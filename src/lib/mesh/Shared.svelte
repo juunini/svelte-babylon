@@ -6,7 +6,7 @@
   import type { Nullable } from '@babylonjs/core/types';
   import type { GreasedLineMaterialBuilderOptions } from '@babylonjs/core/Meshes/Builders/greasedLineBuilder';
   import type { IFontData } from '@babylonjs/core/Meshes/Builders/textBuilder';
-  import { TransformNode } from '@babylonjs/core/Meshes/transformNode';
+  import type { TransformNode } from '@babylonjs/core/Meshes/transformNode';
 
   import type { MeshProps } from './interface';
 
