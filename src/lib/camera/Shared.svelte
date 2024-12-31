@@ -3,7 +3,7 @@
   import { getContext, onDestroy } from 'svelte';
   import { Vector3 } from '@babylonjs/core/Maths/math.vector';
   import { ArcRotateCamera } from '@babylonjs/core/Cameras/arcRotateCamera';
-  import { FollowCamera } from '@babylonjs/core/Cameras/followCamera';
+  import { ArcFollowCamera, FollowCamera } from '@babylonjs/core/Cameras/followCamera';
   import type { Camera } from '@babylonjs/core/Cameras/camera';
 
   import type { CameraProps } from './interface';
@@ -38,6 +38,12 @@
     );
   } else if (CameraClass === FollowCamera) {
     camera = new FollowCamera(name, position, scene, props.lockedTarget);
+  } else if (CameraClass === ArcFollowCamera) {
+    if (scene == null) {
+      throw new Error('ArcFollowCamera requires a scene to be provided');
+    }
+
+    camera = new ArcFollowCamera(name, props.alpha, props.beta, props.radius, props.target, scene);
   } else {
     camera = new CameraClass(name, position, scene, setActiveOnSceneIfNoneActive);
   }

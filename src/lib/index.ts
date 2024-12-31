@@ -4,6 +4,7 @@ import Engine from '$lib/engine/Engine.svelte';
 import FreeCamera from '$lib/camera/FreeCamera.svelte';
 import TargetCamera from '$lib/camera/TargetCamera.svelte';
 import FollowCamera from '$lib/camera/FollowCamera.svelte';
+import ArcFollowCamera from '$lib/camera/ArcFollowCamera.svelte';
 import FlyCamera from '$lib/camera/FlyCamera.svelte';
 import ArcRotateCamera from '$lib/camera/ArcRotateCamera.svelte';
 import DirectionalLight from '$lib/light/DirectionalLight.svelte';
@@ -47,6 +48,7 @@ export {
   FreeCamera,
   TargetCamera,
   FollowCamera,
+  ArcFollowCamera,
   FlyCamera,
   ArcRotateCamera,
   DirectionalLight,

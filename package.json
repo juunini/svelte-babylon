@@ -74,6 +74,10 @@
       "types": "./dist/camera/FollowCamera.svelte.d.ts",
       "svelte": "./dist/camera/FollowCamera.svelte"
     },
+    "./camera/ArcFollowCamera.svelte": {
+      "types": "./dist/camera/ArcFollowCamera.svelte.d.ts",
+      "svelte": "./dist/camera/ArcFollowCamera.svelte"
+    },
     "./camera/ArcRotateCamera.svelte": {
       "types": "./dist/camera/ArcRotateCamera.svelte.d.ts",
       "svelte": "./dist/camera/ArcRotateCamera.svelte"
