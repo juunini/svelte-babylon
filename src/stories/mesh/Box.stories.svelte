@@ -1,6 +1,7 @@
 <script lang="ts" module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import { Vector3 } from '@babylonjs/core/Maths/math.vector';
+  import { Vector3, Vector4 } from '@babylonjs/core/Maths/math.vector';
+  import { Color4 } from '@babylonjs/core/Maths/math.color';
   import Canvas from '@juunini/svelte-babylonjs/Canvas.svelte';
   import Engine from '@juunini/svelte-babylonjs/engine/Engine.svelte';
   import Scene from '@juunini/svelte-babylonjs/Scene.svelte';
