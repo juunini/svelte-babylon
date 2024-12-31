@@ -3,7 +3,8 @@ import Scene from '$lib/Scene.svelte';
 import Engine from '$lib/engine/Engine.svelte';
 import FreeCamera from '$lib/camera/FreeCamera.svelte';
 import TargetCamera from '$lib/camera/TargetCamera.svelte';
-import ArcRotateCamera from './camera/ArcRotateCamera.svelte';
+import FlyCamera from '$lib/camera/FlyCamera.svelte';
+import ArcRotateCamera from '$lib/camera/ArcRotateCamera.svelte';
 import DirectionalLight from '$lib/light/DirectionalLight.svelte';
 import HemisphericLight from '$lib/light/DirectionalLight.svelte';
 import PointLight from '$lib/light/DirectionalLight.svelte';
@@ -44,6 +45,7 @@ export {
   Engine,
   FreeCamera,
   TargetCamera,
+  FlyCamera,
   ArcRotateCamera,
   DirectionalLight,
   HemisphericLight,
