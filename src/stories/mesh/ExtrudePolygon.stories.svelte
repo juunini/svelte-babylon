@@ -70,27 +70,27 @@
           <HemisphericLight direction={new Vector3(0, 1, 0)} intensity={0.7} />
           <ExtrudePolygon
             options={{
-              ...args.options!,
-              shape: args.options!.shape.map((v) => new Vector3(v.x, v.y, v.z)),
-              holes: args.options!.holes.map((hole) => hole.map((v) => new Vector3(v.x, v.y, v.z))),
-              faceUV: args.options!.faceUV?.map((v) => new Vector4(v.x, v.y, v.z, v.w)),
-              frontUVs: args.options!.frontUVs
+              ...args.options,
+              shape: args.options?.shape.map((v) => new Vector3(v.x, v.y, v.z)),
+              holes: args.options?.holes.map((hole) => hole.map((v) => new Vector3(v.x, v.y, v.z))),
+              faceUV: args.options?.faceUV?.map((v) => new Vector4(v.x, v.y, v.z, v.w)),
+              frontUVs: args.options?.frontUVs
                 ? new Vector4(
-                    args.options!.frontUVs.x,
-                    args.options!.frontUVs.y,
-                    args.options!.frontUVs.z,
-                    args.options!.frontUVs.w
+                    args.options?.frontUVs.x,
+                    args.options?.frontUVs.y,
+                    args.options?.frontUVs.z,
+                    args.options?.frontUVs.w
                   )
                 : undefined,
-              backUVs: args.options!.backUVs
+              backUVs: args.options?.backUVs
                 ? new Vector4(
-                    args.options!.backUVs.x,
-                    args.options!.backUVs.y,
-                    args.options!.backUVs.z,
-                    args.options!.backUVs.w
+                    args.options?.backUVs.x,
+                    args.options?.backUVs.y,
+                    args.options?.backUVs.z,
+                    args.options?.backUVs.w
                   )
                 : undefined,
-              faceColors: args.options!.faceColors?.map((v) => new Color4(v.r, v.g, v.b, v.a))
+              faceColors: args.options?.faceColors?.map((v) => new Color4(v.r, v.g, v.b, v.a))
             }}
             earcutInjection={args.earcutInjection}
             position={args.position}

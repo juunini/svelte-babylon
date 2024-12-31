@@ -44,8 +44,9 @@
           <HemisphericLight direction={new Vector3(0, 1, 0)} intensity={0.7} />
           <DashedLine
             options={{
-              ...args.options!,
-              points: args.options!.points.map((point) => new Vector3(point.x, point.y, point.z))
+              ...args.options,
+              points:
+                args.options?.points.map((point) => new Vector3(point.x, point.y, point.z)) || []
             }}
             position={args.position}
             rotation={args.rotation}

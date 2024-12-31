@@ -45,11 +45,11 @@
           <Capsule
             options={{
               ...args.options,
-              orientation: args.options.orientation
+              orientation: args.options?.orientation
                 ? new Vector3(
-                    args.options.orientation.x,
-                    args.options.orientation.y,
-                    args.options.orientation.z
+                    args.options?.orientation.x,
+                    args.options?.orientation.y,
+                    args.options?.orientation.z
                   )
                 : undefined
             }}

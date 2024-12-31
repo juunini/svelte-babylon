@@ -40,21 +40,21 @@
           <HemisphericLight direction={new Vector3(0, 1, 0)} intensity={0.7} />
           <Disc
             options={{
-              ...args.options!,
-              frontUVs: args.options!.frontUVs
+              ...args.options,
+              frontUVs: args.options?.frontUVs
                 ? new Vector4(
-                    args.options!.frontUVs.x,
-                    args.options!.frontUVs.y,
-                    args.options!.frontUVs.z,
-                    args.options!.frontUVs.w
+                    args.options?.frontUVs.x,
+                    args.options?.frontUVs.y,
+                    args.options?.frontUVs.z,
+                    args.options?.frontUVs.w
                   )
                 : undefined,
-              backUVs: args.options!.backUVs
+              backUVs: args.options?.backUVs
                 ? new Vector4(
-                    args.options!.backUVs.x,
-                    args.options!.backUVs.y,
-                    args.options!.backUVs.z,
-                    args.options!.backUVs.w
+                    args.options?.backUVs.x,
+                    args.options?.backUVs.y,
+                    args.options?.backUVs.z,
+                    args.options?.backUVs.w
                   )
                 : undefined
             }}
