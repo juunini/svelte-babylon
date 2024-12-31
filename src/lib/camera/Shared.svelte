@@ -1,11 +1,12 @@
 <script lang="ts">
   import { v7 } from 'uuid';
   import { getContext, onDestroy } from 'svelte';
-  import type { Camera } from '@babylonjs/core/Cameras/camera';
   import { Vector3 } from '@babylonjs/core/Maths/math.vector';
+  import { ArcRotateCamera } from '@babylonjs/core/Cameras/arcRotateCamera';
+  import { FollowCamera } from '@babylonjs/core/Cameras/followCamera';
+  import type { Camera } from '@babylonjs/core/Cameras/camera';
 
   import type { CameraProps } from './interface';
-  import { ArcRotateCamera } from '@babylonjs/core/Cameras/arcRotateCamera';
 
   interface Props extends CameraProps {
     camera: Camera | any;
@@ -35,6 +36,8 @@
       scene,
       setActiveOnSceneIfNoneActive
     );
+  } else if (CameraClass === FollowCamera) {
+    camera = new FollowCamera(name, position, scene, props.lockedTarget);
   } else {
     camera = new CameraClass(name, position, scene, setActiveOnSceneIfNoneActive);
   }

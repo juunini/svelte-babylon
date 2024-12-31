@@ -6,4 +6,5 @@ export interface CameraProps {
   attachParentCanvas?: boolean;
   scene?: Scene;
   position?: Vector3;
+  setActiveOnSceneIfNoneActive?: boolean;
 }

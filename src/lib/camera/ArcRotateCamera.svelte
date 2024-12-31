@@ -7,7 +7,6 @@
 
   interface Props extends CameraProps {
     camera?: ArcRotateCamera;
-    setActiveOnSceneIfNoneActive?: boolean;
     alpha: number;
     beta: number;
     radius: number;

@@ -6,7 +6,6 @@
 
   interface Props extends CameraProps {
     camera?: FlyCamera;
-    setActiveOnSceneIfNoneActive?: boolean;
   }
 
   let { camera = $bindable(), ...props }: Props = $props();

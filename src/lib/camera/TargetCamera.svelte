@@ -6,7 +6,6 @@
 
   interface Props extends CameraProps {
     camera?: TargetCamera;
-    setActiveOnSceneIfNoneActive?: boolean;
   }
 
   let { camera = $bindable(), ...props }: Props = $props();
