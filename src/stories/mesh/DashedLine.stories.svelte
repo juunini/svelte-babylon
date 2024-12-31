@@ -24,7 +24,10 @@
       gapSize: 4,
       instance: undefined,
       material: undefined,
-      points: [new Vector3(-2, 4, -8), new Vector3(2, 4, -8)],
+      points: [
+        { x: -2, y: 4, z: -8 },
+        { x: 2, y: 4, z: -8 }
+      ],
       updatable: undefined,
       useVertexAlpha: undefined
     },
@@ -40,7 +43,10 @@
           <FreeCamera position={new Vector3(0, 5, -10)} />
           <HemisphericLight direction={new Vector3(0, 1, 0)} intensity={0.7} />
           <DashedLine
-            options={args.options!}
+            options={{
+              ...args.options!,
+              points: args.options!.points.map((point) => new Vector3(point.x, point.y, point.z))
+            }}
             position={args.position}
             rotation={args.rotation}
             scaling={args.scaling}

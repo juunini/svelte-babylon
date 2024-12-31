@@ -1,17 +1,17 @@
 <script lang="ts" module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import { Vector3 } from '@babylonjs/core/Maths/math.vector';
+  import { Vector3, Vector4 } from '@babylonjs/core/Maths/math.vector';
   import Canvas from '@juunini/svelte-babylonjs/Canvas.svelte';
   import Engine from '@juunini/svelte-babylonjs/engine/Engine.svelte';
   import Scene from '@juunini/svelte-babylonjs/Scene.svelte';
   import FreeCamera from '@juunini/svelte-babylonjs/camera/FreeCamera.svelte';
   import HemisphericLight from '@juunini/svelte-babylonjs/light/HemisphericLight.svelte';
-  import Capsule from '@juunini/svelte-babylonjs/mesh/Capsule.svelte';
+  import Disc from '@juunini/svelte-babylonjs/mesh/Disc.svelte';
 
   const { Story } = defineMeta({
-    title: 'mesh/Capsule',
+    title: 'mesh/Disc',
     tags: ['autodocs'],
-    component: Capsule
+    component: Disc
   });
 </script>
 
@@ -19,16 +19,12 @@
   name="Docs"
   args={{
     options: {
-      orientation: { x: 0, y: 0, z: 0 },
-      subdivisions: undefined,
+      arc: undefined,
+      backUVs: { x: 0, y: 0, z: 1, w: 1 },
+      frontUVs: { x: 0, y: 0, z: 1, w: 1 },
+      radius: undefined,
+      sideOrientation: undefined,
       tessellation: undefined,
-      height: 4,
-      radius: 1,
-      capSubdivisions: undefined,
-      radiusTop: undefined,
-      radiusBottom: undefined,
-      topCapSubdivisions: undefined,
-      bottomCapSubdivisions: undefined,
       updatable: undefined
     },
     position: { x: 0, y: 0, z: 0 },
@@ -42,14 +38,23 @@
         <Scene>
           <FreeCamera position={new Vector3(0, 5, -10)} />
           <HemisphericLight direction={new Vector3(0, 1, 0)} intensity={0.7} />
-          <Capsule
+          <Disc
             options={{
-              ...args.options,
-              orientation: args.options.orientation
-                ? new Vector3(
-                    args.options.orientation.x,
-                    args.options.orientation.y,
-                    args.options.orientation.z
+              ...args.options!,
+              frontUVs: args.options!.frontUVs
+                ? new Vector4(
+                    args.options!.frontUVs.x,
+                    args.options!.frontUVs.y,
+                    args.options!.frontUVs.z,
+                    args.options!.frontUVs.w
+                  )
+                : undefined,
+              backUVs: args.options!.backUVs
+                ? new Vector4(
+                    args.options!.backUVs.x,
+                    args.options!.backUVs.y,
+                    args.options!.backUVs.z,
+                    args.options!.backUVs.w
                   )
                 : undefined
             }}
