@@ -1,52 +1,22 @@
 <script lang="ts">
   import { getContext, onDestroy, setContext } from 'svelte';
   import { v7 } from 'uuid';
+  import earcut from 'earcut';
+  import { CreateGreasedLine } from '@babylonjs/core/Meshes/Builders/greasedLineBuilder';
+  import { CreateGroundFromHeightMap } from '@babylonjs/core/Meshes/Builders/groundBuilder';
+  import { CreateText } from '@babylonjs/core/Meshes/Builders/textBuilder';
   import type { Mesh } from '@babylonjs/core/Meshes/mesh';
   import type { Scene } from '@babylonjs/core/scene';
   import type { Nullable } from '@babylonjs/core/types';
-  import type { GreasedLineMaterialBuilderOptions } from '@babylonjs/core/Meshes/Builders/greasedLineBuilder';
-  import type { IFontData } from '@babylonjs/core/Meshes/Builders/textBuilder';
-  import type { TransformNode } from '@babylonjs/core/Meshes/transformNode';
 
   import type { MeshProps } from './interface';
 
-  type CreateMesh = (
-    name: string,
-    options?: any,
-    scene?: Scene | Nullable<Scene>,
-    earcutInjection?: any
-  ) => Mesh | Nullable<Mesh>;
-  type CreatGreasedLine = (
-    name: string,
-    options?: any,
-    materialOptions?: Nullable<GreasedLineMaterialBuilderOptions>,
-    scene?: Scene | Nullable<Scene>
-  ) => Mesh | Nullable<Mesh>;
-  type CreateGroundFromHeightMap = (
-    name: string,
-    url: string,
-    options?: any,
-    scene?: Scene | Nullable<Scene>
-  ) => Mesh | Nullable<Mesh>;
-  type CreateText = (
-    name: string,
-    text: string,
-    fontData: IFontData,
-    options?: any,
-    scene?: Nullable<Scene>,
-    earcutInjection?: any
-  ) => Nullable<Mesh>;
-
   interface Props extends Omit<MeshProps, 'mesh'> {
     mesh?: Mesh | Nullable<Mesh>;
-    createMeshFunction: CreateMesh | CreatGreasedLine | CreateGroundFromHeightMap | CreateText;
+    createMeshFunction: any;
     options?: any;
     scene?: Scene | Nullable<Scene>;
-    earcutInjection?: any;
-    materialOptions?: Nullable<GreasedLineMaterialBuilderOptions>;
-    url?: string | { data: Uint8Array; height: number; width: number };
-    text?: string;
-    fontData?: IFontData;
+    [key: string]: any;
   }
 
   let {
@@ -54,74 +24,92 @@
     createMeshFunction,
     options,
     scene,
-    earcutInjection,
-    materialOptions,
-    url,
-    text,
-    fontData,
+    earcutInjection = earcut,
     position,
     rotation,
     scaling,
-    children
+    ...props
   }: Props = $props();
 
   const name = 'mesh' + v7();
 
   function createMesh() {
-    if (materialOptions !== undefined) {
-      return createMeshFunction(name, options, materialOptions, scene);
-    } else if (url !== undefined) {
-      return createMeshFunction(name, url, options, scene);
-    } else if (text !== undefined) {
-      return createMeshFunction(name, text, fontData, options, scene, earcutInjection);
-    } else {
-      return createMeshFunction(name, options, scene, earcutInjection);
+    switch (createMeshFunction) {
+      case CreateGreasedLine:
+        return createMeshFunction(name, options, props.materialOptions, scene);
+      case CreateGroundFromHeightMap:
+        return createMeshFunction(name, props.url, options, scene);
+      case CreateText:
+        return createMeshFunction(
+          name,
+          props.text,
+          props.fontData,
+          options,
+          scene,
+          earcutInjection
+        );
+      default:
+        return createMeshFunction(name, options, scene, earcutInjection);
     }
   }
 
   const parent = getContext<Mesh>('mesh') || null;
   mesh = createMesh();
-  mesh?.setParent(parent);
+  mesh!.setParent(parent);
 
   setContext('mesh', mesh);
+
+  function removeChild(child: Mesh) {
+    const transforms = {
+      position: child.position.clone(),
+      rotation: child.rotation.clone(),
+      scaling: child.scaling.clone()
+    };
+
+    mesh!.removeChild(child);
+
+    child.position.set(transforms.position.x, transforms.position.y, transforms.position.z);
+    child.rotation.set(transforms.rotation.x, transforms.rotation.y, transforms.rotation.z);
+    child.scaling.set(transforms.scaling.x, transforms.scaling.y, transforms.scaling.z);
+  }
 
   $effect(() => {
     if (options === undefined) return;
 
-    const parent = mesh?.parent || null;
-    const childNodes = mesh?.getChildren();
-    childNodes?.forEach((child) => {
-      mesh?.removeChild(child as TransformNode);
-    });
+    setTimeout(() => {
+      const parent = mesh!.parent || null;
+      const childNodes = mesh!.getChildren() as Mesh[];
+      childNodes?.forEach((child) => removeChild(child));
 
-    mesh?.dispose();
-    mesh = createMesh();
+      mesh!.dispose();
+      mesh = createMesh();
+      mesh!.setParent(parent);
 
-    mesh?.setParent(parent);
+      childNodes?.forEach((child) => mesh!.addChild(child));
 
-    childNodes?.forEach((child) => {
-      mesh?.addChild(child as TransformNode);
-    });
+      setposition();
+      setRotation();
+      setScaling();
+    }, 0);
+    return;
   });
+  $effect(setposition);
+  $effect(setRotation);
+  $effect(setScaling);
+  onDestroy(() => mesh!.dispose());
 
-  $effect(() => {
+  function setposition() {
     if (position === undefined) return;
-    mesh?.position?.set(position?.x ?? 0, position?.y ?? 0, position?.z ?? 0);
-  });
-
-  $effect(() => {
+    setTimeout(() => mesh!.position!.set(position.x || 0, position.y || 0, position.z || 0));
+  }
+  function setRotation() {
     if (rotation === undefined) return;
-    mesh?.rotation?.set(rotation?.x ?? 0, rotation?.y ?? 0, rotation?.z ?? 0);
-  });
-
-  $effect(() => {
+    setTimeout(() => mesh!.rotation!.set(rotation.x || 0, rotation.y || 0, rotation.z || 0));
+  }
+  function setScaling() {
     if (scaling === undefined) return;
-    mesh?.scaling?.set(scaling?.x ?? 0, scaling?.y ?? 0, scaling?.z ?? 0);
-  });
-
-  onDestroy(() => {
-    mesh?.dispose();
-  });
+    setTimeout(() => mesh!.scaling!.set(scaling.x || 0, scaling.y || 0, scaling.z || 0));
+  }
 </script>
 
-{@render children?.()}
+{@render props.children?.()}
