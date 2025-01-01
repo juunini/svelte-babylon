@@ -11,7 +11,7 @@
   import Sphere from '@juunini/svelte-babylonjs/mesh/Sphere.svelte';
 
   const { Story } = defineMeta({
-    title: 'Introduce',
+    title: 'tips/Physics',
     tags: ['autodocs']
   });
 </script>
@@ -36,11 +36,20 @@
 
 \<Canvas style="width: 100%;"\>
   \<BabylonEngine\>
-    \<BabylonScene\>
+    \<BabylonScene physics\>
       \<BabylonFreeCamera position={new Vector3(0, 5, -10)} /\>
       \<BabylonHemisphericLight direction={new Vector3(0, 1, 0)} intensity={0.7} /\>
-      \<BabylonGround options={{ width: 6, height: 6 }} /\>
-      \<BabylonSphere options={{ diameter: 2, segments: 32 }} position={{ x: 0, y: 1, z: 0 }} /\>
+      \<BabylonGround
+        options={{ width: 6, height: 6 }}
+        physics
+        physicsOptions={{ mass: 0, restitution: 0.5 }}
+      /\>
+      \<BabylonSphere
+        options={{ diameter: 2, segments: 32 }}
+        position={{ x: 0, y: 5, z: 0 }}
+        physics
+        physicsOptions={{ mass: 1, restitution: 0.5 }}
+      /\>
     \</BabylonScene\>
   \</BabylonEngine\>
 \</Canvas\>`
@@ -50,43 +59,21 @@
 >
   <Canvas style="width: 100%;">
     <Engine>
-      <Scene>
+      <Scene physics>
         <FreeCamera position={new Vector3(0, 5, -10)} />
         <HemisphericLight direction={new Vector3(0, 1, 0)} intensity={0.7} />
-        <Ground options={{ width: 6, height: 6 }} />
-        <Sphere options={{ diameter: 2, segments: 32 }} position={{ x: 0, y: 1, z: 0 }} />
+        <Ground
+          physics
+          physicsOptions={{ mass: 0, restitution: 0.5 }}
+          options={{ width: 6, height: 6 }}
+        />
+        <Sphere
+          physics
+          physicsOptions={{ mass: 1, restitution: 0.5 }}
+          options={{ diameter: 2, segments: 32 }}
+          position={{ x: 0, y: 5, z: 0 }}
+        />
       </Scene>
     </Engine>
   </Canvas>
 </Story>
-
-<h1>@juunini/svelte-babylonjs</h1>
-
-<h2>Caution</h2>
-
-<blockquote>
-  <p>❗ This is WIP and not ready for production use.</p>
-</blockquote>
-
-<h2>Introduction</h2>
-
-Easily create 3D scenes with Babylon.js in Svelte.
-
-<h2>Usage</h2>
-
-<p>Click under <code>Show code</code> button or to see category</p>
-
-<h2>Installation</h2>
-
-<code>
-  <pre>
-npm install @juunini/svelte-babylonjs
-yarn add @juunini/svelte-babylonjs
-pnpm add @juunini/svelte-babylonjs
-bun add @juunini/svelte-babylonjs
-  </pre>
-</code>
-
-<h2>License</h2>
-
-MIT
