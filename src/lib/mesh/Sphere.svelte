@@ -3,6 +3,7 @@
   import type { Scene } from '@babylonjs/core/scene';
   import type { Nullable } from '@babylonjs/core/types';
   import { CreateSphere } from '@babylonjs/core/Meshes/Builders/sphereBuilder';
+  import { PhysicsShapeType } from '@babylonjs/core/Physics/v2/IPhysicsEnginePlugin';
 
   import type { MeshProps } from './interface';
   import DefaultMesh from './Shared.svelte';
@@ -24,7 +25,7 @@
     scene?: Nullable<Scene>;
   }
 
-  let { mesh = $bindable(), ...props }: Props = $props();
+  let { mesh = $bindable(), physicsShape = PhysicsShapeType.SPHERE, ...props }: Props = $props();
 </script>
 
-<DefaultMesh bind:mesh createMeshFunction={CreateSphere} {...props} />
+<DefaultMesh bind:mesh createMeshFunction={CreateSphere} {physicsShape} {...props} />

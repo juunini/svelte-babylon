@@ -7,6 +7,7 @@
 
   import type { MeshProps } from './interface';
   import DefaultMesh from './Shared.svelte';
+  import { PhysicsShapeType } from '@babylonjs/core/Physics/v2/IPhysicsEnginePlugin';
 
   interface Props extends MeshProps {
     mesh?: GroundMesh;
@@ -27,7 +28,12 @@
     scene?: Nullable<Scene>;
   }
 
-  let { mesh = $bindable(), url, ...props }: Props = $props();
+  let {
+    mesh = $bindable(),
+    url,
+    physicsShape = PhysicsShapeType.HEIGHTFIELD,
+    ...props
+  }: Props = $props();
 </script>
 
-<DefaultMesh bind:mesh createMeshFunction={CreateGroundFromHeightMap} {...props} />
+<DefaultMesh bind:mesh createMeshFunction={CreateGroundFromHeightMap} {physicsShape} {...props} />

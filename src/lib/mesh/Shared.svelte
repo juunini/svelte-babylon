@@ -10,6 +10,8 @@
   import type { Nullable } from '@babylonjs/core/types';
 
   import type { MeshProps } from './interface';
+  import { PhysicsAggregate } from '@babylonjs/core/Physics/v2/physicsAggregate';
+  import { PhysicsShapeType } from '@babylonjs/core/Physics/v2/IPhysicsEnginePlugin';
 
   interface Props extends Omit<MeshProps, 'mesh'> {
     mesh?: Mesh | Nullable<Mesh>;
@@ -28,10 +30,29 @@
     position,
     rotation,
     scaling,
+    physics,
+    physicsShape = PhysicsShapeType.MESH,
+    physicsOptions,
     ...props
   }: Props = $props();
 
   const name = 'mesh' + v7();
+  const parent = getContext<Mesh>('mesh') || null;
+
+  if (scene === undefined) {
+    scene = getContext<Scene>('scene');
+  }
+
+  mesh = createMesh();
+  mesh!.setParent(parent);
+  setContext('mesh', mesh);
+
+  $effect(setOptions);
+  $effect(setposition);
+  $effect(setRotation);
+  $effect(setScaling);
+  $effect(setPhysics);
+  onDestroy(() => mesh!.dispose());
 
   function createMesh() {
     switch (createMeshFunction) {
@@ -52,13 +73,6 @@
         return createMeshFunction(name, options, scene, earcutInjection);
     }
   }
-
-  const parent = getContext<Mesh>('mesh') || null;
-  mesh = createMesh();
-  mesh!.setParent(parent);
-
-  setContext('mesh', mesh);
-
   function removeChild(child: Mesh) {
     const transforms = {
       position: child.position.clone(),
@@ -72,8 +86,7 @@
     child.rotation.set(transforms.rotation.x, transforms.rotation.y, transforms.rotation.z);
     child.scaling.set(transforms.scaling.x, transforms.scaling.y, transforms.scaling.z);
   }
-
-  $effect(() => {
+  function setOptions() {
     if (options === undefined) return;
 
     setTimeout(() => {
@@ -91,13 +104,7 @@
       setRotation();
       setScaling();
     }, 0);
-    return;
-  });
-  $effect(setposition);
-  $effect(setRotation);
-  $effect(setScaling);
-  onDestroy(() => mesh!.dispose());
-
+  }
   function setposition() {
     if (position === undefined) return;
     setTimeout(() => mesh!.position!.set(position.x || 0, position.y || 0, position.z || 0));
@@ -109,6 +116,19 @@
   function setScaling() {
     if (scaling === undefined) return;
     setTimeout(() => mesh!.scaling!.set(scaling.x || 0, scaling.y || 0, scaling.z || 0));
+  }
+  function setPhysics() {
+    if (physics === true) {
+      const scene = getContext<Scene>('scene');
+
+      const interval = setInterval(() => {
+        if (!scene.physicsEnabled) clearInterval(interval);
+        if (!scene?.isPhysicsEnabled?.()) return;
+        clearInterval(interval);
+
+        new PhysicsAggregate(mesh!, physicsShape, physicsOptions, scene);
+      }, 10);
+    }
   }
 </script>
 

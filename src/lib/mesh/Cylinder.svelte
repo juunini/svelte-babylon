@@ -7,6 +7,7 @@
 
   import type { MeshProps } from './interface';
   import DefaultMesh from './Shared.svelte';
+  import { PhysicsShapeType } from '@babylonjs/core/Physics/v2/IPhysicsEnginePlugin';
 
   interface Props extends MeshProps {
     options?: {
@@ -30,7 +31,7 @@
     scene?: Nullable<Scene>;
   }
 
-  let { mesh = $bindable(), ...props }: Props = $props();
+  let { mesh = $bindable(), physicsShape = PhysicsShapeType.CYLINDER, ...props }: Props = $props();
 </script>
 
-<DefaultMesh bind:mesh createMeshFunction={CreateCylinder} {...props} />
+<DefaultMesh bind:mesh createMeshFunction={CreateCylinder} {physicsShape} {...props} />

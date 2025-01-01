@@ -4,6 +4,7 @@
   import type { Color4 } from '@babylonjs/core/Maths/math.color';
   import type { Nullable } from '@babylonjs/core/types';
   import { CreateBox } from '@babylonjs/core/Meshes/Builders/boxBuilder';
+  import { PhysicsShapeType } from '@babylonjs/core/Physics/v2/IPhysicsEnginePlugin';
 
   import type { MeshProps } from './interface';
   import DefaultMesh from './Shared.svelte';
@@ -27,7 +28,7 @@
     scene?: Nullable<Scene>;
   }
 
-  let { mesh = $bindable(), ...props }: Props = $props();
+  let { mesh = $bindable(), physicsShape = PhysicsShapeType.BOX, ...props }: Props = $props();
 </script>
 
-<DefaultMesh bind:mesh createMeshFunction={CreateBox} {...props} />
+<DefaultMesh bind:mesh createMeshFunction={CreateBox} {physicsShape} {...props} />
