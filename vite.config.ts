@@ -8,6 +8,10 @@ export default defineConfig({
     include: ['src/**/*.{test,spec}.{js,ts}']
   },
 
+  optimizeDeps: {
+    exclude: ['@babylonjs/havok']
+  },
+
   build: {
     rollupOptions: {
       output: {
@@ -20,8 +24,12 @@ export default defineConfig({
             return '@babylonjs/core/Engines';
           }
 
-          if (id.includes('@babylonjs/core/Materials')) {
-            return '@babylonjs/core/Materials';
+          if (id.includes('@babylonjs/core/Materials/standardMaterial')) {
+            return '@babylonjs/core/Materials/standardMaterial';
+          }
+
+          if (id.includes('@babylonjs/core/Materials/materials')) {
+            return '@babylonjs/core/Materials/materials';
           }
 
           if (id.includes('@babylonjs/core/types')) {
@@ -32,8 +40,16 @@ export default defineConfig({
             return '@babylonjs/core/Maths';
           }
 
-          if (id.includes('@babylonjs/core/Meshes')) {
-            return '@babylonjs/core/Meshes';
+          if (id.includes('@babylonjs/core/Meshes/abstractMesh')) {
+            return '@babylonjs/core/Meshes/abstractMesh';
+          }
+
+          if (id.includes('@babylonjs/core/Meshes/Builders')) {
+            return '@babylonjs/core/Meshes/Builders';
+          }
+
+          if (id.includes('@babylonjs/core/Meshes/mesh')) {
+            return '@babylonjs/core/Meshes/mesh';
           }
         }
       }
