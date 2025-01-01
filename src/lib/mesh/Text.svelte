@@ -12,7 +12,7 @@
   interface Props extends Omit<MeshProps, 'mesh'> {
     mesh?: Nullable<Mesh>;
     text: string;
-    fontData: IFontData;
+    fontData: IFontData | string;
     options?: {
       depth?: number;
       faceColors?: Color4[];
@@ -27,7 +27,17 @@
     earcutInjection?: any;
   }
 
-  let { mesh = $bindable(), ...props }: Props = $props();
+  let { mesh = $bindable(), fontData, ...props }: Props = $props();
+
+  if (typeof fontData === 'string') {
+    (async () => {
+      const response = await fetch(fontData);
+      const data = await response.json();
+      fontData = data;
+    })();
+  }
 </script>
 
-<DefaultMesh bind:mesh createMeshFunction={CreateText} {...props} />
+{#if typeof fontData === 'object'}
+  <DefaultMesh bind:mesh createMeshFunction={CreateText} {fontData} {...props} />
+{/if}
