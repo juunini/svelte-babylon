@@ -32,8 +32,9 @@
 
   $effect(() => {
     if (physics === true) {
-      if (!scene.isPhysicsEnabled)
+      if (!scene.isPhysicsEnabled || !scene.getPhysicsEngine?.()) {
         enablePhysics(scene, physicsOptions?.gravity, physicsOptions?.useDeltaForWorldStep);
+      }
 
       scene.physicsEnabled = true;
       return;
