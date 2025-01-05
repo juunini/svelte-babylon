@@ -5,14 +5,14 @@
   import { CreateGreasedLine } from '@babylonjs/core/Meshes/Builders/greasedLineBuilder';
   import { CreateGroundFromHeightMap } from '@babylonjs/core/Meshes/Builders/groundBuilder';
   import { CreateText } from '@babylonjs/core/Meshes/Builders/textBuilder';
+  import { PhysicsAggregate } from '@babylonjs/core/Physics/v2/physicsAggregate';
+  import { PhysicsShapeType } from '@babylonjs/core/Physics/v2/IPhysicsEnginePlugin';
+  import { Vector3 } from '@babylonjs/core/Maths/math.vector';
   import type { Mesh } from '@babylonjs/core/Meshes/mesh';
   import type { Scene } from '@babylonjs/core/scene';
   import type { Nullable } from '@babylonjs/core/types';
 
   import type { MeshProps } from './interface';
-  import { PhysicsAggregate } from '@babylonjs/core/Physics/v2/physicsAggregate';
-  import { PhysicsShapeType } from '@babylonjs/core/Physics/v2/IPhysicsEnginePlugin';
-  import { Vector3 } from '@babylonjs/core';
 
   interface Props extends Omit<MeshProps, 'mesh'> {
     mesh?: Mesh | Nullable<Mesh>;
@@ -124,15 +124,19 @@
     setTimeout(() => mesh!.scaling!.set(scaling.x || 0, scaling.y || 0, scaling.z || 0));
   }
   function setPhysics() {
-    if (physics === true) {
-      const interval = setInterval(() => {
-        if (!scene?.physicsEnabled) clearInterval(interval);
+    if (physics !== true) return;
+    setTimeout(() => {
+      function applyPhysics() {
+        if (!scene?.physicsEnabled) scene?.onAfterRenderObservable.removeCallback(applyPhysics);
+        if (scene?.isPhysicsEnabled === undefined) return;
         if (!scene?.isPhysicsEnabled?.()) return;
-        clearInterval(interval);
 
-        physicsAggregate = new PhysicsAggregate(mesh!, physicsShape, physicsOptions, scene);
-      }, 10);
-    }
+        physicsAggregate = new PhysicsAggregate(mesh!, physicsShape, physicsOptions, scene!);
+        scene?.onAfterRenderObservable.removeCallback(applyPhysics);
+      }
+
+      scene?.onAfterRenderObservable.add(applyPhysics);
+    });
   }
   function setForce() {
     if (force === undefined || physicsAggregate === undefined) return;
