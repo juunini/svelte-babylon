@@ -36,6 +36,8 @@
     physicsOptions,
     force,
     impulse,
+    onCollision,
+    onCollisionOnce,
     ...props
   }: Props = $props();
 
@@ -58,6 +60,8 @@
   $effect(setPhysics);
   $effect(setForce);
   $effect(setImpulse);
+  $effect(setOnCollision);
+  $effect(setOnCollisionOnce);
   onDestroy(() => mesh!.dispose());
 
   function createMesh() {
@@ -129,10 +133,10 @@
       function applyPhysics() {
         if (!scene?.physicsEnabled) scene?.onAfterRenderObservable.removeCallback(applyPhysics);
         if (scene?.isPhysicsEnabled === undefined) return;
-        if (!scene?.isPhysicsEnabled?.()) return;
+        if (!scene.isPhysicsEnabled()) return;
 
         physicsAggregate = new PhysicsAggregate(mesh!, physicsShape, physicsOptions, scene!);
-        scene?.onAfterRenderObservable.removeCallback(applyPhysics);
+        scene.onAfterRenderObservable.removeCallback(applyPhysics);
       }
 
       scene?.onAfterRenderObservable.add(applyPhysics);
@@ -154,6 +158,20 @@
         new Vector3(impulse.x, impulse.y, impulse.z),
         mesh!.absolutePosition
       );
+    });
+  }
+  function setOnCollision() {
+    if (onCollision === undefined || physicsAggregate === undefined) return;
+    setTimeout(() => {
+      physicsAggregate!.body.setCollisionCallbackEnabled(true);
+      physicsAggregate!.body.getCollisionObservable().add(onCollision);
+    });
+  }
+  function setOnCollisionOnce() {
+    if (onCollisionOnce === undefined || physicsAggregate === undefined) return;
+    setTimeout(() => {
+      physicsAggregate!.body.setCollisionCallbackEnabled(true);
+      physicsAggregate!.body.getCollisionObservable().addOnce(onCollisionOnce);
     });
   }
 </script>
