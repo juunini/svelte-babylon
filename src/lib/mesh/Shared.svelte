@@ -12,6 +12,7 @@
   import type { MeshProps } from './interface';
   import { PhysicsAggregate } from '@babylonjs/core/Physics/v2/physicsAggregate';
   import { PhysicsShapeType } from '@babylonjs/core/Physics/v2/IPhysicsEnginePlugin';
+  import { Vector3 } from '@babylonjs/core';
 
   interface Props extends Omit<MeshProps, 'mesh'> {
     mesh?: Mesh | Nullable<Mesh>;
@@ -25,7 +26,7 @@
     mesh = $bindable(),
     createMeshFunction,
     options,
-    scene,
+    scene = getContext<Scene>('scene'),
     earcutInjection = earcut,
     position,
     rotation,
@@ -33,11 +34,14 @@
     physics,
     physicsShape = PhysicsShapeType.MESH,
     physicsOptions,
+    force,
+    impulse,
     ...props
   }: Props = $props();
 
   const name = 'mesh' + v7();
   const parent = getContext<Mesh>('mesh') || null;
+  let physicsAggregate = $state<PhysicsAggregate>();
 
   if (scene === undefined) {
     scene = getContext<Scene>('scene');
@@ -52,6 +56,8 @@
   $effect(setRotation);
   $effect(setScaling);
   $effect(setPhysics);
+  $effect(setForce);
+  $effect(setImpulse);
   onDestroy(() => mesh!.dispose());
 
   function createMesh() {
@@ -119,16 +125,32 @@
   }
   function setPhysics() {
     if (physics === true) {
-      const scene = getContext<Scene>('scene');
-
       const interval = setInterval(() => {
-        if (!scene.physicsEnabled) clearInterval(interval);
+        if (!scene?.physicsEnabled) clearInterval(interval);
         if (!scene?.isPhysicsEnabled?.()) return;
         clearInterval(interval);
 
-        new PhysicsAggregate(mesh!, physicsShape, physicsOptions, scene);
+        physicsAggregate = new PhysicsAggregate(mesh!, physicsShape, physicsOptions, scene);
       }, 10);
     }
+  }
+  function setForce() {
+    if (force === undefined || physicsAggregate === undefined) return;
+    setTimeout(() => {
+      physicsAggregate!.body.applyForce(
+        new Vector3(force.x, force.y, force.z),
+        mesh!.absolutePosition
+      );
+    });
+  }
+  function setImpulse() {
+    if (impulse === undefined || physicsAggregate === undefined) return;
+    setTimeout(() => {
+      physicsAggregate!.body.applyImpulse(
+        new Vector3(impulse.x, impulse.y, impulse.z),
+        mesh!.absolutePosition
+      );
+    });
   }
 </script>
 

@@ -14,4 +14,6 @@ export interface MeshProps {
   position?: { x: number; y: number; z: number };
   rotation?: { x: number; y: number; z: number };
   scaling?: { x: number; y: number; z: number };
+  force?: { x: number; y: number; z: number };
+  impulse?: { x: number; y: number; z: number };
 }
