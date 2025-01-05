@@ -73,7 +73,7 @@
   camera.setTarget?.(Vector3.Zero());
 
   $effect(() => {
-    camera.position?.set?.(position.x, position.y, position.z);
+    camera.position = position;
   });
 
   if (attachParentCanvas) {
