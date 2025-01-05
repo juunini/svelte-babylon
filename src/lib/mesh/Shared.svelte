@@ -36,6 +36,8 @@
     physicsOptions,
     force,
     impulse,
+    receivedShadows,
+    shadowEnabled = true,
     onCollision,
     onCollisionOnce,
     ...props
@@ -60,6 +62,8 @@
   $effect(setPhysics);
   $effect(setForce);
   $effect(setImpulse);
+  $effect(setReceivedShadows);
+  $effect(setShadowEnabled);
   $effect(setOnCollision);
   $effect(setOnCollisionOnce);
   onDestroy(() => mesh!.dispose());
@@ -159,6 +163,14 @@
         mesh!.absolutePosition
       );
     });
+  }
+  function setReceivedShadows() {
+    if (receivedShadows === undefined) return;
+    setTimeout(() => (mesh!.receiveShadows = receivedShadows));
+  }
+  function setShadowEnabled() {
+    if (shadowEnabled === undefined) return;
+    setTimeout(() => (mesh!.shadowEnabled = shadowEnabled));
   }
   function setOnCollision() {
     if (onCollision === undefined || physicsAggregate === undefined) return;

@@ -1,8 +1,11 @@
 <script lang="ts">
-  import { onDestroy } from 'svelte';
+  import { getContext, onDestroy } from 'svelte';
   import { v7 } from 'uuid';
   import { PointLight } from '@babylonjs/core/Lights/pointLight';
   import { SpotLight } from '@babylonjs/core/Lights/spotLight';
+  import { HemisphericLight } from '@babylonjs/core/Lights/hemisphericLight';
+  import { DirectionalLight } from '@babylonjs/core/Lights/directionalLight';
+  import { ShadowGenerator } from '@babylonjs/core/Lights/Shadows/shadowGenerator';
   import { Vector3 } from '@babylonjs/core/Maths/math.vector';
 
   import type { LightProps } from './interface';
@@ -17,23 +20,54 @@
   let {
     light = $bindable(),
     LightClass,
-    scene,
+    scene = getContext('scene'),
     direction = Vector3.Zero(),
     position = Vector3.Zero(),
     angle,
     exponent,
-    intensity
+    intensity,
+    shadowEnabled = true
   }: Props = $props();
 
   const name = `light${v7()}`;
+  let shadowGenerator: ShadowGenerator;
 
-  if (light instanceof PointLight) {
-    light = new LightClass(name, position, scene);
-  } else if (light instanceof SpotLight) {
-    light = new LightClass(name, position, direction, angle, exponent, scene);
-  } else {
-    light = new LightClass(name, direction, scene);
+  switch (LightClass) {
+    case PointLight:
+      light = new PointLight(name, position, scene);
+      break;
+    case SpotLight:
+      light = new SpotLight(name, position, direction, angle!, exponent!, scene);
+      break;
+    case DirectionalLight:
+      light = new DirectionalLight(name, direction, scene);
+      break;
+    default:
+      light = new LightClass(name, direction, scene);
   }
+
+  $effect(() => {
+    if (LightClass === HemisphericLight) return;
+    if (shadowEnabled === undefined) return;
+
+    setTimeout(() => {
+      function applyShadow() {
+        if (scene!.meshes.length === 0) return;
+        if (!shadowGenerator) shadowGenerator = new ShadowGenerator(1024, light);
+
+        scene!.meshes
+          .filter((mesh) => mesh.shadowEnabled)
+          .forEach((mesh) => shadowGenerator.addShadowCaster(mesh));
+        scene!.onAfterRenderObservable.removeCallback(applyShadow);
+      }
+
+      if (shadowEnabled) {
+        scene!.onAfterRenderObservable.add(applyShadow);
+      }
+
+      light.shadowEnabled = shadowEnabled;
+    }, 0);
+  });
 
   $effect(() => {
     if (intensity === undefined) return;

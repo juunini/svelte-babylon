@@ -8,4 +8,5 @@ export interface LightProps {
   direction?: Vector3;
   position?: Vector3;
   intensity?: number;
+  shadowEnabled?: boolean;
 }
