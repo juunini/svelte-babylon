@@ -23,12 +23,16 @@
       againstNode.physicsBody?.applyImpulse(vector, againstNode.absolutePosition);
     };
   }
+
+  const shadowId1 = 'shadow1';
+  const shadowId2 = 'shadow2';
 </script>
 
 <Story
   name="Docs"
   parameters={{
     docs: {
+      canvas: { sourceState: 'shown' },
       source: {
         language: 'html',
         code: `\<script lang="ts"\>
@@ -119,8 +123,16 @@
         <SpotLight
           angle={Math.PI / 2}
           exponent={2}
-          position={new Vector3(0, 6, 0)}
-          intensity={0.7}
+          position={new Vector3(3, 5, 0)}
+          intensity={0.2}
+          shadowId={shadowId1}
+        />
+        <SpotLight
+          angle={Math.PI / 2}
+          exponent={2}
+          position={new Vector3(-3, 5, 0)}
+          intensity={0.2}
+          shadowId={shadowId2}
         />
         <Ground
           options={{ width: 6, height: 6 }}
@@ -137,6 +149,7 @@
           physics
           physicsOptions={{ mass: 0, restitution: 0.5 }}
           onCollision={bounceCollidedAgainst(new Vector3(-5, 0, 0))}
+          shadowGroup={[shadowId1, shadowId2]}
         />
         <Ground
           options={{ width: 6, height: 6 }}
@@ -145,6 +158,7 @@
           physics
           physicsOptions={{ mass: 0, restitution: 0.5 }}
           onCollision={bounceCollidedAgainst(new Vector3(5, 0, 0))}
+          shadowGroup={[shadowId1, shadowId2]}
         />
         <Sphere
           options={{ diameter: 2, segments: 32 }}
@@ -152,6 +166,7 @@
           physics
           physicsOptions={{ mass: 1, restitution: 0.5 }}
           impulse={{ x: 5, y: 0, z: 0 }}
+          shadowGroup={[shadowId1, shadowId2]}
         />
       </Scene>
     </Engine>
