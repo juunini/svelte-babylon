@@ -31,6 +31,7 @@ jobs:
       run: |
         bun run build-storybook
         cp ./storybook-static/index.html ./storybook-static/404.html
+        sed -i 's/\@storybook\/core \- Storybook/\@juunini\/svelte\-babylonjs/g' ./storybook-static/index.html
 
     - name: Deploy to gh-pages branch
       uses: peaceiris/actions-gh-pages@v4
