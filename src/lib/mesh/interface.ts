@@ -19,6 +19,7 @@ export interface MeshProps {
   impulse?: { x: number; y: number; z: number };
   receivedShadows?: boolean;
   shadowEnabled?: boolean;
+  shadowGroup?: string[];
   onCollision?: (eventData: IPhysicsCollisionEvent, eventState: EventState) => void
   onCollisionOnce?: (eventData: IPhysicsCollisionEvent, eventState: EventState) => void
 }

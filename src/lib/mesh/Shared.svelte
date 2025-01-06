@@ -38,6 +38,7 @@
     impulse,
     receivedShadows,
     shadowEnabled = true,
+    shadowGroup = [],
     onCollision,
     onCollisionOnce,
     ...props
@@ -170,7 +171,10 @@
   }
   function setShadowEnabled() {
     if (shadowEnabled === undefined) return;
-    setTimeout(() => (mesh!.shadowEnabled = shadowEnabled));
+    setTimeout(() => {
+      mesh!.shadowEnabled = shadowEnabled;
+      mesh!.shadowGroup = shadowGroup;
+    });
   }
   function setOnCollision() {
     if (onCollision === undefined || physicsAggregate === undefined) return;
