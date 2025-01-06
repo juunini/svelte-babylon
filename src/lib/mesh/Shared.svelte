@@ -31,9 +31,9 @@
     position,
     rotation,
     scaling,
-    physics,
+    physics = true,
     physicsShape = PhysicsShapeType.MESH,
-    physicsOptions,
+    physicsOptions = { mass: 1, restitution: 0.5 },
     force,
     impulse,
     receivedShadows,
@@ -134,11 +134,16 @@
   }
   function setPhysics() {
     if (physics !== true) return;
+    if (physicsOptions === undefined) return;
     setTimeout(() => {
       function applyPhysics() {
         if (!scene?.physicsEnabled) scene?.onAfterRenderObservable.removeCallback(applyPhysics);
         if (scene?.isPhysicsEnabled === undefined) return;
         if (!scene.isPhysicsEnabled()) return;
+
+        if (physicsAggregate) {
+          physicsAggregate.dispose();
+        }
 
         physicsAggregate = new PhysicsAggregate(mesh!, physicsShape, physicsOptions, scene!);
         scene.onAfterRenderObservable.removeCallback(applyPhysics);

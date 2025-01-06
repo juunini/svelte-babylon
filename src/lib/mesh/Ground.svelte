@@ -19,7 +19,18 @@
     scene?: Scene;
   }
 
-  let { mesh = $bindable(), receivedShadows = true, ...props }: Props = $props();
+  let {
+    mesh = $bindable(),
+    physicsOptions = { mass: 0, restitution: 0.5 },
+    receivedShadows = true,
+    ...props
+  }: Props = $props();
 </script>
 
-<DefaultMesh bind:mesh createMeshFunction={CreateGround as any} {receivedShadows} {...props} />
+<DefaultMesh
+  bind:mesh
+  createMeshFunction={CreateGround as any}
+  {physicsOptions}
+  {receivedShadows}
+  {...props}
+/>

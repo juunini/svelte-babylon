@@ -98,8 +98,6 @@
       \<Ground
         options={{ width: 6, height: 6 }}
         position={{ x: 0, y: -2, z: 0 }}
-        physics
-        physicsOptions={{ mass: 0, restitution: 0.5 }}
         onCollision={bounceCollidedAgainst(new Vector3(0, 5, 0))}
         shadowEnabled={false}
       /\>
@@ -107,8 +105,6 @@
         options={{ width: 6, height: 6 }}
         position={{ x: 3.5, y: 1, z: 0 }}
         rotation={{ x: 0, y: 0, z: Math.PI / 2 }}
-        physics
-        physicsOptions={{ mass: 0, restitution: 0.5 }}
         onCollision={bounceCollidedAgainst(new Vector3(-5, 0, 0))}
         shadowGroup={[shadowId1, shadowId2]}
       /\>
@@ -116,16 +112,12 @@
         options={{ width: 6, height: 6 }}
         position={{ x: -3.5, y: 1, z: 0 }}
         rotation={{ x: 0, y: 0, z: -Math.PI / 2 }}
-        physics
-        physicsOptions={{ mass: 0, restitution: 0.5 }}
         onCollision={bounceCollidedAgainst(new Vector3(5, 0, 0))}
         shadowGroup={[shadowId1, shadowId2]}
       /\>
       \<Sphere
         options={{ diameter: 2, segments: 32 }}
         position={new Vector3(0, 3, 0)}
-        physics
-        physicsOptions={{ mass: 1, restitution: 0.5 }}
         impulse={{ x: 5, y: 0, z: 0 }}
         shadowGroup={[shadowId1, shadowId2]}
       /\>
@@ -163,8 +155,6 @@
         <Ground
           options={{ width: 6, height: 6 }}
           position={{ x: 0, y: -2, z: 0 }}
-          physics
-          physicsOptions={{ mass: 0, restitution: 0.5 }}
           onCollision={bounceCollidedAgainst(new Vector3(0, 5, 0))}
           shadowEnabled={false}
         />
@@ -172,8 +162,6 @@
           options={{ width: 6, height: 6 }}
           position={{ x: 3.5, y: 1, z: 0 }}
           rotation={{ x: 0, y: 0, z: Math.PI / 2 }}
-          physics
-          physicsOptions={{ mass: 0, restitution: 0.5 }}
           onCollision={bounceCollidedAgainst(new Vector3(-5, 0, 0))}
           shadowGroup={[shadowId1, shadowId2]}
         />
@@ -181,16 +169,12 @@
           options={{ width: 6, height: 6 }}
           position={{ x: -3.5, y: 1, z: 0 }}
           rotation={{ x: 0, y: 0, z: -Math.PI / 2 }}
-          physics
-          physicsOptions={{ mass: 0, restitution: 0.5 }}
           onCollision={bounceCollidedAgainst(new Vector3(5, 0, 0))}
           shadowGroup={[shadowId1, shadowId2]}
         />
         <Sphere
           options={{ diameter: 2, segments: 32 }}
           position={new Vector3(0, 3, 0)}
-          physics
-          physicsOptions={{ mass: 1, restitution: 0.5 }}
           impulse={{ x: 5, y: 0, z: 0 }}
           shadowGroup={[shadowId1, shadowId2]}
         />
