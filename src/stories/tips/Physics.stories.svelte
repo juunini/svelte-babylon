@@ -38,12 +38,7 @@
 <Canvas style="width: 100%;">
   <Engine>
     <Scene>
-      <ArcRotateCamera
-        alpha={Math.PI / 2}
-        beta={Math.PI / 2}
-        radius={10}
-        target={new Vector3(0, 0, 0)}
-      />
+      <ArcRotateCamera alpha={Math.PI / 2} beta={Math.PI / 2} radius={10} />
       <HemisphericLight direction={new Vector3(0, 1, 0)} intensity={0.7} />
       <Ground
         options={{ width: 6, height: 6 }}
@@ -77,12 +72,7 @@
   <Canvas style="width: 100%;">
     <Engine>
       <Scene>
-        <ArcRotateCamera
-          alpha={Math.PI / 2}
-          beta={Math.PI / 2}
-          radius={10}
-          target={new Vector3(0, 0, 0)}
-        />
+        <ArcRotateCamera alpha={Math.PI / 2} beta={Math.PI / 2} radius={10} />
         <HemisphericLight direction={new Vector3(0, 1, 0)} intensity={0.7} />
         <Ground
           options={{ width: 6, height: 6 }}
