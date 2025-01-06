@@ -26,7 +26,8 @@
     angle,
     exponent,
     intensity,
-    shadowEnabled = true
+    shadowEnabled = true,
+    shadowId
   }: Props = $props();
 
   const name = `light${v7()}`;
@@ -49,6 +50,7 @@
   $effect(() => {
     if (LightClass === HemisphericLight) return;
     if (shadowEnabled === undefined) return;
+    if (shadowId === undefined) return;
 
     setTimeout(() => {
       function applyShadow() {
@@ -56,6 +58,7 @@
         if (!shadowGenerator) shadowGenerator = new ShadowGenerator(1024, light);
 
         scene!.meshes
+          .filter((mesh) => mesh.shadowGroup.includes(shadowId))
           .filter((mesh) => mesh.shadowEnabled)
           .forEach((mesh) => shadowGenerator.addShadowCaster(mesh));
         scene!.onAfterRenderObservable.removeCallback(applyShadow);
