@@ -22,7 +22,7 @@
     engine = getContext<AbstractEngine>('engine'),
     scene = $bindable(),
     options,
-    physics = false,
+    physics = true,
     physicsOptions,
     children
   }: Props = $props();
