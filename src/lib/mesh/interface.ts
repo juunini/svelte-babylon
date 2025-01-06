@@ -17,6 +17,8 @@ export interface MeshProps {
   scaling?: { x: number; y: number; z: number };
   force?: { x: number; y: number; z: number };
   impulse?: { x: number; y: number; z: number };
+  collideAgainstForce?: { x: number; y: number; z: number };
+  collideAgainstImpulse?: { x: number; y: number; z: number };
   receivedShadows?: boolean;
   shadowEnabled?: boolean;
   shadowGroup?: string[];

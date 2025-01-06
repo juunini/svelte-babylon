@@ -6,7 +6,10 @@
   import { CreateGroundFromHeightMap } from '@babylonjs/core/Meshes/Builders/groundBuilder';
   import { CreateText } from '@babylonjs/core/Meshes/Builders/textBuilder';
   import { PhysicsAggregate } from '@babylonjs/core/Physics/v2/physicsAggregate';
-  import { PhysicsShapeType } from '@babylonjs/core/Physics/v2/IPhysicsEnginePlugin';
+  import {
+    PhysicsShapeType,
+    type IPhysicsCollisionEvent
+  } from '@babylonjs/core/Physics/v2/IPhysicsEnginePlugin';
   import { Vector3 } from '@babylonjs/core/Maths/math.vector';
   import type { Mesh } from '@babylonjs/core/Meshes/mesh';
   import type { Scene } from '@babylonjs/core/scene';
@@ -36,6 +39,8 @@
     physicsOptions = { mass: 1, restitution: 0.5 },
     force,
     impulse,
+    collideAgainstForce,
+    collideAgainstImpulse,
     receivedShadows,
     shadowEnabled = true,
     shadowGroup = [],
@@ -47,6 +52,8 @@
   const name = 'mesh' + v7();
   const parent = getContext<Mesh>('mesh') || null;
   let physicsAggregate = $state<PhysicsAggregate>();
+  let collideAgainstForceFunction = $state<(eventData: IPhysicsCollisionEvent) => void>();
+  let collideAgainstImpulseFunction = $state<(eventData: IPhysicsCollisionEvent) => void>();
 
   if (scene === undefined) {
     scene = getContext<Scene>('scene');
@@ -63,6 +70,8 @@
   $effect(setPhysics);
   $effect(setForce);
   $effect(setImpulse);
+  $effect(setcollideAgainstForce);
+  $effect(setcollideAgainstImpulse);
   $effect(setReceivedShadows);
   $effect(setShadowEnabled);
   $effect(setOnCollision);
@@ -122,15 +131,15 @@
   }
   function setposition() {
     if (position === undefined) return;
-    setTimeout(() => mesh!.position!.set(position.x || 0, position.y || 0, position.z || 0));
+    setTimeout(() => mesh!.position!.set(position.x || 0, position.y || 0, position.z || 0), 0);
   }
   function setRotation() {
     if (rotation === undefined) return;
-    setTimeout(() => mesh!.rotation!.set(rotation.x || 0, rotation.y || 0, rotation.z || 0));
+    setTimeout(() => mesh!.rotation!.set(rotation.x || 0, rotation.y || 0, rotation.z || 0), 0);
   }
   function setScaling() {
     if (scaling === undefined) return;
-    setTimeout(() => mesh!.scaling!.set(scaling.x || 0, scaling.y || 0, scaling.z || 0));
+    setTimeout(() => mesh!.scaling!.set(scaling.x || 0, scaling.y || 0, scaling.z || 0), 0);
   }
   function setPhysics() {
     if (physics !== true) return;
@@ -150,7 +159,7 @@
       }
 
       scene?.onAfterRenderObservable.add(applyPhysics);
-    });
+    }, 0);
   }
   function setForce() {
     if (force === undefined || physicsAggregate === undefined) return;
@@ -159,7 +168,7 @@
         new Vector3(force.x, force.y, force.z),
         mesh!.absolutePosition
       );
-    });
+    }, 0);
   }
   function setImpulse() {
     if (impulse === undefined || physicsAggregate === undefined) return;
@@ -168,7 +177,49 @@
         new Vector3(impulse.x, impulse.y, impulse.z),
         mesh!.absolutePosition
       );
-    });
+    }, 0);
+  }
+  function setcollideAgainstForce() {
+    if (collideAgainstForce === undefined || physicsAggregate === undefined) return;
+
+    setTimeout(() => {
+      const collisionObserable = physicsAggregate!.body.getCollisionObservable();
+
+      if (collideAgainstForceFunction) {
+        collisionObserable.removeCallback(collideAgainstForceFunction);
+      }
+
+      collideAgainstForceFunction = ({ collidedAgainst }: IPhysicsCollisionEvent) => {
+        collidedAgainst.applyForce(
+          new Vector3(collideAgainstForce.x, collideAgainstForce.y, collideAgainstForce.z),
+          mesh!.absolutePosition
+        );
+      };
+
+      physicsAggregate!.body.setCollisionCallbackEnabled(true);
+      collisionObserable.add(collideAgainstForceFunction);
+    }, 0);
+  }
+  function setcollideAgainstImpulse() {
+    if (collideAgainstImpulse === undefined || physicsAggregate === undefined) return;
+
+    setTimeout(() => {
+      const collisionObserable = physicsAggregate!.body.getCollisionObservable();
+
+      if (collideAgainstImpulseFunction) {
+        collisionObserable.removeCallback(collideAgainstImpulseFunction);
+      }
+
+      collideAgainstImpulseFunction = ({ collidedAgainst }: IPhysicsCollisionEvent) => {
+        collidedAgainst.applyImpulse(
+          new Vector3(collideAgainstImpulse.x, collideAgainstImpulse.y, collideAgainstImpulse.z),
+          mesh!.absolutePosition
+        );
+      };
+
+      physicsAggregate!.body.setCollisionCallbackEnabled(true);
+      collisionObserable.add(collideAgainstImpulseFunction);
+    }, 0);
   }
   function setReceivedShadows() {
     if (receivedShadows === undefined) return;
@@ -179,21 +230,21 @@
     setTimeout(() => {
       mesh!.shadowEnabled = shadowEnabled;
       mesh!.shadowGroup = shadowGroup;
-    });
+    }, 0);
   }
   function setOnCollision() {
     if (onCollision === undefined || physicsAggregate === undefined) return;
     setTimeout(() => {
       physicsAggregate!.body.setCollisionCallbackEnabled(true);
       physicsAggregate!.body.getCollisionObservable().add(onCollision);
-    });
+    }, 0);
   }
   function setOnCollisionOnce() {
     if (onCollisionOnce === undefined || physicsAggregate === undefined) return;
     setTimeout(() => {
       physicsAggregate!.body.setCollisionCallbackEnabled(true);
       physicsAggregate!.body.getCollisionObservable().addOnce(onCollisionOnce);
-    });
+    }, 0);
   }
 </script>
 
