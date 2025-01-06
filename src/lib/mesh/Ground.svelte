@@ -22,7 +22,8 @@
   let {
     mesh = $bindable(),
     physicsOptions = { mass: 0, restitution: 0.5 },
-    receivedShadows = true,
+    receiveShadows = true,
+    shadowEnabled = false,
     ...props
   }: Props = $props();
 </script>
@@ -31,6 +32,7 @@
   bind:mesh
   createMeshFunction={CreateGround as any}
   {physicsOptions}
-  {receivedShadows}
+  {shadowEnabled}
+  {receiveShadows}
   {...props}
 />

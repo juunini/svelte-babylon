@@ -77,21 +77,18 @@
       \<Ground
         options={{ width: 6, height: 6 }}
         position={{ x: 0, y: -2, z: 0 }}
-        shadowEnabled={false}
         collideAgainstImpulse={{ x: 0, y: 5, z: 0 }}
       /\>
       \<Ground
         options={{ width: 6, height: 6 }}
         position={{ x: 3.5, y: 1, z: 0 }}
         rotation={{ x: 0, y: 0, z: Math.PI / 2 }}
-        shadowGroup={[shadowId1, shadowId2]}
         collideAgainstImpulse={{ x: -5, y: 0, z: 0 }}
       /\>
       \<Ground
         options={{ width: 6, height: 6 }}
         position={{ x: -3.5, y: 1, z: 0 }}
         rotation={{ x: 0, y: 0, z: -Math.PI / 2 }}
-        shadowGroup={[shadowId1, shadowId2]}
         collideAgainstImpulse={{ x: 5, y: 0, z: 0 }}
       /\>
       \<Sphere
@@ -129,21 +126,18 @@
         <Ground
           options={{ width: 6, height: 6 }}
           position={{ x: 0, y: -2, z: 0 }}
-          shadowEnabled={false}
           collideAgainstImpulse={{ x: 0, y: 5, z: 0 }}
         />
         <Ground
           options={{ width: 6, height: 6 }}
           position={{ x: 3.5, y: 1, z: 0 }}
           rotation={{ x: 0, y: 0, z: Math.PI / 2 }}
-          shadowGroup={[shadowId1, shadowId2]}
           collideAgainstImpulse={{ x: -5, y: 0, z: 0 }}
         />
         <Ground
           options={{ width: 6, height: 6 }}
           position={{ x: -3.5, y: 1, z: 0 }}
           rotation={{ x: 0, y: 0, z: -Math.PI / 2 }}
-          shadowGroup={[shadowId1, shadowId2]}
           collideAgainstImpulse={{ x: 5, y: 0, z: 0 }}
         />
         <Sphere

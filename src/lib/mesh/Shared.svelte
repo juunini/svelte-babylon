@@ -41,7 +41,7 @@
     impulse,
     collideAgainstForce,
     collideAgainstImpulse,
-    receivedShadows,
+    receiveShadows,
     shadowEnabled = true,
     shadowGroup = [],
     onCollision,
@@ -72,7 +72,7 @@
   $effect(setImpulse);
   $effect(setcollideAgainstForce);
   $effect(setcollideAgainstImpulse);
-  $effect(setReceivedShadows);
+  $effect(setreceiveShadows);
   $effect(setShadowEnabled);
   $effect(setOnCollision);
   $effect(setOnCollisionOnce);
@@ -221,9 +221,9 @@
       collisionObserable.add(collideAgainstImpulseFunction);
     }, 0);
   }
-  function setReceivedShadows() {
-    if (receivedShadows === undefined) return;
-    setTimeout(() => (mesh!.receiveShadows = receivedShadows));
+  function setreceiveShadows() {
+    if (receiveShadows === undefined) return;
+    setTimeout(() => (mesh!.receiveShadows = receiveShadows));
   }
   function setShadowEnabled() {
     if (shadowEnabled === undefined) return;
