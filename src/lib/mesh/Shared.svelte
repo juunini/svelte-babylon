@@ -81,20 +81,13 @@
   function createMesh() {
     switch (createMeshFunction) {
       case CreateGreasedLine:
-        return createMeshFunction(name, options, props.materialOptions, scene);
+        return CreateGreasedLine(name, { ...options }, { ...props.materialOptions }, scene);
       case CreateGroundFromHeightMap:
-        return createMeshFunction(name, props.url, options, scene);
+        return CreateGroundFromHeightMap(name, props.url, { ...options }, scene);
       case CreateText:
-        return createMeshFunction(
-          name,
-          props.text,
-          props.fontData,
-          options,
-          scene,
-          earcutInjection
-        );
+        return CreateText(name, props.text, props.fontData, { ...options }, scene, earcutInjection);
       default:
-        return createMeshFunction(name, options, scene, earcutInjection);
+        return createMeshFunction(name, { ...options }, scene, earcutInjection);
     }
   }
   function removeChild(child: Mesh) {
@@ -106,14 +99,19 @@
 
     mesh!.removeChild(child);
 
-    child.position.set(transforms.position.x, transforms.position.y, transforms.position.z);
-    child.rotation.set(transforms.rotation.x, transforms.rotation.y, transforms.rotation.z);
-    child.scaling.set(transforms.scaling.x, transforms.scaling.y, transforms.scaling.z);
+    child.position = transforms.position;
+    child.rotation = transforms.rotation;
+    child.scaling = transforms.scaling;
   }
   function setOptions() {
     if (options === undefined) return;
 
     setTimeout(() => {
+      const transforms = {
+        position: mesh!.position.clone(),
+        rotation: mesh!.rotation.clone(),
+        scaling: mesh!.scaling.clone()
+      };
       const parent = mesh!.parent || null;
       const childNodes = mesh!.getChildren() as Mesh[];
       childNodes?.forEach((child) => removeChild(child));
@@ -121,27 +119,39 @@
       mesh!.dispose();
       mesh = createMesh();
       mesh!.setParent(parent);
+      mesh!.position = transforms.position;
+      mesh!.rotation = transforms.rotation;
+      mesh!.scaling = transforms.scaling;
 
       childNodes?.forEach((child) => mesh!.addChild(child));
-
-      setposition();
-      setRotation();
-      setScaling();
     }, 0);
   }
   function setposition() {
     if (position === undefined) return;
-    setTimeout(() => mesh!.position!.set(position.x || 0, position.y || 0, position.z || 0), 0);
+    setTimeout(() => {
+      mesh!.position = new Vector3(position.x, position.y, position.z);
+
+      if (physicsAggregate) setPhysics();
+    }, 0);
   }
   function setRotation() {
     if (rotation === undefined) return;
-    setTimeout(() => mesh!.rotation!.set(rotation.x || 0, rotation.y || 0, rotation.z || 0), 0);
+    setTimeout(() => {
+      mesh!.rotation = new Vector3(rotation.x, rotation.y, rotation.z);
+
+      if (physicsAggregate) setPhysics();
+    }, 0);
   }
   function setScaling() {
     if (scaling === undefined) return;
-    setTimeout(() => mesh!.scaling!.set(scaling.x || 0, scaling.y || 0, scaling.z || 0), 0);
+    setTimeout(() => {
+      mesh!.scaling = new Vector3(scaling.x, scaling.y, scaling.z);
+
+      if (physicsAggregate) setPhysics();
+    }, 0);
   }
   function setPhysics() {
+    if (!mesh) return;
     if (physics !== true) return;
     if (physicsOptions === undefined) return;
     setTimeout(() => {
@@ -149,12 +159,9 @@
         if (!scene?.physicsEnabled) scene?.onAfterRenderObservable.removeCallback(applyPhysics);
         if (scene?.isPhysicsEnabled === undefined) return;
         if (!scene.isPhysicsEnabled()) return;
+        if (physicsAggregate) physicsAggregate.dispose();
 
-        if (physicsAggregate) {
-          physicsAggregate.dispose();
-        }
-
-        physicsAggregate = new PhysicsAggregate(mesh!, physicsShape, physicsOptions, scene!);
+        physicsAggregate = new PhysicsAggregate(mesh!, physicsShape, { ...physicsOptions }, scene!);
         scene.onAfterRenderObservable.removeCallback(applyPhysics);
       }
 
@@ -180,6 +187,7 @@
     }, 0);
   }
   function setcollideAgainstForce() {
+    if (!mesh) return;
     if (collideAgainstForce === undefined || physicsAggregate === undefined) return;
 
     setTimeout(() => {
@@ -201,6 +209,7 @@
     }, 0);
   }
   function setcollideAgainstImpulse() {
+    if (!mesh) return;
     if (collideAgainstImpulse === undefined || physicsAggregate === undefined) return;
 
     setTimeout(() => {
@@ -222,17 +231,24 @@
     }, 0);
   }
   function setreceiveShadows() {
+    if (!mesh) return;
     if (receiveShadows === undefined) return;
-    setTimeout(() => (mesh!.receiveShadows = receiveShadows));
+    setTimeout(() => (mesh!.receiveShadows = receiveShadows), 0);
   }
   function setShadowEnabled() {
+    if (!mesh) return;
     if (shadowEnabled === undefined) return;
     setTimeout(() => {
       mesh!.shadowEnabled = shadowEnabled;
       mesh!.shadowGroup = shadowGroup;
+
+      scene?.lights
+        .filter((light) => shadowGroup.includes(light.shadowId))
+        .forEach((light) => light.getShadowGenerator()!.addShadowCaster(mesh));
     }, 0);
   }
   function setOnCollision() {
+    if (!mesh) return;
     if (onCollision === undefined || physicsAggregate === undefined) return;
     setTimeout(() => {
       physicsAggregate!.body.setCollisionCallbackEnabled(true);

@@ -57,6 +57,7 @@
         if (scene!.meshes.length === 0) return;
         if (!shadowGenerator) shadowGenerator = new ShadowGenerator(1024, light);
 
+        light.shadowId = shadowId;
         scene!.meshes
           .filter((mesh) => mesh.shadowGroup.includes(shadowId))
           .filter((mesh) => mesh.shadowEnabled)

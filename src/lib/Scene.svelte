@@ -27,7 +27,7 @@
     children
   }: Props = $props();
 
-  scene = new Scene(engine, options);
+  scene = new Scene(engine, { ...options });
   setContext('scene', scene);
 
   $effect(() => {
