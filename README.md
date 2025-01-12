@@ -20,7 +20,7 @@ bun add @juunini/svelte-babylonjs
 ## Usage
 
 You can see the example and code below link (storybook)  
-https://juunini.github.io/svelte-babylonjs  
+https://juunini.github.io/svelte-babylonjs
 
 ---
 

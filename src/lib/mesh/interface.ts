@@ -1,6 +1,9 @@
 import type { Snippet } from 'svelte';
 import type { Mesh } from '@babylonjs/core/Meshes/mesh';
-import type { IPhysicsCollisionEvent, PhysicsShapeType } from '@babylonjs/core/Physics/v2/IPhysicsEnginePlugin';
+import type {
+  IPhysicsCollisionEvent,
+  PhysicsShapeType
+} from '@babylonjs/core/Physics/v2/IPhysicsEnginePlugin';
 import type { PhysicsShape } from '@babylonjs/core/Physics/v2/physicsShape';
 import type { PhysicsAggregateParameters } from '@babylonjs/core/Physics/v2/physicsAggregate';
 import type { EventState } from '@babylonjs/core/Misc/observable';
@@ -22,6 +25,6 @@ export interface MeshProps {
   receiveShadows?: boolean;
   shadowEnabled?: boolean;
   shadowGroup?: string[];
-  onCollision?: (eventData: IPhysicsCollisionEvent, eventState: EventState) => void
-  onCollisionOnce?: (eventData: IPhysicsCollisionEvent, eventState: EventState) => void
+  onCollision?: (eventData: IPhysicsCollisionEvent, eventState: EventState) => void;
+  onCollisionOnce?: (eventData: IPhysicsCollisionEvent, eventState: EventState) => void;
 }

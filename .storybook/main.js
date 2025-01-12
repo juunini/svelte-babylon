@@ -2,7 +2,11 @@ import path from 'path';
 
 /** @type { import('@storybook/sveltekit').StorybookConfig } */
 const config = {
-  stories: ['../src/stories/Introduce.stories.svelte', '../src/**/*.mdx', '../src/**/*.stories.@(js|ts|svelte)'],
+  stories: [
+    '../src/stories/Introduce.stories.svelte',
+    '../src/**/*.mdx',
+    '../src/**/*.stories.@(js|ts|svelte)'
+  ],
   addons: [
     '@storybook/addon-svelte-csf',
     '@storybook/addon-essentials',
